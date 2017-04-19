@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using WYF.WebAPI.Data;
 using WYF.WebAPI.Facebook;
 using WYF.WebAPI.Models;
 using WYF.WebAPI.Providers;

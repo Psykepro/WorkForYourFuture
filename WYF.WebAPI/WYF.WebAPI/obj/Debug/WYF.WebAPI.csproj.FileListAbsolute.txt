@@ -75,3 +75,7 @@ D:\Programming\Projects\03.CSharp_Web\C# ASP.NET MVC Framework\Exam\WorkForYourF
 D:\Programming\Projects\03.CSharp_Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\obj\Debug\WYF.WebAPI.csprojResolveAssemblyReference.cache
 D:\Programming\Projects\03.CSharp_Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\obj\Debug\WYF.WebAPI.dll
 D:\Programming\Projects\03.CSharp_Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\obj\Debug\WYF.WebAPI.pdb
+D:\Programming\Projects\03.CSharp_Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\bin\WYF.WebAPI.Data.dll
+D:\Programming\Projects\03.CSharp_Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\bin\WYF.WebAPI.Models.dll
+D:\Programming\Projects\03.CSharp_Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\bin\WYF.WebAPI.Data.pdb
+D:\Programming\Projects\03.CSharp_Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\bin\WYF.WebAPI.Models.pdb

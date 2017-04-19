@@ -1,3 +1,5 @@
+using WYF.WebAPI.Data;
+
 namespace WYF.WebAPI.Migrations
 {
     using System;
@@ -5,14 +7,14 @@ namespace WYF.WebAPI.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<WYF.WebAPI.Models.WyfDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<WyfDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(WYF.WebAPI.Models.WyfDbContext context)
+        protected override void Seed(WyfDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

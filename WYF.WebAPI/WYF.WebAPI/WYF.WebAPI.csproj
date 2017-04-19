@@ -267,6 +267,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WYF.WebAPI.Data\WYF.WebAPI.Data.csproj">
+      <Project>{BA73C755-23C6-47FB-97F2-D8FBA9307916}</Project>
+      <Name>WYF.WebAPI.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WYF.WebAPI.Models\WYF.WebAPI.Models.csproj">
       <Project>{387B15A1-D6FF-45A7-8493-97051BF3774B}</Project>
       <Name>WYF.WebAPI.Models</Name>
