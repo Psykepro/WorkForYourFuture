@@ -7,6 +7,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using WYF.WebAPI.Models;
+using WYF.WebAPI.Models.EntityModels.Account;
 
 namespace WYF.WebAPI.Providers
 {
