@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace WYF.WebAPI.Models
+namespace WYF.WebAPI.Models.ViewModels.Account
 {
     public class ManageInfoViewModel
     {

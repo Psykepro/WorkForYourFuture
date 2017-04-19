@@ -46,7 +46,12 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,6 +69,19 @@
     <Compile Include="BindingModels\Account\RemoveLoginBindingModel.cs" />
     <Compile Include="BindingModels\Account\SetPasswordBindingModel.cs" />
     <Compile Include="EntityModels\Account\User.cs" />
+    <Compile Include="EntityModels\Job\City.cs" />
+    <Compile Include="EntityModels\Job\Industry.cs" />
+    <Compile Include="EntityModels\Job\JobApplication.cs" />
+    <Compile Include="EntityModels\Job\JobPosting.cs" />
+    <Compile Include="EntityModels\Profile\Employee.cs" />
+    <Compile Include="EntityModels\Profile\Employer.cs" />
+    <Compile Include="EntityModels\Profile\Person.cs" />
+    <Compile Include="Enums\Job\Education.cs" />
+    <Compile Include="Enums\Job\HierarchyLevel.cs" />
+    <Compile Include="Enums\Job\LanguageLevel.cs" />
+    <Compile Include="Enums\Job\Languages.cs" />
+    <Compile Include="Enums\Job\WorkTime.cs" />
+    <Compile Include="Enums\Profile\Gender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginViewModel.cs" />
     <Compile Include="ViewModels\Account\ManageInfoViewModel.cs" />
@@ -74,6 +92,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

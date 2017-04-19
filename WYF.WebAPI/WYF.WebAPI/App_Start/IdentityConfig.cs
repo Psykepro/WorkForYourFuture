@@ -3,7 +3,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using WYF.WebAPI.Data;
-using WYF.WebAPI.Models;
 using WYF.WebAPI.Models.EntityModels.Account;
 
 namespace WYF.WebAPI
