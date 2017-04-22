@@ -27,7 +27,15 @@ namespace WYF.WebAPI.Data
 
         public virtual DbSet<Industry> Industries { get; set; }
 
-
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<JobPosting>()
+                .HasRequired(j => j.PostingCreator)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+            
+        }
 
         public static WyfDbContext Create()
         {

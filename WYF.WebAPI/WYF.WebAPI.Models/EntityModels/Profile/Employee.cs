@@ -24,7 +24,7 @@ namespace WYF.WebAPI.Models.EntityModels.Profile
         public virtual IEnumerable<JobApplication> JobCandidatures { get; set; }
 
         [DataType("VARBINARY(MAX)")]
-        public Byte[] Cv { get; set; }
+        public byte[] Cv { get; set; }
 
         [Required]
         public bool IsLicensedDriver { get; set; }

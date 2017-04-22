@@ -29,7 +29,7 @@ namespace WYF.WebAPI.Models.EntityModels.Profile
         [Required]
         public Gender Gender { get; set; }
 
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         [ForeignKey(name: "UserId")]
         public virtual User User { get; set; }

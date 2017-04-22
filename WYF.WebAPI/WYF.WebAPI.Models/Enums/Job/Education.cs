@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WYF.WebAPI.Models.Enums.Job
 {
-    public enum Education
+    [Flags]
+    public enum Education : byte
     {
         SecondaryEducation,
         HigherEducation

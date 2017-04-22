@@ -10,12 +10,12 @@
         [Key]
         public int Id { get; set; }
 
-        public Guid JobApplicantId { get; set; }
+        public int JobApplicantId { get; set; }
 
         [ForeignKey(name: "JobApplicantId")]
         public virtual Employee JobApplicant { get; set; }
 
-        public Guid JobPostingCreatorId { get; set; }
+        public int JobPostingCreatorId { get; set; }
 
         [ForeignKey(name: "JobPostingCreatorId")]
         public virtual Employer JobPostingCreator { get; set; }

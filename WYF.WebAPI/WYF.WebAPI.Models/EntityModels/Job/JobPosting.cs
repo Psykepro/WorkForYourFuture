@@ -24,6 +24,8 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         [Required]
         [Index("IX_JobPosting_Title_Unique", IsUnique = true)]
         [MinLength(length: 6, ErrorMessage = "The allowed minimum length of the Title is 6 characters.")]
+        [MaxLength(length: 20, ErrorMessage = "The allowed maximum length of the Title is 20 characters.")]
+        [DataType("VARCHAR(20)")]
         public string Title { get; set; }
 
         [Required]
@@ -43,7 +45,7 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         [StringLength(maximumLength: 5)]
         public string Description { get; set; }
 
-        public int PostingCreatorId;
+        public int PostingCreatorId { get; set; }
 
         [ForeignKey(name: "PostingCreatorId")]
         public virtual Employer PostingCreator { get; set; }
@@ -55,7 +57,7 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         public int LocationId { get; set; }
 
         [ForeignKey(name: "LocationId")]
-        public Location Location { get; set; }
+        public City Location { get; set; }
 
         public HierarchyLevel HierarchyLevel { get; set; }
 
