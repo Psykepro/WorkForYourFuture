@@ -26,6 +26,7 @@ namespace WYF.WebAPI.Models.EntityModels.User
         public string LastName { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
         [Required]

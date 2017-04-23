@@ -32,6 +32,9 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         [ForeignKey(name: "JobPostingId")]
         public virtual JobPosting JobPosting { get; set; }
 
+        [DataType(DataType.Date)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [DefaultValue("getutcdate()")]
         public DateTime DateOfApplication { get; set; }
     }
 }

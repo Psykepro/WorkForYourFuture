@@ -1,4 +1,5 @@
-﻿using WYF.WebAPI.Models.EntityModels.User;
+﻿using System.ComponentModel;
+using WYF.WebAPI.Models.EntityModels.User;
 
 namespace WYF.WebAPI.Models.EntityModels.Job
 {
@@ -47,8 +48,12 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         [ForeignKey(name: "PostingCreatorId")]
         public virtual Employer PostingCreator { get; set; }
 
+        [DataType(DataType.Date)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [DefaultValue("getutcdate()")]
         public DateTime CreationDate { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime ExpirationDate { get; set; }
 
         public int LocationId { get; set; }
