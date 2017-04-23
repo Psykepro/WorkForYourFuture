@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WYF.WebAPI.Models.BindingModels.Account
+namespace WYF.WebAPI.Models.BindingModels.User
 {
     public class RemoveLoginBindingModel
     {

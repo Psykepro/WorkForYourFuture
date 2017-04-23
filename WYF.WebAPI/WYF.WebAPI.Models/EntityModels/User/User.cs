@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace WYF.WebAPI.Models.EntityModels.Account
+namespace WYF.WebAPI.Models.EntityModels.User
 {
     public class User : IdentityUser
     {

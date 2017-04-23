@@ -12,9 +12,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using WYF.WebAPI.Models;
-using WYF.WebAPI.Models.BindingModels.Account;
-using WYF.WebAPI.Models.EntityModels.Account;
+using WYF.WebAPI.Models.BindingModels.User;
+using WYF.WebAPI.Models.EntityModels.User;
 using WYF.WebAPI.Models.ViewModels.Account;
 using WYF.WebAPI.Providers;
 using WYF.WebAPI.Results;
@@ -22,17 +21,17 @@ using WYF.WebAPI.Results;
 namespace WYF.WebAPI.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    [RoutePrefix("api/User")]
+    public class UserController : ApiController
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public UserController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager,
+        public UserController(ApplicationUserManager userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;
@@ -53,7 +52,7 @@ namespace WYF.WebAPI.Controllers
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
-        // GET api/Account/UserInfo
+        // GET api/User/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
         public UserInfoViewModel GetUserInfo()
@@ -68,7 +67,7 @@ namespace WYF.WebAPI.Controllers
             };
         }
 
-        // POST api/Account/Logout
+        // POST api/User/Logout
         [Route("Logout")]
         public IHttpActionResult Logout()
         {
@@ -78,7 +77,7 @@ namespace WYF.WebAPI.Controllers
 
        
 
-        // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
+        // GET api/User/ManageInfo?returnUrl=%2F&generateState=true
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
@@ -118,7 +117,7 @@ namespace WYF.WebAPI.Controllers
             };
         }
 
-        // POST api/Account/ChangePassword
+        // POST api/User/ChangePassword
         [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
@@ -138,7 +137,7 @@ namespace WYF.WebAPI.Controllers
             return Ok();
         }
 
-        // POST api/Account/SetPassword
+        // POST api/User/SetPassword
         [Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
         {
@@ -157,7 +156,7 @@ namespace WYF.WebAPI.Controllers
             return Ok();
         }
 
-        // POST api/Account/AddExternalLogin
+        // POST api/User/AddExternalLogin
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
@@ -195,7 +194,7 @@ namespace WYF.WebAPI.Controllers
             return Ok();
         }
 
-        // POST api/Account/RemoveLogin
+        // POST api/User/RemoveLogin
         [Route("RemoveLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
         {
@@ -224,7 +223,7 @@ namespace WYF.WebAPI.Controllers
             return Ok();
         }
 
-        // GET api/Account/ExternalLogin
+        // GET api/User/ExternalLogin
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
@@ -281,7 +280,7 @@ namespace WYF.WebAPI.Controllers
             return Ok();
         }
 
-        // GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
+        // GET api/User/ExternalLogins?returnUrl=%2F&generateState=true
         [AllowAnonymous]
         [Route("ExternalLogins")]
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
@@ -322,7 +321,7 @@ namespace WYF.WebAPI.Controllers
             return logins;
         }
 
-        // POST api/Account/Register
+        // POST api/User/Register
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -344,7 +343,7 @@ namespace WYF.WebAPI.Controllers
             return Ok();
         }
 
-        // POST api/Account/RegisterExternal
+        // POST api/User/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]

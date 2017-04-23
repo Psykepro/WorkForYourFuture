@@ -1,9 +1,10 @@
-﻿namespace WYF.WebAPI.Models.EntityModels.Job
+﻿using WYF.WebAPI.Models.EntityModels.User;
+
+namespace WYF.WebAPI.Models.EntityModels.Job
 {
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using Profile;
 
     public class JobApplication
     {

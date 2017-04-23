@@ -1,10 +1,9 @@
-﻿using WYF.WebAPI.Models.EntityModels.Profile;
+﻿using WYF.WebAPI.Models.EntityModels.User;
 
 namespace WYF.WebAPI.Data
 {
     using System.Data.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Models.EntityModels.Account;
     using Models.EntityModels.Job;
     // You can add profile data for the user by adding more properties to your User class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
 

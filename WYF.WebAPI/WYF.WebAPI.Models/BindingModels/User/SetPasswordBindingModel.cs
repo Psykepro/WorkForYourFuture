@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WYF.WebAPI.Models.BindingModels.Account
+namespace WYF.WebAPI.Models.BindingModels.User
 {
     // Models used as parameters to AccountController actions.
 

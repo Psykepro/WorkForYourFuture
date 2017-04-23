@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using WYF.WebAPI.Models.EntityModels.Account;
 using WYF.WebAPI.Models.EntityModels.Job;
 
-namespace WYF.WebAPI.Models.EntityModels.Profile
+namespace WYF.WebAPI.Models.EntityModels.User
 {
     public class Employee : Person
     {

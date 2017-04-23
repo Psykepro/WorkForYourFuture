@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using WYF.WebAPI.Models.EntityModels.Job;
 
-namespace WYF.WebAPI.Models.EntityModels.Profile
+namespace WYF.WebAPI.Models.EntityModels.User
 {
     public class Employer : Person
     {
