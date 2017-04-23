@@ -83,10 +83,10 @@
     <Compile Include="Enums\Job\WorkTime.cs" />
     <Compile Include="Enums\User\Gender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Account\ExternalLoginViewModel.cs" />
-    <Compile Include="ViewModels\Account\ManageInfoViewModel.cs" />
-    <Compile Include="ViewModels\Account\UserInfoViewModel.cs" />
-    <Compile Include="ViewModels\Account\UserLoginInfoViewModel.cs" />
+    <Compile Include="ViewModels\User\ExternalLoginViewModel.cs" />
+    <Compile Include="ViewModels\User\ManageInfoViewModel.cs" />
+    <Compile Include="ViewModels\User\UserInfoViewModel.cs" />
+    <Compile Include="ViewModels\User\UserLoginInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
