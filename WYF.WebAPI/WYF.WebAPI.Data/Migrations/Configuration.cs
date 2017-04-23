@@ -1,3 +1,5 @@
+using WYF.WebAPI.Data.Generators;
+
 namespace WYF.WebAPI.Data.Migrations
 {
     using System;
@@ -9,12 +11,14 @@ namespace WYF.WebAPI.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "WYF.WebAPI.Data.WyfDbContext";
+            SetSqlGenerator("System.Data.SqlClient", new DefaultValueSqlServerMigrationSqlGenerator());
         }
 
         protected override void Seed(WYF.WebAPI.Data.WyfDbContext context)
         {
+            
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

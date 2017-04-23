@@ -5,7 +5,10 @@ using WYF.WebAPI.Models.Enums.User;
 
 namespace WYF.WebAPI.Models.EntityModels.User
 {
-    public class Person
+    /// <summary>
+    ///     This class will be used only to reuse the common properties between Employee and Employer.
+    /// </summary>
+    public abstract class Person
     {
         [Key]
         public int Id { get; set; }

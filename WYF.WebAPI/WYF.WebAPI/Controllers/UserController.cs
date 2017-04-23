@@ -14,7 +14,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using WYF.WebAPI.Models.BindingModels.User;
 using WYF.WebAPI.Models.EntityModels.User;
-using WYF.WebAPI.Models.ViewModels.Account;
+using WYF.WebAPI.Models.ViewModels.User;
 using WYF.WebAPI.Providers;
 using WYF.WebAPI.Results;
 

@@ -1,7 +1,4 @@
-﻿using System.Activities;
-using System.Data;
-using Ninject.Modules;
-using WYF.WebAPI.Models.EntityModels.User;
+﻿using WYF.WebAPI.Models.EntityModels.User;
 
 namespace WYF.WebAPI.Models.EntityModels.Job
 {

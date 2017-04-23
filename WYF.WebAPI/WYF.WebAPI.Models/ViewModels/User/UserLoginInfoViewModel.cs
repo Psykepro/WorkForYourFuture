@@ -1,4 +1,4 @@
-﻿namespace WYF.WebAPI.Models.ViewModels.Account
+﻿namespace WYF.WebAPI.Models.ViewModels.User
 {
     // Models returned by AccountController actions.
 

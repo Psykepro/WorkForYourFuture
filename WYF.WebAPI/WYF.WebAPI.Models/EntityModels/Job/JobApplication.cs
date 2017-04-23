@@ -1,4 +1,5 @@
-﻿using WYF.WebAPI.Models.EntityModels.User;
+﻿using System.ComponentModel;
+using WYF.WebAPI.Models.EntityModels.User;
 
 namespace WYF.WebAPI.Models.EntityModels.Job
 {
@@ -8,6 +9,11 @@ namespace WYF.WebAPI.Models.EntityModels.Job
 
     public class JobApplication
     {
+        public JobApplication()
+        {
+            this.DateOfApplication = DateTime.Now;
+        }
+
         [Key]
         public int Id { get; set; }
 

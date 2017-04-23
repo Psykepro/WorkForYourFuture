@@ -1,4 +1,8 @@
-﻿using WYF.WebAPI.Models.EntityModels.User;
+﻿using System.ComponentModel;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
+using WYF.WebAPI.Data.Conventions;
+using WYF.WebAPI.Models.EntityModels.User;
 
 namespace WYF.WebAPI.Data
 {
@@ -29,10 +33,11 @@ namespace WYF.WebAPI.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<JobPosting>()
-                .HasRequired(j => j.PostingCreator)
-                .WithMany()
-                .WillCascadeOnDelete(false);
+
+            var attributeToColumnConvetion = new AttributeToColumnAnnotationConvention<DefaultValueAttribute, string>("SqlDefaultValue", (p, attributes) => attributes.SingleOrDefault().Value.ToString());
+            modelBuilder.Conventions.Add(attributeToColumnConvetion);
+
+            modelBuilder.Conventions.Add(new DataTypePropertyAttributeConvention());
             
         }
 
