@@ -18,6 +18,7 @@ namespace WYF.WebAPI.Data
         {
         }
 
+
         public virtual DbSet<Employee> Employees { get; set; }
 
         public virtual DbSet<Employer> Employers { get; set; }
@@ -30,14 +31,28 @@ namespace WYF.WebAPI.Data
 
         public virtual DbSet<Industry> Industries { get; set; }
 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            ////////////////////
+            // EF Conventions //
+            ////////////////////
+
             var attributeToColumnConvetion = new AttributeToColumnAnnotationConvention<DefaultValueAttribute, string>("SqlDefaultValue", (p, attributes) => attributes.SingleOrDefault().Value.ToString());
             modelBuilder.Conventions.Add(attributeToColumnConvetion);
-
             modelBuilder.Conventions.Add(new DataTypePropertyAttributeConvention());
+
+
+            //////////////////////////////////
+            // Concrete EntityModel Changes //
+            //////////////////////////////////
+
+            modelBuilder.Entity<JobPosting>()
+                .HasRequired(p => p.PostingCreator)
+                .WithMany()
+                .WillCascadeOnDelete(false);
             
         }
 

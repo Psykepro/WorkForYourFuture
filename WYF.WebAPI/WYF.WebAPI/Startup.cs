@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using System;
+using Microsoft.Owin;
 using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
@@ -17,7 +18,16 @@ namespace WYF.WebAPI
 
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            try
+            {
+                ConfigureAuth(app);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
         }
     }
 }

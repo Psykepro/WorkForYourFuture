@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WYF.WebAPI.Data.Conventions
 {
+    /// <summary>
+    ///   This convention is used to override the setting of Datatype.Date to work and in the DB.
+    /// </summary>
     class DataTypePropertyAttributeConvention
     : PrimitivePropertyAttributeConfigurationConvention<DataTypeAttribute>
     {

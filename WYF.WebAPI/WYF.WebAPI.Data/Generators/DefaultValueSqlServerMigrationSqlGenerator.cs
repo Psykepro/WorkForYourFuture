@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.Migrations.Model;
 using System.Data.Entity.SqlServer;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WYF.WebAPI.Data.Generators
 {
     /// <summary>
-    ///   This Generator will remove the constraints which were set by Data Annotation Attribute when the attribute is removed.
+    ///   This Generator will add or remove the constraints in DB,
+    ///   which are set by Data Annotation Attribute 'DefaultValue'.
     /// </summary>          
     class DefaultValueSqlServerMigrationSqlGenerator : SqlServerMigrationSqlGenerator
     {
@@ -83,12 +80,6 @@ namespace WYF.WebAPI.Data.Generators
                       $"\nAND col_name(parent_object_id, parent_column_id) = '{columnName}';" +
                       $"\nIF @var{dropConstraintCount} IS NOT NULL" +
                       $"\nEXECUTE('ALTER TABLE {tableSchema}.[{tablePureName}] DROP CONSTRAINT [' + @var{dropConstraintCount} + ']')"; ;
-
-
-
-
-
-    
 
             dropConstraintCount = dropConstraintCount + 1;
             return str;

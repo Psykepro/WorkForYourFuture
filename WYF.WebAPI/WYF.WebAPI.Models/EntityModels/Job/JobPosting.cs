@@ -13,7 +13,7 @@ namespace WYF.WebAPI.Models.EntityModels.Job
     {
         public JobPosting()
         {
-            Languages = new HashSet<Languages>();
+            Languages = new HashSet<Language>();
         }
 
         [Key]
@@ -65,7 +65,7 @@ namespace WYF.WebAPI.Models.EntityModels.Job
 
         public bool IsDrivingLicenseRequired { get; set; }
 
-        public IEnumerable<Languages> Languages { get; set; }
+        public IEnumerable<Language> Languages { get; set; }
 
         public LanguageLevel LanguageLevel { get; set; }
 

@@ -1,6 +1,9 @@
-﻿namespace WYF.WebAPI.Models.Enums.User
+﻿using System;
+
+namespace WYF.WebAPI.Models.Enums.User
 {
-    public enum Gender
+    [Flags]
+    public enum Gender : byte
     {
         Male,
         Female

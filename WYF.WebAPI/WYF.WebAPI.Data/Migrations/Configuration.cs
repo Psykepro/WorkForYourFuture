@@ -2,10 +2,7 @@ using WYF.WebAPI.Data.Generators;
 
 namespace WYF.WebAPI.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<WYF.WebAPI.Data.WyfDbContext>
     {
@@ -13,6 +10,8 @@ namespace WYF.WebAPI.Data.Migrations
         {
             AutomaticMigrationsEnabled = true;
             ContextKey = "WYF.WebAPI.Data.WyfDbContext";
+
+            
             SetSqlGenerator("System.Data.SqlClient", new DefaultValueSqlServerMigrationSqlGenerator());
         }
 

@@ -79,7 +79,7 @@
     <Compile Include="Enums\Job\Education.cs" />
     <Compile Include="Enums\Job\HierarchyLevel.cs" />
     <Compile Include="Enums\Job\LanguageLevel.cs" />
-    <Compile Include="Enums\Job\Languages.cs" />
+    <Compile Include="Enums\Job\Language.cs" />
     <Compile Include="Enums\Job\WorkTime.cs" />
     <Compile Include="Enums\User\Gender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

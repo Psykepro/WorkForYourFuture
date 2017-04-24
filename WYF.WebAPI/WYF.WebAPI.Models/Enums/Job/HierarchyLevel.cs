@@ -1,6 +1,9 @@
-﻿namespace WYF.WebAPI.Models.Enums.Job
+﻿using System;
+
+namespace WYF.WebAPI.Models.Enums.Job
 {
-    public enum HierarchyLevel
+    [Flags]
+    public enum HierarchyLevel : byte
     {
         NonQualifiedWorkers,
         AdministrativeAndSupportStaff,

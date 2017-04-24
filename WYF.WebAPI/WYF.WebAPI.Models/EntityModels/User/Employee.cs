@@ -24,7 +24,9 @@ namespace WYF.WebAPI.Models.EntityModels.User
 
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [DefaultValue(false)]
+        /* Setting DefaultValue to 0 because the type of that property in the SQL is 'bit' */
+        [DefaultValue(0)]
+        [Column(name: "IsLicensedDriver")]
         public bool IsLicensedDriver { get; set; }
     }
 }
