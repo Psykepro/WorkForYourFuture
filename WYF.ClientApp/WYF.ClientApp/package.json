@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "name": "wyf-client-app",
+  "private": true,
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-sass": "3.1.0",
+    "gulp-minify": "0.0.15",
+    "angular": "1.6.4",
+    "lite-server": "2.3.0"
+  },
+  "scripts": {
+    "lite": "lite-server",
+    "port": "10001",
+    "start": "npm",
+    "run": "lite"
+  }
+}
