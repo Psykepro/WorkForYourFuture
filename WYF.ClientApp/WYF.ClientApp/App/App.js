@@ -5,7 +5,7 @@
     var port = "64219";
     var url_with_port = url + ":" + port;
 
-    var app = angular
+    angular
         .module('clientApp',
         [
             'ngRoute',
@@ -16,33 +16,36 @@
         .constant('URL', url)
         .constant('PORT', port)
         .constant('URL_WITH_PORT', url_with_port)
-        .config(['$routeProvider'], function configApp($routeProvider) {
+        .config(function configApp($routeProvider) {
             $routeProvider
+                .otherwise({
+                    redirectTo: '/'
+                })
                 /////////////////
                 // Home Routes //
                 /////////////////
                 .when("/",
                 {
-                    controller: 'HomeController',
-                    templateUrl: '~/Presentation/Home/Home.html',
+                    controller: 'homeController',
+                    templateUrl: 'App/Presentation/Home/Home.html',
                     controllerAs: 'vm'
                 })
                 .when("/Home",
                 {
-                    controller: 'HomeController',
-                    templateUrl: '~/Presentation/Home/Home.html',
+                    controller: 'homeController',
+                    templateUrl: 'App/Presentation/Home/Home.html',
                     controllerAs: 'vm'
                 })
                 .when("/Home/Contacts",
                 {
-                    controller: 'HomeController',
-                    templateUrl: '~/Presentation/Home/Contacts.html',
+                    controller: 'homeController',
+                    templateUrl: 'App/Presentation/Home/Contacts.html',
                     controllerAs: 'vm'
                 })
                 .when("/Home/About",
                 {
-                    controller: 'HomeController',
-                    templateUrl: '~/Presentation/Home/About.html',
+                    controller: 'homeController',
+                    templateUrl: 'App/Presentation/Home/About.html',
                     controllerAs: 'vm'
                 })
                 /////////////////
@@ -50,20 +53,20 @@
                 /////////////////
                 .when("/User/Register",
                 {
-                    controller: 'UserController',
-                    templateUrl: '~/Presentation/User/Register.html',
+                    controller: 'userController',
+                    templateUrl: 'App/Presentation/User/Register.html',
                     controllerAs: 'vm'
                 })
                 .when("/User/Login",
                 {
-                    controller: 'UserController',
-                    templateUrl: '~/Presentation/User/Login.html',
+                    controller: 'userController',
+                    templateUrl: 'App/Presentation/User/Login.html',
                     controllerAs: 'vm'
                 })
                 .when("/User/Profile/:id",
                 {
-                    controller: 'UserController',
-                    templateUrl: '~/Presentation/User/Profile.html',
+                    controller: 'userController',
+                    templateUrl: 'App/Presentation/User/Profile.html',
                     controllerAs: 'vm'
                 })
                 //////////////////////
@@ -71,26 +74,26 @@
                 //////////////////////
                 .when("/Job/Add",
                 {
-                    controller: 'JobController',
-                    templateUrl: '~/Presentation/Job/Add.html',
+                    controller: 'jobController',
+                    templateUrl: 'App/Presentation/Job/Add.html',
                     controllerAs: 'vm'
                 })
                 .when("/Job/All",
                 {
-                    controller: 'JobController',
-                    templateUrl: '~/Presentation/Job/All.html',
+                    controller: 'jobController',
+                    templateUrl: 'App/Presentation/Job/All.html',
                     controllerAs: 'vm'
                 })
                 .when("/Job/Details/:id",
                 {
-                    controller: 'JobController',
-                    templateUrl: '~/Presentation/Job/Details.html',
+                    controller: 'jobController',
+                    templateUrl: 'App/Presentation/Job/Details.html',
                     controllerAs: 'vm'
                 })
                 .when("/Job/Edit/:id",
                 {
-                    controller: 'JobController',
-                    templateUrl: '~/Presentation/Job/Edit.html',
+                    controller: 'jobController',
+                    templateUrl: 'App/Presentation/Job/Edit.html',
                     controllerAs: 'vm'
                 })
                 ////////////////////////
@@ -98,19 +101,17 @@
                 ////////////////////////
                 .when("/Admin/Users",
                 {
-                    controller: 'AdminController',
-                    templateUrl: '~/Presentation/Admin/Users.html',
+                    controller: 'adminController',
+                    templateUrl: 'App/Presentation/Admin/Users.html',
                     controllerAs: 'vm'
                 })
                 .when("/Admin/Users/:id",
                 {
-                    controller: 'AdminController',
-                    templateUrl: '~/Presentation/Admin/User-Details.html',
+                    controller: 'adminController',
+                    templateUrl: 'App/Presentation/Admin/User-Details.html',
                     controllerAs: 'vm'
-                })
-                .otherwise({
-                    redirectTo: '/'
                 });
 
-        }); // config
+        }); // config;
+
 })();

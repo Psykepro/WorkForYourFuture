@@ -5,24 +5,30 @@
 <body ng-app="clientApp">
     <!-- Scripts -->
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
 
     <!-- Data -->
     <script type="text/javascript" src="App/Data/Data.js"></script>
-    <script type="text/javascript" src="App/Data/IdentityProvider/IdentityProvider.js"></script>
+    <script type="text/javascript" src="App/Data/Providers/WebApiRoutesProvider.js"></script>
+    <script type="text/javascript" src="App/Data/Providers/IdentityProvider.js"></script>
+
 
     <!-- Business -->
     <script type="text/javascript" src="App/Business/Business.js"></script>
-    <script type="text/javascript" src="App/Business/User/User.js"></script>
     <script type="text/javascript" src="App/Business/User/Service/UserService.js"></script>
     <script type="text/javascript" src="App/Business/User/Controller/UserController.js"></script>
-    <script type="text/javascript" src="App/Business/Home/Home.js"></script>
     <script type="text/javascript" src="App/Business/Home/Service/HomeService.js"></script>
     <script type="text/javascript" src="App/Business/Home/Controller/HomeController.js"></script>
+    <script type="text/javascript" src="App/Business/Common/Service/WebApiRequestsService.js"></script>
+
 
     <!-- Presentation -->
     <script type="text/javascript" src="App/Presentation/Presentation.js"></script>
 
     <!-- App -->
     <script type="text/javascript" src="App/App.js"></script>
+
+    <div ng-view></div>
+
 </body>
 </html>

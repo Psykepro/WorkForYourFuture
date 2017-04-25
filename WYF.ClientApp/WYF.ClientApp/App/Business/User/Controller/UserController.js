@@ -1,7 +1,7 @@
 ﻿(function () {
     'use-strict';
 
-    angular.module('user').controller('userController', UserController);
+    angular.module('business').controller('userController', UserController);
 
     UserController.$inject = [];
 
