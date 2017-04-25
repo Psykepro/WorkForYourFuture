@@ -160,3 +160,6 @@ D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourF
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\obj\Debug\WYF.WebAPI.csprojResolveAssemblyReference.cache
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\obj\Debug\WYF.WebAPI.dll
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\obj\Debug\WYF.WebAPI.pdb
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\bin\System.Web.Cors.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\bin\System.Web.Http.Cors.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.WebAPI\WYF.WebAPI\bin\System.Web.Http.Cors.xml

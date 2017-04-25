@@ -36,7 +36,7 @@ namespace WYF.WebAPI
             {
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
-                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+                AuthorizeEndpointPath = new PathString("/api/User/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromHours(1),
                 // In production mode set AllowInsecureHttp = false
                 AllowInsecureHttp = true

@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using Microsoft.Owin.Security.OAuth;
 
 namespace WYF.WebAPI
@@ -15,11 +16,24 @@ namespace WYF.WebAPI
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            // Enable Cross Origin Resource Sharing
+            EnableCrossSiteRequests(config);
+
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+        }
+
+        private static void EnableCrossSiteRequests(HttpConfiguration config)
+        {
+            var cors = new EnableCorsAttribute(
+                origins: Constants.WYF_CLIENT_APP_ORIGIN_URL,
+                headers: "*",
+                methods: "*");
+            config.EnableCors(cors);
         }
     }
 }
