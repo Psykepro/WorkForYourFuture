@@ -1,5 +1,6 @@
 (function () {
     'use-strict';
 
-    angular.module('business', ['user']);
+    angular.module('business', ['data']);
+
 })();

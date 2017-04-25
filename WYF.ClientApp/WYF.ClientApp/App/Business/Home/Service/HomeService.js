@@ -1,7 +1,7 @@
 ﻿(function () {
     'use-strict';
 
-    angular.module('home').service('homeService', HomeService);
+    angular.module('business').service('homeService', HomeService);
 
     HomeService.$inject = [];
 
