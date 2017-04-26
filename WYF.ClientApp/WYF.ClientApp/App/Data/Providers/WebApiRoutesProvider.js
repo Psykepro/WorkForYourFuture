@@ -15,7 +15,7 @@
 
         var userRoutes = {
             "Register": apiPrefix + "Register",
-            "Login": "/Token",
+            "Login": apiPrefix + "Token",
             "FacebookLogin": apiPrefix +
                 "User/ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2FHome%2FIndex",
             "GoogleLogin": apiPrefix +
