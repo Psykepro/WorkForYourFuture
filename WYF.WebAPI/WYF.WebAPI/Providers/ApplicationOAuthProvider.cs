@@ -10,6 +10,7 @@ using WYF.WebAPI.Models.EntityModels.User;
 
 namespace WYF.WebAPI.Providers
 {
+
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;

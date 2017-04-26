@@ -17,11 +17,13 @@ using WYF.WebAPI.Models.EntityModels.User;
 using WYF.WebAPI.Models.ViewModels.User;
 using WYF.WebAPI.Providers;
 using WYF.WebAPI.Results;
+using System.Web.Http.Cors;
 
 namespace WYF.WebAPI.Controllers
 {
     [Authorize]
     [RoutePrefix("api/User")]
+    [EnableCors("*", "*", "*")]
     public class UserController : ApiController
     {
         private const string LocalLoginProvider = "Local";
