@@ -27,25 +27,25 @@
                 .when("/",
                 {
                     controller: 'homeController',
-                    templateUrl: 'App/Presentation/Home/Home.html',
+                    templateUrl: 'App/Presentation/Home/Views/Home.html',
                     controllerAs: 'vm'
                 })
                 .when("/Home",
                 {
                     controller: 'homeController',
-                    templateUrl: 'App/Presentation/Home/Home.html',
+                    templateUrl: 'App/Presentation/Home/Views/Home.html',
                     controllerAs: 'vm'
                 })
                 .when("/Home/Contacts",
                 {
                     controller: 'homeController',
-                    templateUrl: 'App/Presentation/Home/Contacts.html',
+                    templateUrl: 'App/Presentation/Home/Views/Contacts.html',
                     controllerAs: 'vm'
                 })
                 .when("/Home/About",
                 {
                     controller: 'homeController',
-                    templateUrl: 'App/Presentation/Home/About.html',
+                    templateUrl: 'App/Presentation/Home/Views/About.html',
                     controllerAs: 'vm'
                 })
                 /////////////////
@@ -54,19 +54,19 @@
                 .when("/User/Register",
                 {
                     controller: 'userController',
-                    templateUrl: 'App/Presentation/User/Register.html',
+                    templateUrl: 'App/Presentation/User/Views/Register.html',
                     controllerAs: 'vm'
                 })
                 .when("/User/Login",
                 {
                     controller: 'userController',
-                    templateUrl: 'App/Presentation/User/Login.html',
+                    templateUrl: 'App/Presentation/User/Views/Login.html',
                     controllerAs: 'vm'
                 })
                 .when("/User/Profile/:id",
                 {
                     controller: 'userController',
-                    templateUrl: 'App/Presentation/User/Profile.html',
+                    templateUrl: 'App/Presentation/User/Views/Profile.html',
                     controllerAs: 'vm'
                 })
                 //////////////////////
@@ -75,25 +75,25 @@
                 .when("/Job/Add",
                 {
                     controller: 'jobController',
-                    templateUrl: 'App/Presentation/Job/Add.html',
+                    templateUrl: 'App/Presentation/Job/Views/Add.html',
                     controllerAs: 'vm'
                 })
                 .when("/Job/All",
                 {
                     controller: 'jobController',
-                    templateUrl: 'App/Presentation/Job/All.html',
+                    templateUrl: 'App/Presentation/Job/Views/All.html',
                     controllerAs: 'vm'
                 })
                 .when("/Job/Details/:id",
                 {
                     controller: 'jobController',
-                    templateUrl: 'App/Presentation/Job/Details.html',
+                    templateUrl: 'App/Presentation/Job/Views/Details.html',
                     controllerAs: 'vm'
                 })
                 .when("/Job/Edit/:id",
                 {
                     controller: 'jobController',
-                    templateUrl: 'App/Presentation/Job/Edit.html',
+                    templateUrl: 'App/Presentation/Job/Views/Edit.html',
                     controllerAs: 'vm'
                 })
                 ////////////////////////
@@ -102,13 +102,13 @@
                 .when("/Admin/Users",
                 {
                     controller: 'adminController',
-                    templateUrl: 'App/Presentation/Admin/Users.html',
+                    templateUrl: 'App/Presentation/Admin/Views/Users.html',
                     controllerAs: 'vm'
                 })
                 .when("/Admin/Users/:id",
                 {
                     controller: 'adminController',
-                    templateUrl: 'App/Presentation/Admin/User-Details.html',
+                    templateUrl: 'App/Presentation/Admin/Views/User-Details.html',
                     controllerAs: 'vm'
                 });
 

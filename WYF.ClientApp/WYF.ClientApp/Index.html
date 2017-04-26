@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>WYF - Work for Your Future</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body ng-app="clientApp">
+
+    <div ng-view></div>
+
     <!-- Scripts -->
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
@@ -12,23 +17,23 @@
     <script type="text/javascript" src="App/Data/Providers/WebApiRoutesProvider.js"></script>
     <script type="text/javascript" src="App/Data/Providers/IdentityProvider.js"></script>
 
-
     <!-- Business -->
     <script type="text/javascript" src="App/Business/Business.js"></script>
-    <script type="text/javascript" src="App/Business/User/Service/UserService.js"></script>
-    <script type="text/javascript" src="App/Business/User/Controller/UserController.js"></script>
-    <script type="text/javascript" src="App/Business/Home/Service/HomeService.js"></script>
-    <script type="text/javascript" src="App/Business/Home/Controller/HomeController.js"></script>
-    <script type="text/javascript" src="App/Business/Common/Service/WebApiRequestsService.js"></script>
-
+    <script type="text/javascript" src="App/Business/Common/WebApiRequestsService.js"></script>
+    <script type="text/javascript" src="App/Business/User/UserService.js"></script>
+    <script type="text/javascript" src="App/Business/Home/HomeService.js"></script>
+    <script type="text/javascript" src="App/Business/Job/JobService.js"></script>
+    <script type="text/javascript" src="App/Business/Admin/AdminService.js"></script>
 
     <!-- Presentation -->
     <script type="text/javascript" src="App/Presentation/Presentation.js"></script>
+    <script type="text/javascript" src="App/Presentation/User/Controller/UserController.js"></script>
+    <script type="text/javascript" src="App/Presentation/Home/Controller/HomeController.js"></script>
+    <script type="text/javascript" src="App/Presentation/Admin/Controller/AdminController.js"></script>
+    <script type="text/javascript" src="App/Presentation/Job/Controller/JobController.js"></script>
 
     <!-- App -->
     <script type="text/javascript" src="App/App.js"></script>
-
-    <div ng-view></div>
 
 </body>
 </html>
