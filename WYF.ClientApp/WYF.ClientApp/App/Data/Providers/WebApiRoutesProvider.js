@@ -17,9 +17,9 @@
             "Register": apiPrefix + "Register",
             "Login": apiPrefix + "Token",
             "FacebookLogin": apiPrefix +
-                "User/ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2FHome%2FIndex",
+                "User/ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2",
             "GoogleLogin": apiPrefix +
-                "User/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2FHome%2FIndex"
+                "User/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2F"
         };
 
         var jobRoutes = {

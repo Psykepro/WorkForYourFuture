@@ -68,6 +68,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="App\Business\Admin\AdminService.js" />
     <Content Include="App\Business\Business.js" />
     <Content Include="App\Business\Common\WebApiRequestsService.js" />
@@ -93,6 +94,23 @@
     <Content Include="App\Presentation\User\Views\Register.html" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
+    <Content Include="ThemeResources\fonts\fontawesome-webfont.eot" />
+    <Content Include="ThemeResources\fonts\fontawesome-webfont.ttf" />
+    <Content Include="ThemeResources\fonts\fontawesome-webfont.woff" />
+    <Content Include="ThemeResources\fonts\FontAwesome.otf" />
+    <Content Include="ThemeResources\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="ThemeResources\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="ThemeResources\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="ThemeResources\js\bootstrap.min.js" />
+    <Content Include="ThemeResources\js\jquery-1.9.1.min.js" />
+    <Content Include="ThemeResources\js\jquery.easing.min.js" />
+    <Content Include="ThemeResources\js\modernizr-2.6.2-respond-1.1.0.min.js" />
+    <Content Include="ThemeResources\js\scrolling-nav.js" />
+    <Content Include="ThemeResources\less\components.less" />
+    <Content Include="ThemeResources\less\general.less" />
+    <Content Include="ThemeResources\less\lesshat.less" />
+    <Content Include="ThemeResources\less\main.less" />
+    <Content Include="ThemeResources\less\variables.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -106,6 +124,53 @@
     <Content Include="App\Data\Providers\IdentityProvider.js" />
     <Content Include="App\Presentation\Presentation.js" />
     <Content Include="Index.html" />
+    <Content Include="ThemeResources\css\bootstrap.css" />
+    <Content Include="ThemeResources\css\custom.css" />
+    <Content Include="ThemeResources\css\font-awesome.min.css" />
+    <Content Include="ThemeResources\css\icomoon-social.css" />
+    <Content Include="ThemeResources\css\main.css" />
+    <Content Include="ThemeResources\fonts\fontawesome-webfont.svg" />
+    <Content Include="ThemeResources\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ThemeResources\img\about-us.jpg" />
+    <Content Include="ThemeResources\img\bars.png" />
+    <Content Include="ThemeResources\img\blog\1.jpg" />
+    <Content Include="ThemeResources\img\blog\2.jpg" />
+    <Content Include="ThemeResources\img\blog\3.jpg" />
+    <Content Include="ThemeResources\img\blog\4.jpg" />
+    <Content Include="ThemeResources\img\bx_loader.gif" />
+    <Content Include="ThemeResources\img\glyphicons-halflings-white.png" />
+    <Content Include="ThemeResources\img\glyphicons-halflings.png" />
+    <Content Include="ThemeResources\img\icomoon-social.png" />
+    <Content Include="ThemeResources\img\icons\facebook.png" />
+    <Content Include="ThemeResources\img\icons\linkedin.png" />
+    <Content Include="ThemeResources\img\icons\rss.png" />
+    <Content Include="ThemeResources\img\icons\twitter.png" />
+    <Content Include="ThemeResources\img\logo.png" />
+    <Content Include="ThemeResources\img\logos\logo-1.jpg" />
+    <Content Include="ThemeResources\img\logos\logo-10.jpg" />
+    <Content Include="ThemeResources\img\logos\logo-11.jpg" />
+    <Content Include="ThemeResources\img\logos\logo-12.jpg" />
+    <Content Include="ThemeResources\img\logos\logo-2.jpg" />
+    <Content Include="ThemeResources\img\logos\logo-3.jpg" />
+    <Content Include="ThemeResources\img\logos\logo-4.jpg" />
+    <Content Include="ThemeResources\img\logos\logo-5.jpg" />
+    <Content Include="ThemeResources\img\logos\logo-6.jpg" />
+    <Content Include="ThemeResources\img\logos\logo-7.jpg" />
+    <Content Include="ThemeResources\img\logos\logo-8.jpg" />
+    <Content Include="ThemeResources\img\logos\logo-9.jpg" />
+    <Content Include="ThemeResources\img\portfolio\1.jpg" />
+    <Content Include="ThemeResources\img\portfolio\2.jpg" />
+    <Content Include="ThemeResources\img\portfolio\3.jpg" />
+    <Content Include="ThemeResources\img\portfolio\4.jpg" />
+    <Content Include="ThemeResources\img\portfolio\5.jpg" />
+    <Content Include="ThemeResources\img\portfolio\6.jpg" />
+    <Content Include="ThemeResources\img\slides\1.jpg" />
+    <Content Include="ThemeResources\img\slides\2.jpg" />
+    <Content Include="ThemeResources\img\slides\3.jpg" />
+    <Content Include="ThemeResources\img\team\1.jpg" />
+    <Content Include="ThemeResources\img\team\2.jpg" />
+    <Content Include="ThemeResources\img\team\3.jpg" />
+    <Content Include="ThemeResources\img\title-before.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

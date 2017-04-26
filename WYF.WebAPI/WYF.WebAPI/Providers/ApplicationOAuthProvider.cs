@@ -74,7 +74,7 @@ namespace WYF.WebAPI.Providers
         {
             if (context.ClientId == _publicClientId)
             {
-                Uri expectedRootUri = new Uri(context.Request.Uri, "/Home/Index");
+                Uri expectedRootUri = new Uri(context.Request.Uri, "");
 
                 if (expectedRootUri.AbsoluteUri == context.RedirectUri)
                 {
