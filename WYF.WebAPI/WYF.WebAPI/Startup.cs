@@ -18,8 +18,12 @@ namespace WYF.WebAPI
 
         public void Configuration(IAppBuilder app)
         {
+
             try
             {
+                // Enable Cross Origin Resource Sharing
+                app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
                 ConfigureAuth(app);
             }
             catch (Exception e)
