@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>WYF - Work for Your Future</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body ng-app="clientApp">
 
@@ -15,13 +17,13 @@
     <script type="text/javascript" src="App/Data/Providers/WebApiRoutesProvider.js"></script>
     <script type="text/javascript" src="App/Data/Providers/IdentityProvider.js"></script>
 
-
     <!-- Business -->
     <script type="text/javascript" src="App/Business/Business.js"></script>
+    <script type="text/javascript" src="App/Business/Common/WebApiRequestsService.js"></script>
     <script type="text/javascript" src="App/Business/User/UserService.js"></script>
     <script type="text/javascript" src="App/Business/Home/HomeService.js"></script>
-    <script type="text/javascript" src="App/Business/Common/WebApiRequestsService.js"></script>
-
+    <script type="text/javascript" src="App/Business/Job/JobService.js"></script>
+    <script type="text/javascript" src="App/Business/Admin/AdminService.js"></script>
 
     <!-- Presentation -->
     <script type="text/javascript" src="App/Presentation/Presentation.js"></script>
@@ -32,8 +34,6 @@
 
     <!-- App -->
     <script type="text/javascript" src="App/App.js"></script>
-
-
 
 </body>
 </html>
