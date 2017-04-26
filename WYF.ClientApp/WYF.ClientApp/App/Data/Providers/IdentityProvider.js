@@ -6,6 +6,7 @@
     IdentityProvider.$inject = ['$q', 'webApiRoutesProvider', 'webApiRequestsService'];
 
     function IdentityProvider($q, webApiRoutesProvider, webApiRequestsService) {
+
         function Login(username, password) {
 
             var dto = {

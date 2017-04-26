@@ -1,7 +1,7 @@
 ﻿(function () {
     'use-strict';
 
-    angular.module('business').controller('homeController', HomeController);
+    angular.module('presentation').controller('homeController', HomeController);
 
     HomeController.$inject = [];
 
