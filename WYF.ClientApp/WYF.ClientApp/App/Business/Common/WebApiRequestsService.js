@@ -14,15 +14,18 @@
 
         return instance;
 
-        function PostRequest(route, data, headers) {
-            headers = headers || $http.defaults.headers.post;
+        function PostRequest(route, dto, headers) {
 
+            var dtoAsString = "grant_type=" + dto.grant_type + "&" + "username="+ dto.username + "&password="+ dto.password;
+            headers = headers || $http.defaults.headers.post;
             headers["Access-Control-Allow-Origin"] = '*';
+
             var deferred = $q.defer();
+
             $http({
                 method: 'POST',
                 url: URL_WITH_PORT + route,
-                data: data,
+                data: dtoAsString,
                 headers: headers
             })
             .then(
@@ -38,7 +41,7 @@
 
         function GetRequest(route, headers) {
             headers = headers || $http.defaults.headers.get;
-            headers["Content-Type"] = "application/x-www-form-urlencoded";
+
             var deferred = $q.defer();
             $http({
                 method: 'GET',
