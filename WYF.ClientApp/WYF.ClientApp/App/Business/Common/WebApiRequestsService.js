@@ -16,6 +16,7 @@
 
         function PostRequest(route, data, headers) {
             headers = headers || $http.defaults.headers.post;
+
             headers["Access-Control-Allow-Origin"] = '*';
             var deferred = $q.defer();
             $http({
@@ -37,7 +38,7 @@
 
         function GetRequest(route, headers) {
             headers = headers || $http.defaults.headers.get;
-
+            headers["Content-Type"] = "application/x-www-form-urlencoded";
             var deferred = $q.defer();
             $http({
                 method: 'GET',

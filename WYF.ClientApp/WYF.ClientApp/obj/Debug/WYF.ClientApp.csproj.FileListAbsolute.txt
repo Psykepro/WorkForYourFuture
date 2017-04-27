@@ -37,3 +37,18 @@ D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\Micros
 D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.csprojResolveAssemblyReference.cache
 D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.dll
 D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.pdb
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csc.exe.config
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csc.rsp
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csi.exe
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csi.rsp
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.AppContext.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.IO.FileSystem.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\vbc.exe.config
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\vbc.rsp
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\WYF.ClientApp.dll.config
