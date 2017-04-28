@@ -8,19 +8,19 @@
                     <!-- USERNAME -->
                     <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
                         <label>Username</label>
-                        <input type="text" name="username" class="form-control" ng-model="vm.username" ng-minlength="3" ng-maxlength="10">
-                        <p ng-show="loginForm.username.$error.minlength" class="help-block">Username is too short.</p>
-                        <p ng-show="loginForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+                        <input type="text" ng-required name="username" class="form-control" ng-model="vm.username" ng-minlength="3" ng-maxlength="20">
+                        <p ng-show="loginForm.username.$error.minlength" class="help-block">Username is too short. Min characters - 3</p>
+                        <p ng-show="loginForm.username.$error.maxlength" class="help-block">Username is too long. Max characters - 20</p>
                     </div>
 
                     <!-- Password -->
                     <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
                         <label>Password</label>
-                        <input type="password" name="password" class="form-control" ng-model="vm.password">
-                        <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">Enter a valid email.</p>
+                        <input type="password" ng-required name="password" class="form-control" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@#$!%*?&])[A-Za-z\d$@$!#%*?&]{6,}/" ng-model="vm.password">
+                        <p ng-show="(loginForm.password.$invalid && !loginForm.password.$pristine) || loginForm.password.$error.pattern" class="help-block">Enter a valid password</p>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Submit</button>
+                    <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid || (loginForm.username.$pristine || loginForm.password.$pristine)">Submit</button>
                 </form>
             </div>
 

@@ -8,15 +8,15 @@
     function UserController($scope, userService) {
 
         var instance = {
-            submitForm: submitForm
+            submitLoginForm: submitLoginForm
         };
 
-        function submitForm() {
-            isFormValid = $scope.loginForm.$valid;
+        function submitLoginForm() {
+            var isFormValid = $scope.loginForm.$valid;
 
             if (isFormValid) {
                 userService
-                    .Login("ps@abv.bg", "Aa!1234")
+                    .Login(this.username, this.password)
                     .then(function success(result) {
                         var accessToken = result.access_token;
                         var userName = result.userName;
