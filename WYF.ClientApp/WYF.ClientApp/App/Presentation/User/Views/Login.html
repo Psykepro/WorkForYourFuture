@@ -16,8 +16,8 @@
                     <!-- Password -->
                     <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
                         <label>Password</label>
-                        <input type="password" ng-required name="password" class="form-control" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@#$!%*?&])[A-Za-z\d$@$!#%*?&]{6,}/" ng-model="vm.password">
-                        <p ng-show="(loginForm.password.$invalid && !loginForm.password.$pristine) || loginForm.password.$error.pattern" class="help-block">Enter a valid password</p>
+                        <input type="password" ng-required name="password" class="form-control" ng-minlength="6" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/" ng-model="vm.password">
+                        <p ng-show="(loginForm.password.$invalid && !loginForm.password.$pristine) || loginForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 characters and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
                     </div>
 
                     <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid || (loginForm.username.$pristine || loginForm.password.$pristine)">Submit</button>
