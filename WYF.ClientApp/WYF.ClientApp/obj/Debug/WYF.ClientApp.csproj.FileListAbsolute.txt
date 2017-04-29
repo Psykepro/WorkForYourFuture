@@ -1,15 +1,30 @@
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csc.exe
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csc.exe.config
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csc.rsp
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csi.exe
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csi.rsp
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.AppContext.dll
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.Collections.Immutable.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.IO.FileSystem.dll
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.IO.FileSystem.Primitives.dll
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.Reflection.Metadata.dll
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\vbc.exe
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\vbc.exe.config
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\vbc.rsp
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\VBCSCompiler.exe
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\VBCSCompiler.exe.config
+D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\WYF.ClientApp.dll.config
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\WYF.ClientApp.dll
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\WYF.ClientApp.pdb
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -17,72 +32,3 @@ D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourF
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.csprojResolveAssemblyReference.cache
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.dll
 D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.pdb
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csc.exe
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.Collections.Immutable.dll
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.Reflection.Metadata.dll
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\vbc.exe
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\VBCSCompiler.exe
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\VBCSCompiler.exe.config
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\WYF.ClientApp.dll.config
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\WYF.ClientApp.dll
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\WYF.ClientApp.pdb
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.csprojResolveAssemblyReference.cache
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.dll
-D:\Programming\Projects\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.pdb
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csc.exe.config
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csc.rsp
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csi.exe
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csi.rsp
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.AppContext.dll
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.Diagnostics.StackTrace.dll
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.IO.FileSystem.dll
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\vbc.exe.config
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\vbc.rsp
-D:\Programming\Projects\03.CSharp-Web\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\WYF.ClientApp.dll.config
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csc.exe.config
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csc.rsp
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csi.rsp
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\vbc.exe.config
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\vbc.rsp
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\VBCSCompiler.exe.config
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csc.exe
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\csi.exe
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.AppContext.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.Collections.Immutable.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.IO.FileSystem.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\System.Reflection.Metadata.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\vbc.exe
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\roslyn\VBCSCompiler.exe
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\WYF.ClientApp.dll.config
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\WYF.ClientApp.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\WYF.ClientApp.pdb
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.csprojResolveAssemblyReference.cache
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.dll
-C:\Personal\Softuni\C# ASP.NET MVC Framework\Exam\WorkForYourFuture\WYF.ClientApp\WYF.ClientApp\obj\Debug\WYF.ClientApp.pdb
