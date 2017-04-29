@@ -45,6 +45,13 @@ namespace WYF.WebAPI.Data
             modelBuilder.Conventions.Add(new DataTypePropertyAttributeConvention());
 
 
+            ////////////////////////////////
+            // User (IdentiyUser) Changes //
+            ////////////////////////////////
+            modelBuilder.Entity<User>()
+                .Property(x => x.Email)
+                .HasMaxLength(20);
+
             //////////////////////////////////
             // Concrete EntityModel Changes //
             //////////////////////////////////

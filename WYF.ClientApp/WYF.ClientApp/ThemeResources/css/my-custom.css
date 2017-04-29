@@ -1,4 +1,22 @@
-﻿div#wrapper {
+﻿/* COMMON CSS {START} */
+div#wrapper {
     top: 90px;
     position: relative;
 }
+
+.section {
+    padding: 5% 0;
+}
+
+div.footer {
+    margin-top: 20%;
+}
+/* COMMON CSS {END} */
+
+/* /USER/LOGIN CSS {START} */
+div#form-wrapper {
+    width: 50%;
+    position: relative;
+    left: 25%;
+}
+/* /USER/LOGIN CSS {END} */

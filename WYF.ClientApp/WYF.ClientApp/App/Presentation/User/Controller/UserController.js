@@ -8,7 +8,8 @@
     function UserController($scope, userService) {
 
         var instance = {
-            submitLoginForm: submitLoginForm
+            submitLoginForm: submitLoginForm,
+            isEmployeeRegistering: false
         };
 
         function submitLoginForm() {

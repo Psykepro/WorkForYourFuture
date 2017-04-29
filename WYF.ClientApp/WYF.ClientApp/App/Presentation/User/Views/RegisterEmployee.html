@@ -1,0 +1,28 @@
+﻿<div id="form-wrapper" class="col-sm-6">
+    <form name="registerForm" ng-submit="vm.submitEmployeeRegisterForm()" novalidate>
+
+        <!-- Email -->
+        <div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
+            <label>Username</label>
+            <input type="text" ng-required name="username" class="form-control" ng-model="vm.email" ng-minlength="3" ng-maxlength="20">
+            <p ng-show="registerForm.email.$error.minlength" class="help-block">Email is too short. Min characters - 3</p>
+            <p ng-show="registerForm.email.$error.maxlength" class="help-block">Email is too long. Max characters - 20</p>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group" ng-class="{ 'has-error' : registerForm.password.$invalid && !registerForm.password.$pristine }">
+            <label>Password</label>
+            <input type="password" ng-required name="password" class="form-control" ng-minlength="6" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/" ng-model="vm.password">
+            <p ng-show="(registerForm.password.$invalid && !registerForm.password.$pristine) || registerForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 characters and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
+        </div>
+        
+        <!-- Confirm Password -->
+        <div class="form-group" ng-class="{ 'has-error' : registerForm.confirmPassword.$invalid && !registerForm.confirmPassword.$pristine }">
+            <label>Confirm Password</label>
+            <input type="password" ng-required name="confirmPassword" class="form-control" ng-minlength="6"  ng-match="vm.password" ng-model="vm.confirmPassword">
+            <p ng-show="registerForm.confirmPassword.$error.match" class="help-block">Passwords doesn't match</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary" ng-disabled="registerForm.$invalid || (registerForm.username.$pristine || registerForm.password.$pristine || registerForm.confirmPassword.$pristine)">Register</button>
+    </form>
+</div>
