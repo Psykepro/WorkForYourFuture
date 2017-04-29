@@ -1,43 +1,56 @@
-﻿(function () {
+﻿(function() {
     'use-strict';
 
     var directiveId = 'ngMatch';
 
     angular.module('presentation').directive(directiveId, ngMatch);
 
-    ngMatch.$inject = ['$parse'];
+    ngMatch.$inject = ['$parse', '$timeout'];
 
-    function ngMatch($parse) {
+    function ngMatch($parse, $timeout) {
 
         var instance = {
             link: link,
             restrict: 'A',
             require: '?ngModel'
         };
-       
+
         return instance;
 
         function link(scope, elem, attrs, ctrl) {
             // if ngModel is not defined, we don't need to do anything
-            if (!ctrl) return;
-            if (!attrs[directiveId]) return;
-
-            var firstPassword = $parse(attrs[directiveId]);
-
-            var validator = function (value) {
+            var firstPassword = $parse(attrs[directiveId]), 
+                validator = function(value) {
+                    var timeout;
                 var temp = firstPassword(scope),
-                v = value === temp;
-                ctrl.$setValidity('match', v);
+                    v = value === temp;
+
+                ctrl.$setValidity('match', true);
+
+                if (timeout) $timeout.cancel(timeout);
+
+                timeout = $timeout(function() {
+
+                        ctrl.$setValidity('match', v);
+
+                    },
+                    500);
+
                 return value;
+
             }
 
             ctrl.$parsers.unshift(validator);
+
             ctrl.$formatters.push(validator);
-            attrs.$observe(directiveId, function () {
-                validator(ctrl.$viewValue);
-            });
+
+            scope.$watch(attrs[directiveId],
+                function() {
+
+                    validator(ctrl.$viewValue);
+
+                });
 
         }
-
     }
 })();
