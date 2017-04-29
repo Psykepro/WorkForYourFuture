@@ -1,2 +1,4 @@
 packages
 WYF.ClientApp/node_modules
+WYF.ClientApp/bin
+WYF.ClientApp/obj
