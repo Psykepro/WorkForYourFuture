@@ -4,19 +4,23 @@
 
             <div id="form-wrapper" class="col-sm-6">
                 <form name="loginForm" ng-submit="vm.submitLoginForm()" novalidate>
-
-                    <!-- USERNAME -->
-                    <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
+                    
+                    <!-- Username -->
+                    <div class="form-group" ng-class="{ 'has-error' : (loginForm.username.$invalid || loginForm.username.$error.required) && !loginForm.username.$pristine }">
                         <label>Username</label>
-                        <input type="text" ng-required name="username" class="form-control" ng-model="vm.username" ng-minlength="3" ng-maxlength="20">
-                        <p ng-show="loginForm.username.$error.minlength" class="help-block">Username is too short. Min characters - 3</p>
-                        <p ng-show="loginForm.username.$error.maxlength" class="help-block">Username is too long. Max characters - 20</p>
+                        <input type="text" required name="username" class="form-control" ng-model="vm.username" ng-maxlength="20">
+                        <p ng-show="loginForm.username.$error.maxlength" class="help-block">Username is too long. Max symbols - 20</p>
+                        <p ng-show="loginForm.username.$error.required && !loginForm.username.$pristine" class="help-block">This field is required</p>
                     </div>
+                    
+                    <p id="test"></p>
+
                     <!-- Password -->
-                    <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+                    <div class="form-group" ng-class="{ 'has-error' : (loginForm.password.$invalid || loginForm.password.$error.required) && !loginForm.password.$pristine }">
                         <label>Password</label>
-                        <input type="password" ng-required name="password" class="form-control" ng-minlength="6" ng-pattern="passwordPattern" ng-model="vm.password">
-                        <p ng-show="(loginForm.password.$invalid && !loginForm.password.$pristine) || loginForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 characters and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
+                        <input type="password" required name="password" class="form-control" ng-minlength="6" ng-pattern="passwordPattern" ng-model="vm.password">
+                        <p ng-show="(loginForm.password.$invalid && !loginForm.password.$pristine && !loginForm.password.$error.required) || loginForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 symbols and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
+                        <p ng-show="loginForm.password.$error.required && !loginForm.password.$pristine" class="help-block">This field is required</p>
                     </div>
 
                     <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid || (loginForm.username.$pristine || loginForm.password.$pristine)">Login</button>

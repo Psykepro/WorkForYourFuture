@@ -1,4 +1,4 @@
-﻿(function() {
+﻿(function () {
     'use-strict';
 
     var directiveId = 'ngMatch';
@@ -19,34 +19,23 @@
 
         function link(scope, elem, attrs, ctrl) {
 
-            var firstPassword = $parse(attrs[directiveId]), 
-                validator = function(value) {
-                 var timeout;
-                var temp = firstPassword(scope),
-                    v = value === temp;
+            var firstPassword = $parse(attrs[directiveId]),
+                validator = function (value) {
+                    var temp = firstPassword(scope),
+                        v = value === temp;
 
-                ctrl.$setValidity('match', true);
+                    ctrl.$setValidity('match', v);
 
-                if (timeout) $timeout.cancel(timeout);
-
-                timeout = $timeout(function() {
-
-                        ctrl.$setValidity('match', v);
-
-                    },
-                    500);
-
-                return value;
-
-            }
+                    return value;
+                }
 
             ctrl.$parsers.unshift(validator);
 
             ctrl.$formatters.push(validator);
 
             scope.$watch(attrs[directiveId],
-                function() {
-
+                function () {
+                   
                     validator(ctrl.$viewValue);
 
                 });

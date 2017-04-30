@@ -1,28 +1,43 @@
 ﻿<div id="form-wrapper" class="col-sm-6">
-    <form name="registerForm" ng-submit="vm.submitEmployeeRegisterForm()" novalidate>
-     
+    <form name="registerEmployeeForm" ng-submit="vm.submitEmployeeRegisterForm()" novalidate>
+
         <!-- Email -->
-        <div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
+        <div class="form-group" ng-class="{ 'has-error' : (registerEmployeeForm.email.$invalid || registerEmployeeForm.email.$error.required) && !registerEmployeeForm.email.$pristine }">
             <label>Email</label>
-            <input type="email" ng-required name="email" class="form-control" ng-model="vm.email" ng-maxlength="20" ng-pattern="emailPattern">
-            <p ng-show="registerForm.email.$error.maxlength" class="help-block">Email is too long. Max characters - 20</p>
-            <p ng-show="registerForm.email.$error.pattern" class="help-block">Enter valid email.</p>
+            <input type="email" required name="email" class="form-control" ng-model="vm.email" ng-maxlength="20" ng-pattern="emailPattern">
+            <p ng-show="registerEmployeeForm.email.$error.maxlength" class="help-block">Email is too long. Max symbols - 20</p>
+            <p ng-show="registerEmployeeForm.email.$error.pattern" class="help-block">Enter valid email.</p>
+            <p ng-show="registerEmployeeForm.email.$error.required && !registerEmployeeForm.email.$pristine" class="help-block">This field is required</p>
+        </div>
+
+        <!-- First Name -->
+        <div class="form-group" ng-class="{ 'has-error' : (registerEmployeeForm.firstName.$invalid || registerEmployeeForm.firstName.$error.required) && !registerEmployeeForm.firstName.$pristine }">
+            <label>First Name</label>
+            <input type="text" required name="firstName" class="form-control" ng-minlength="2" ng-maxlength="15" ng-model="vm.firstName">
+            <p ng-show="registerEmployeeForm.firstName.$error.maxlength || registerEmployeeForm.firstName.$error.minlength " class="help-block">The name must be between 2 and 15 symbols.</p>
+            <p ng-show="registerEmployeeForm.firstName.$error.required && !registerEmployeeForm.firstName.$pristine" class="help-block">This field is required</p>
         </div>
 
         <!-- Password -->
-        <div class="form-group" ng-class="{ 'has-error' : registerForm.password.$invalid && !registerForm.password.$pristine }">
+        <div class="form-group" ng-class="{ 'has-error' : (registerEmployeeForm.password.$invalid || registerEmployeeForm.password.$error.required) && !registerEmployeeForm.password.$pristine }">
             <label>Password</label>
-            <input type="password" ng-required name="password" class="form-control" ng-minlength="6" ng-pattern="passwordPattern" ng-model="vm.password">
-            <p ng-show="(registerForm.password.$invalid && !registerForm.password.$pristine) || registerForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 characters and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
-        </div>
-    
-        <!-- Confirm Password -->
-        <div class="form-group" ng-class="{ 'has-error' : registerForm.confirmPassword.$invalid && !registerForm.confirmPassword.$pristine }">
-            <label>Confirm Password</label>
-            <input type="password" ng-required name="confirmPassword" class="form-control" ng-minlength="6"  ng-match="vm.password" ng-model="vm.confirmPassword">
-            <p ng-show="registerForm.confirmPassword.$error.match" class="help-block">Passwords doesn't match</p>
+            <input type="password" required name="password" class="form-control" ng-minlength="6" ng-pattern="passwordPattern" ng-model="vm.password">
+            <p ng-show="(registerEmployeeForm.password.$invalid && !registerEmployeeForm.password.$pristine && !registerEmployeeForm.password.$error.required) || registerEmployeeForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 symbols and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
+            <p ng-show="registerEmployeeForm.password.$error.required && !registerEmployeeForm.password.$pristine" class="help-block">This field is required</p>
         </div>
 
-        <button type="submit" class="btn btn-primary" ng-disabled="registerForm.$invalid || (registerForm.username.$pristine || registerForm.password.$pristine || registerForm.confirmPassword.$pristine)">Register</button>
+        <!-- Confirm Password -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.confirmPassword.$invalid && !registerEmployeeForm.confirmPassword.$pristine }">
+            <label>Confirm Password</label>
+            <input type="password" required name="confirmPassword" class="form-control" ng-minlength="6" ng-match="vm.password" ng-model="vm.confirmPassword">
+            <p ng-show="registerEmployeeForm.confirmPassword.$error.match && !registerEmployeeForm.confirmPassword.$pristine && !registerEmployeeForm.confirmPassword.$error.required" class="help-block">Passwords doesn't match</p>
+            <p ng-show="registerEmployeeForm.confirmPassword.$error.required && !registerEmployeeForm.confirmPassword.$pristine" class="help-block">This field is required</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary" ng-disabled="registerEmployeeForm.$invalid
+                                                                    || (registerEmployeeForm.username.$pristine
+                                                                    || registerEmployeeForm.firstName.$pristine
+                                                                    || registerEmployeeForm.password.$pristine
+                                                                    || registerEmployeeForm.confirmPassword.$pristine)">Register</button>
     </form>
 </div>

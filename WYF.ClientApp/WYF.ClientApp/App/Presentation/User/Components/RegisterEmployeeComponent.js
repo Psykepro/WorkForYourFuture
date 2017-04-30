@@ -13,9 +13,10 @@
     function RegisterEmployeeController($scope, userService, regexPatternsProvider) {
         $scope.passwordPattern = regexPatternsProvider.passwordPattern;
         $scope.emailPattern = regexPatternsProvider.emailPattern;
-
+        $scope.testElement = "<p>Hello</p>";
         var instance = {
-            submitRegisterEmployeeForm: submitRegisterEmployeeForm
+            submitRegisterEmployeeForm: submitRegisterEmployeeForm,
+            testElement: "<p>Hello</p>"
         }
 
         function submitRegisterEmployeeForm() {
@@ -25,5 +26,9 @@
 
             }
         }
+
+        return instance;
     }
+
+   
 })();

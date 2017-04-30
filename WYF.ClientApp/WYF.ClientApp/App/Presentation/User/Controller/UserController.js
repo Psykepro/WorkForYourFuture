@@ -7,7 +7,6 @@
 
     function UserController($scope, userService, regexPatternsProvider) {
         $scope.passwordPattern = regexPatternsProvider.passwordPattern;
-        $scope.emailPattern = regexPatternsProvider.emailPattern;
 
         var instance = {
             submitLoginForm: submitLoginForm,
