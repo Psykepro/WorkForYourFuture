@@ -1,8 +1,38 @@
 ﻿<div id="form-wrapper" class="col-sm-6">
     <form name="registerEmployeeForm" ng-submit="vm.submitEmployeeRegisterForm()" novalidate>
 
+        <!-- First Name -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.firstName.$invalid && !registerEmployeeForm.firstName.$pristine }">
+            <label>First Name</label>
+            <input type="text" required name="firstName" class="form-control" ng-minlength="2" ng-maxlength="15" ng-pattern="namePattern" ng-model="vm.firstName">
+            <p ng-show="registerEmployeeForm.firstName.$error.maxlength || registerEmployeeForm.firstName.$error.minlength" class="help-block">The name must be between 2 and 15 alphabet symbols.</p>
+            <p ng-show="registerEmployeeForm.firstName.$error.pattern && !registerEmployeeForm.firstName.$pristine
+               && !(registerEmployeeForm.firstName.$error.maxlength || registerEmployeeForm.firstName.$error.minlength)" class="help-block">The name must contain only alphabet symbols.</p>
+            <p ng-show="registerEmployeeForm.firstName.$error.required && !registerEmployeeForm.firstName.$pristine" class="help-block">This field is required</p>
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.lastName.$invalid && !registerEmployeeForm.lastName.$pristine }">
+            <label>Last Name</label>
+            <input type="text" required name="lastName" class="form-control" ng-minlength="2" ng-maxlength="15" ng-pattern="namePattern" ng-model="vm.lastName">
+            <p ng-show="registerEmployeeForm.lastName.$error.maxlength || registerEmployeeForm.lastName.$error.minlength" class="help-block">The name must be between 2 and 15 alphabet symbols.</p>
+            <p ng-show="registerEmployeeForm.lastName.$error.pattern && !registerEmployeeForm.lastName.$pristine
+               && !(registerEmployeeForm.lastName.$error.maxlength || registerEmployeeForm.lastName.$error.minlength)" class="help-block">The name must contain only alphabet symbols.</p>
+            <p ng-show="registerEmployeeForm.lastName.$error.required && !registerEmployeeForm.lastName.$pristine" class="help-block">This field is required</p>
+        </div>
+
+        <!-- DATE PICKER -->
+        <!--<md-datepicker ng-model="vm.myDate" md-placeholder="Enter date" md-is-open="vm.isOpen"></md-datepicker>-->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.dateOfBirth.$invalid && !registerEmployeeForm.dateOfBirth.$pristine }">
+            <md-datepicker name="dateOfBirth" required ng-model="vm.dateOfBirth" md-placeholder="Enter Date of Birth" md-is-open="vm.isOpen"></md-datepicker>
+            <md-button class="md-primary md-raised" ng-click="vm.isOpen = true">Open</md-button>
+            <div class="validation-messages" ng-messages="registerEmployeeForm.dateOfBirth.$error">
+                <div ng-message="required">This date is required!</div>
+            </div>
+        </div>
+
         <!-- Email -->
-        <div class="form-group" ng-class="{ 'has-error' : (registerEmployeeForm.email.$invalid || registerEmployeeForm.email.$error.required) && !registerEmployeeForm.email.$pristine }">
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.email.$invalid && !registerEmployeeForm.email.$pristine }">
             <label>Email</label>
             <input type="email" required name="email" class="form-control" ng-model="vm.email" ng-maxlength="20" ng-pattern="emailPattern">
             <p ng-show="registerEmployeeForm.email.$error.maxlength" class="help-block">Email is too long. Max symbols - 20</p>
@@ -10,19 +40,12 @@
             <p ng-show="registerEmployeeForm.email.$error.required && !registerEmployeeForm.email.$pristine" class="help-block">This field is required</p>
         </div>
 
-        <!-- First Name -->
-        <div class="form-group" ng-class="{ 'has-error' : (registerEmployeeForm.firstName.$invalid || registerEmployeeForm.firstName.$error.required) && !registerEmployeeForm.firstName.$pristine }">
-            <label>First Name</label>
-            <input type="text" required name="firstName" class="form-control" ng-minlength="2" ng-maxlength="15" ng-model="vm.firstName">
-            <p ng-show="registerEmployeeForm.firstName.$error.maxlength || registerEmployeeForm.firstName.$error.minlength " class="help-block">The name must be between 2 and 15 symbols.</p>
-            <p ng-show="registerEmployeeForm.firstName.$error.required && !registerEmployeeForm.firstName.$pristine" class="help-block">This field is required</p>
-        </div>
-
         <!-- Password -->
-        <div class="form-group" ng-class="{ 'has-error' : (registerEmployeeForm.password.$invalid || registerEmployeeForm.password.$error.required) && !registerEmployeeForm.password.$pristine }">
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.password.$invalid && !registerEmployeeForm.password.$pristine }">
             <label>Password</label>
             <input type="password" required name="password" class="form-control" ng-minlength="6" ng-pattern="passwordPattern" ng-model="vm.password">
-            <p ng-show="(registerEmployeeForm.password.$invalid && !registerEmployeeForm.password.$pristine && !registerEmployeeForm.password.$error.required) || registerEmployeeForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 symbols and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
+            <p ng-show="(registerEmployeeForm.password.$invalid && !registerEmployeeForm.password.$pristine
+               && !registerEmployeeForm.password.$error.required) || registerEmployeeForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 symbols and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
             <p ng-show="registerEmployeeForm.password.$error.required && !registerEmployeeForm.password.$pristine" class="help-block">This field is required</p>
         </div>
 
@@ -38,6 +61,8 @@
                                                                     || (registerEmployeeForm.username.$pristine
                                                                     || registerEmployeeForm.firstName.$pristine
                                                                     || registerEmployeeForm.password.$pristine
-                                                                    || registerEmployeeForm.confirmPassword.$pristine)">Register</button>
+                                                                    || registerEmployeeForm.confirmPassword.$pristine)">
+            Register
+        </button>
     </form>
 </div>

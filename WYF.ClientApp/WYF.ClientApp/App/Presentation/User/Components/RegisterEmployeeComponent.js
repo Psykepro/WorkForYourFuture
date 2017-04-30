@@ -13,13 +13,17 @@
     function RegisterEmployeeController($scope, userService, regexPatternsProvider) {
         $scope.passwordPattern = regexPatternsProvider.passwordPattern;
         $scope.emailPattern = regexPatternsProvider.emailPattern;
+        $scope.namePattern = regexPatternsProvider.namePattern;
+
 
         var instance = {
             submitRegisterEmployeeForm: submitRegisterEmployeeForm,
-        }
+            myDate: new Date(),
+            isOpen: false
+    }
 
         function submitRegisterEmployeeForm() {
-            var isFormValid = $scope.loginForm.$valid;
+            var isFormValid = $scope.registerEmployeeForm.$valid;
 
             if (isFormValid) {
 

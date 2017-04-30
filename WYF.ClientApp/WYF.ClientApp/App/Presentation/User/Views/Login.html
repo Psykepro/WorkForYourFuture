@@ -6,7 +6,7 @@
                 <form name="loginForm" ng-submit="vm.submitLoginForm()" novalidate>
                     
                     <!-- Username -->
-                    <div class="form-group" ng-class="{ 'has-error' : (loginForm.username.$invalid || loginForm.username.$error.required) && !loginForm.username.$pristine }">
+                    <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
                         <label>Username</label>
                         <input type="text" required name="username" class="form-control" ng-model="vm.username" ng-maxlength="20" ng-change="addTextOnChange()">
                         <p ng-show="loginForm.username.$error.maxlength" class="help-block">Username is too long. Max symbols - 20</p>
@@ -14,7 +14,7 @@
                     </div>
 
                     <!-- Password -->
-                    <div class="form-group" ng-class="{ 'has-error' : (loginForm.password.$invalid || loginForm.password.$error.required) && !loginForm.password.$pristine }">
+                    <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
                         <label>Password</label>
                         <input type="password" required name="password" class="form-control" ng-minlength="6" ng-pattern="passwordPattern" ng-model="vm.password">
                         <p ng-show="(loginForm.password.$invalid && !loginForm.password.$pristine && !loginForm.password.$error.required) || loginForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 symbols and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
