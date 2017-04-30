@@ -14,9 +14,19 @@
 
         return instance;
 
-        function PostRequest(route, dto, headers) {
+        function PostRequest(route, dto, headers, isLoginRequest) {
+            isLoginRequest = isLoginRequest || false;
 
-            var dtoAsString = "grant_type=" + dto.grant_type + "&" + "username="+ dto.username + "&password="+ dto.password;
+            if (isLoginRequest === true) {
+                var tempArr = [];
+
+                for (var prop in dto) {
+                    tempArr.push(prop + '=' + dto[prop]);
+                }
+
+                dto = tempArr.join('&');
+            }
+            
             headers = headers || $http.defaults.headers.post;
             headers["Access-Control-Allow-Origin"] = '*';
 
@@ -25,7 +35,7 @@
             $http({
                 method: 'POST',
                 url: URL_WITH_PORT + route,
-                data: dtoAsString,
+                data: dto,
                 headers: headers
             })
             .then(

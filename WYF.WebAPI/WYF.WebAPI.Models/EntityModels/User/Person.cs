@@ -29,7 +29,6 @@ namespace WYF.WebAPI.Models.EntityModels.User
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
-        [Required]
         public Gender Gender { get; set; }
 
         public string UserId { get; set; }

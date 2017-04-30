@@ -12,14 +12,14 @@
         var homeRoutes = {
 
         };
-
+        var userApiPrefix = apiPrefix + 'User/';
         var userRoutes = {
-            "Register": apiPrefix + "Register",
+            "Register": userApiPrefix + "Register",
             "Login": "/Token",
-            "FacebookLogin": apiPrefix +
-                "User/ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2",
-            "GoogleLogin": apiPrefix +
-                "User/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2F"
+            "FacebookLogin": userApiPrefix +
+                "ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2",
+            "GoogleLogin": userApiPrefix +
+                "ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2F"
         };
 
         var jobRoutes = {

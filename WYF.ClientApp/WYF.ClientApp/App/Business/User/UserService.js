@@ -30,7 +30,7 @@
             }
 
             webApiRequestsService
-                .PostRequest(route, dto, headers)
+                .PostRequest(route, dto, headers, true)
                 .then(function success(result) {
                     defered.resolve(result);
                         console.log(result);
@@ -43,10 +43,10 @@
         }
 
 
-        function Register(username, password, confirmPassword) {
+        function Register(email, password, confirmPassword) {
 
             var dto = {
-                username: username,
+                email: email,
                 password: password,
                 confirmPassword: confirmPassword
             };

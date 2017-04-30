@@ -17,17 +17,39 @@
 
 
         var instance = {
-            submitRegisterEmployeeForm: submitRegisterEmployeeForm,
+            submitEmployeeRegisterForm: submitEmployeeRegisterForm,
+            ToggleIsOpen: function() {
+                this.isOpen = !this.isOpen;
+            },
             myDate: new Date(),
             isOpen: false
     }
 
-        function submitRegisterEmployeeForm() {
+        function submitEmployeeRegisterForm() {
             var isFormValid = $scope.registerEmployeeForm.$valid;
 
             if (isFormValid) {
+                var email = this.email;
+                var password = this.password;
+                var confirmPassword = this.confirmPassword;
 
+                userService.Register(email, password, confirmPassword)
+                    .then(function success(result) {
+                        notie.alert({
+                            type: 'success',
+                            text: "The register was successful!",
+                            position: 'bottom'
+                        });
+                        },
+                        function failure(error) {
+                            notie.alert({
+                                type: 'error',
+                                text: "The register wasn't successful!",
+                                position: 'bottom'
+                            });
+                        });
             }
+            
         }
 
         return instance;

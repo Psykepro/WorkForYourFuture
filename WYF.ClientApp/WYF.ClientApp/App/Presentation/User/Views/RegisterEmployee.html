@@ -21,8 +21,7 @@
             <p ng-show="registerEmployeeForm.lastName.$error.required && !registerEmployeeForm.lastName.$pristine" class="help-block">This field is required</p>
         </div>
 
-        <!-- DATE PICKER -->
-        <!--<md-datepicker ng-model="vm.myDate" md-placeholder="Enter date" md-is-open="vm.isOpen"></md-datepicker>-->
+        <!-- Date Of Birth -->
         <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.dateOfBirth.$invalid && !registerEmployeeForm.dateOfBirth.$pristine }">
             <md-datepicker name="dateOfBirth" required ng-model="vm.dateOfBirth" md-placeholder="Enter Date of Birth" md-is-open="vm.isOpen"></md-datepicker>
             <md-button class="md-primary md-raised" ng-click="vm.isOpen = true">Open</md-button>
@@ -34,8 +33,7 @@
         <!-- Email -->
         <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.email.$invalid && !registerEmployeeForm.email.$pristine }">
             <label>Email</label>
-            <input type="email" required name="email" class="form-control" ng-model="vm.email" ng-maxlength="20" ng-pattern="emailPattern">
-            <p ng-show="registerEmployeeForm.email.$error.maxlength" class="help-block">Email is too long. Max symbols - 20</p>
+            <input type="email" required name="email" class="form-control" ng-model="vm.email" ng-pattern="emailPattern">
             <p ng-show="registerEmployeeForm.email.$error.pattern" class="help-block">Enter valid email.</p>
             <p ng-show="registerEmployeeForm.email.$error.required && !registerEmployeeForm.email.$pristine" class="help-block">This field is required</p>
         </div>
@@ -61,8 +59,6 @@
                                                                     || (registerEmployeeForm.username.$pristine
                                                                     || registerEmployeeForm.firstName.$pristine
                                                                     || registerEmployeeForm.password.$pristine
-                                                                    || registerEmployeeForm.confirmPassword.$pristine)">
-            Register
-        </button>
+                                                                    || registerEmployeeForm.confirmPassword.$pristine)">Register</button>
     </form>
 </div>
