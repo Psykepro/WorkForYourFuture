@@ -10,6 +10,12 @@ div#wrapper {
 
 div.footer {
     margin-top: 20%;
+    background-color: #00283a;
+}
+
+.navbar {
+    background-color: #00283a;
+    box-shadow: rgba(174, 198, 44, 0.8) 1px 4px 8px;
 }
 /* COMMON CSS {END} */
 
@@ -20,3 +26,49 @@ div#form-wrapper {
     left: 25%;
 }
 /* /USER/LOGIN CSS {END} */
+
+/* /USER/REGISTER CSS {START} */
+.register-choose-type-wrapper {
+    position: relative;
+    text-align: center;
+    border: #aec62c solid 5px;
+    box-shadow: rgba(0, 0, 0, 0.8) 1px 4px 8px;
+    background: #00283a;
+    margin: 0 2px 0 0;
+    padding: 7px 5px 7px 5px;
+}
+
+    .register-choose-type-wrapper p {
+        color: #ffffff;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        margin: 0 0 35px;
+        text-align: center;
+        height: 80px;
+        
+    }
+
+    .register-choose-type-wrapper h3 {
+        color: #aec62c;
+        font-family: 'Open Sans', serif;
+        font-size: 30px;
+        font-weight: lighter;
+        margin: 0 30px 40px;
+        text-align: center;
+        text-shadow: #2A8D7B -2px 2px;
+    }
+
+.register-form-row {
+    margin-top: 5px;
+}
+
+/* /USER/REGISTER CSS {END} */
+
+
+
+@media (min-width: 768px) {
+  .register-choose-type-wrapper {
+      margin-top: 5px;
+  }
+}

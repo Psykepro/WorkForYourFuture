@@ -8,12 +8,10 @@
                     <!-- Username -->
                     <div class="form-group" ng-class="{ 'has-error' : (loginForm.username.$invalid || loginForm.username.$error.required) && !loginForm.username.$pristine }">
                         <label>Username</label>
-                        <input type="text" required name="username" class="form-control" ng-model="vm.username" ng-maxlength="20">
+                        <input type="text" required name="username" class="form-control" ng-model="vm.username" ng-maxlength="20" ng-change="addTextOnChange()">
                         <p ng-show="loginForm.username.$error.maxlength" class="help-block">Username is too long. Max symbols - 20</p>
                         <p ng-show="loginForm.username.$error.required && !loginForm.username.$pristine" class="help-block">This field is required</p>
                     </div>
-                    
-                    <p id="test"></p>
 
                     <!-- Password -->
                     <div class="form-group" ng-class="{ 'has-error' : (loginForm.password.$invalid || loginForm.password.$error.required) && !loginForm.password.$pristine }">

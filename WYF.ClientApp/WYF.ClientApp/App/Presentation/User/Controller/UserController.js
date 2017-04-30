@@ -10,7 +10,7 @@
 
         var instance = {
             submitLoginForm: submitLoginForm,
-            isEmployeeRegistering: false
+            isEmployeeRegistering: true
         };
 
         function submitLoginForm() {
@@ -41,7 +41,5 @@
         }
 
         return instance;
-
-
     }
 })();
