@@ -18,10 +18,10 @@
         return instance;
 
         function link(scope, elem, attrs, ctrl) {
-            // if ngModel is not defined, we don't need to do anything
+
             var firstPassword = $parse(attrs[directiveId]), 
                 validator = function(value) {
-                    var timeout;
+                 var timeout;
                 var temp = firstPassword(scope),
                     v = value === temp;
 

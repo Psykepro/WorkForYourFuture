@@ -8,19 +8,21 @@
         templateUrl: 'App/Presentation/User/Views/RegisterEmployee.html'
     });
 
-    RegisterEmployeeController.$inject = ['$scope', 'userService'];
+    RegisterEmployeeController.$inject = ['$scope', 'userService', 'regexPatternsProvider'];
 
-    function RegisterEmployeeController($scope, userService) {
+    function RegisterEmployeeController($scope, userService, regexPatternsProvider) {
+        $scope.passwordPattern = regexPatternsProvider.passwordPattern;
+        $scope.emailPattern = regexPatternsProvider.emailPattern;
 
-     var instance = {
-         submitRegisterEmployeeForm: submitRegisterEmployeeForm
-     }
+        var instance = {
+            submitRegisterEmployeeForm: submitRegisterEmployeeForm
+        }
 
         function submitRegisterEmployeeForm() {
             var isFormValid = $scope.loginForm.$valid;
 
             if (isFormValid) {
-                
+
             }
         }
     }

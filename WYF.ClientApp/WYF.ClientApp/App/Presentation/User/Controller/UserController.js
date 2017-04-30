@@ -3,9 +3,11 @@
 
     angular.module('presentation').controller('userController', UserController);
 
-    UserController.$inject = ['$scope', 'userService'];
+    UserController.$inject = ['$scope', 'userService', 'regexPatternsProvider'];
 
-    function UserController($scope, userService) {
+    function UserController($scope, userService, regexPatternsProvider) {
+        $scope.passwordPattern = regexPatternsProvider.passwordPattern;
+        $scope.emailPattern = regexPatternsProvider.emailPattern;
 
         var instance = {
             submitLoginForm: submitLoginForm,

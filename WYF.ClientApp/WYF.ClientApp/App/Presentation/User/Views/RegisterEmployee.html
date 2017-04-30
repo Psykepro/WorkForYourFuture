@@ -1,21 +1,21 @@
 ﻿<div id="form-wrapper" class="col-sm-6">
     <form name="registerForm" ng-submit="vm.submitEmployeeRegisterForm()" novalidate>
-
+     
         <!-- Email -->
         <div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
-            <label>Username</label>
-            <input type="text" ng-required name="username" class="form-control" ng-model="vm.email" ng-minlength="3" ng-maxlength="20">
-            <p ng-show="registerForm.email.$error.minlength" class="help-block">Email is too short. Min characters - 3</p>
+            <label>Email</label>
+            <input type="email" ng-required name="email" class="form-control" ng-model="vm.email" ng-maxlength="20" ng-pattern="emailPattern">
             <p ng-show="registerForm.email.$error.maxlength" class="help-block">Email is too long. Max characters - 20</p>
+            <p ng-show="registerForm.email.$error.pattern" class="help-block">Enter valid email.</p>
         </div>
 
         <!-- Password -->
         <div class="form-group" ng-class="{ 'has-error' : registerForm.password.$invalid && !registerForm.password.$pristine }">
             <label>Password</label>
-            <input type="password" ng-required name="password" class="form-control" ng-minlength="6" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/" ng-model="vm.password">
+            <input type="password" ng-required name="password" class="form-control" ng-minlength="6" ng-pattern="passwordPattern" ng-model="vm.password">
             <p ng-show="(registerForm.password.$invalid && !registerForm.password.$pristine) || registerForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 characters and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
         </div>
-        
+    
         <!-- Confirm Password -->
         <div class="form-group" ng-class="{ 'has-error' : registerForm.confirmPassword.$invalid && !registerForm.confirmPassword.$pristine }">
             <label>Confirm Password</label>
