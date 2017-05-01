@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WYF.WebAPI.Models.EntityModels.Job;
 using WYF.WebAPI.Models.Enums.User;
 using WYF.WebAPI.Models.Utilities;
 
@@ -14,19 +15,15 @@ namespace WYF.WebAPI.Models.EntityModels.User
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [MinLength(length: 2, ErrorMessage = "The allowed minimum length of FirstName is 2 characters.")]
-        [MaxLength(length: 15, ErrorMessage = "The allowed maximum length of FirstName is 15 characters.")]
-        [RegularExpression(pattern: Constants.NAME_REGEX_PATTERN, ErrorMessage = "FirstName can contains only letters.")]
+        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
+        [RegularExpression(pattern: Constants.NAME_REGEX_PATTERN, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_NAME)]
         public string FirstName { get; set; }
 
-        [Required]
-        [MinLength(length: 2, ErrorMessage = "The allowed minimum length of LastName is 2 characters.")]
-        [MaxLength(length: 15, ErrorMessage = "The allowed maximum length of LastName is 15 characters.")]
-        [RegularExpression(pattern: Constants.NAME_REGEX_PATTERN, ErrorMessage = "LastName can contains only letters.")]
+        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
+        [RegularExpression(pattern: Constants.NAME_REGEX_PATTERN, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_NAME)]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
@@ -36,5 +33,8 @@ namespace WYF.WebAPI.Models.EntityModels.User
 
         [ForeignKey(name: "UserId")]
         public virtual User User { get; set; }
+
+        //[Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
+        //public City LivingLocation { get; set; }
     }
 }

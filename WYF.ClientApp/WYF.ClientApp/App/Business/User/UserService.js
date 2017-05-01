@@ -8,13 +8,26 @@
     function UserService($q, webApiRoutesProvider, webApiRequestsService) {
 
         var instance = {
-            Login: Login,
-            RegisterEmployee: RegisterEmployee
+            login: login,
+            registerEmployee: registerEmployee,
+            setActiveEmployeeRegisterSection: setActiveEmployeeRegisterSection,
+            setActiveEmployerRegisterSection: setActiveEmployerRegisterSection,
+           
         };
 
         return instance;
 
-        function Login(dto) {
+        function setActiveEmployeeRegisterSection() {
+            $('#employee-choose-section').addClass('active-register-section');
+            $('#employer-choose-section').removeClass('active-register-section');
+        }
+
+        function setActiveEmployerRegisterSection(parameters) {
+            $('#employer-choose-section').addClass('active-register-section');
+            $('#employee-choose-section').removeClass('active-register-section');
+        }
+
+        function login(dto) {
 
             dto.grant_type = 'password';
 
@@ -45,7 +58,7 @@
         }
 
 
-        function RegisterEmployee(dto) {
+        function registerEmployee(dto) {
 
             var route = webApiRoutesProvider.Routes["User"]["RegisterEmployee"];
             var defered = $q.defer();

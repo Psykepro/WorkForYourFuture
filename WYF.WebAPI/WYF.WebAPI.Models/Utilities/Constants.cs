@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace WYF.WebAPI.Models.Utilities
 {
-     //passwordPattern: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$",
-     //emailPattern: "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
-     //namePattern: "^[A-Za-z]+$"
     public static class Constants
     {
         //////////
@@ -24,7 +21,10 @@ namespace WYF.WebAPI.Models.Utilities
         public const string EMAIL_REGEX_PATTERN = "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         public const string PASSWORD_REGEX_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$";
         public const string NAME_REGEX_PATTERN = "^[A-Za-z]{2,15}$";
+        public const string BUSINESS_NAME_REGEX_PATTERN = "^[A-Za-z&\\s0-9]{2,30}$";
         public const string USERNAME_REGEX_PATTERN = "^[a-zA-Z0-9]{2,15}$";
+        public const string PHONE_REGEX_PATTERN = "^[0-9]{10}$";
+        public const string BULSTAT_ID_NUMBER_REGEX_PATTERN = "^[0-9]{13,15}$";
 
     }
 }

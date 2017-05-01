@@ -3,23 +3,57 @@
 
     angular.module('presentation').controller('userController', UserController);
 
-    UserController.$inject = ['$scope', 'userService', 'regexPatternsProvider'];
+    UserController.$inject = ['$scope', 'userService', 'regexPatternsProvider', 'errorMessagesProvider'];
 
-    function UserController($scope, userService, regexPatternsProvider) {
+    function UserController($scope, userService, regexPatternsProvider, errorMessagesProvider) {
+
+        //////////////////////////////////////
+        // SETTING REGEX PATTERNS TO $scope //
+        //////////////////////////////////////
 
         $scope.passwordPattern = regexPatternsProvider.passwordPattern;
         $scope.emailPattern = regexPatternsProvider.emailPattern;
         $scope.namePattern = regexPatternsProvider.namePattern;
         $scope.usernamePattern = regexPatternsProvider.usernamePattern;
+        $scope.phonePattern = regexPatternsProvider.phonePattern;
+        $scope.bulstatIdNumberPattern = regexPatternsProvider.bulstatIdNumberPattern;
+        $scope.businessNamePattern = regexPatternsProvider.businessNamePattern;
+
+        //////////////////////////////////////
+        // SETTING ERROR MESSAGES TO $scope //
+        //////////////////////////////////////
+
+        $scope.messageForNotMatchedPassword = errorMessagesProvider.messageForNotMatchedPassword;
+        $scope.messageForNotMatchedBulstatIdNumber = errorMessagesProvider.messageForNotMatchedBulstatIdNumber;
+        $scope.messageForNotMatchedEmail = errorMessagesProvider.messageForNotMatchedEmail;
+        $scope.messageForConfirmPassword = errorMessagesProvider.messageForConfirmPassword;
+        $scope.messageForMissingRequiredField = errorMessagesProvider.messageForMissingRequiredField;
+        $scope.messageForNotMatchedName = errorMessagesProvider.messageForNotMatchedName;
+        $scope.messageForNotMatchedPhone = errorMessagesProvider.messageForNotMatchedPhone;
+        $scope.messageForNotMatchedUsername = errorMessagesProvider.messageForNotMatchedUsername;
+        $scope.messageForNotMatchedBussinesName = errorMessagesProvider.messageForNotMatchedBussinesName;
 
         var instance = {
             submitLoginForm: submitLoginForm,
-            isEmployeeRegistering: true,
             submitEmployeeRegisterForm: submitEmployeeRegisterForm,
+            chooseRegisterOption: chooseRegisterOption,
+            isEmployeeRegistering: null,
             myDate: new Date(),
             isOpen: false,
             usernameOrPasswordError: ''
         };
+
+        function chooseRegisterOption(typeOfRegister) {
+
+            if (typeOfRegister.toLowerCase() === "employee") {
+                instance.isEmployeeRegistering = true;
+                userService.setActiveEmployeeRegisterSection();
+            } else if (typeOfRegister.toLowerCase() === "employer") {
+                instance.isEmployeeRegistering = false;
+                userService.setActiveEmployerRegisterSection();
+            }
+
+        }
 
         function submitLoginForm() {
 
@@ -34,11 +68,12 @@
             if (isFormValid) {
 
                 userService
-                    .Login(dto)
+                    .login(dto)
                     .then(function success(result) {
                         if (instance.usernameOrPasswordError !== '') {
                             instance.usernameOrPasswordError = '';
                         }
+
                         notie.alert({
                             type: 'success',
                             text: "The login was successful!",
@@ -73,14 +108,14 @@
                 };
 
                 userService
-                    .RegisterEmployee(dto)
+                    .registerEmployee(dto)
                     .then(function success(result) {
-                            notie.alert({
-                                type: 'success',
-                                text: "The register was successful!",
-                                position: 'bottom'
-                            });
-                        },
+                        notie.alert({
+                            type: 'success',
+                            text: "The register was successful!",
+                            position: 'bottom'
+                        });
+                    },
                         function failure(error) {
                             notie.alert({
                                 type: 'error',

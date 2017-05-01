@@ -3,7 +3,7 @@
         <div class="row">
 
             <div id="form-wrapper" class="col-sm-6">
-                <form name="loginForm" ng-submit="vm.submitLoginForm()" novalidate>
+                <form name="loginForm" ng-submit="vm.submitloginForm()" novalidate>
                     
                     <!-- Username -->
                     <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
@@ -21,7 +21,7 @@
                     </div>
 
                     <p ng-show="vm.usernameOrPasswordError" class="help-block">{{vm.usernameOrPasswordError}}</p>
-                    <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid || (loginForm.username.$pristine || loginForm.password.$pristine)">Login</button>
+                    <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid || (loginForm.username.$pristine || loginForm.password.$pristine)">login</button>
                 </form>
             </div>
 

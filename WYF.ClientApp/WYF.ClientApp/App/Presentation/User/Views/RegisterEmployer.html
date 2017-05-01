@@ -1,0 +1,93 @@
+﻿<!-- Register Employer Form -->
+<div id="form-wrapper" class="col-sm-6" ng-cloak>
+    <form name="registerEmployerForm" ng-submit="vm.submitEmployerRegisterForm()" novalidate>
+        
+        <!-- First Name -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.firstName.$invalid && !registerEmployerForm.firstName.$pristine }">
+            <label>First Name</label>
+            <input type="text" required name="firstName" class="form-control" ng-pattern="namePattern" ng-model="vm.firstName">
+            <p ng-show="registerEmployerForm.firstName.$error.pattern && !registerEmployerForm.firstName.$pristine" class="help-block">{{messageForNotMatchedName}}</p>
+            <p ng-show="registerEmployerForm.firstName.$error.required && !registerEmployerForm.firstName.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.lastName.$invalid && !registerEmployerForm.lastName.$pristine }">
+            <label>Last Name</label>
+            <input type="text" required name="lastName" class="form-control" ng-minlength="2" ng-maxlength="15" ng-pattern="namePattern" ng-model="vm.lastName">
+            <p ng-show="registerEmployerForm.lastName.$error.pattern && !registerEmployerForm.lastName.$pristine" class="help-block">{{messageForNotMatchedName}}</p>
+            <p ng-show="registerEmployerForm.lastName.$error.required && !registerEmployerForm.lastName.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
+        </div>
+
+        <!-- Business Name -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.businessName.$invalid && !registerEmployerForm.businessName.$pristine }">
+            <label>Business Name</label>
+            <input type="text" required name="businessName" class="form-control" ng-pattern="businessNamePattern" ng-model="vm.businessName">
+            <p ng-show="registerEmployerForm.businessName.$error.pattern && !registerEmployerForm.businessName.$pristine" class="help-block">{{messageForNotMatchedBussinesName}}</p>
+            <p ng-show="registerEmployerForm.businessName.$error.required && !registerEmployerForm.businessName.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
+        </div>
+        
+        <!-- Bulstat Id Number -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.bulstatIdNumber.$invalid && !registerEmployerForm.bulstatIdNumber.$pristine }">
+            <label>Bulstat Id Number</label>
+            <input type="number" required name="bulstatIdNumber" class="form-control" ng-pattern="bulstatIdNumberPattern" ng-model="vm.bulstatIdNumber">
+            <p ng-show="registerEmployerForm.bulstatIdNumber.$error.pattern && !registerEmployerForm.bulstatIdNumber.$pristine" class="help-block">{{messageForNotMatchedBulstatIdNumber}}</p>
+            <p ng-show="registerEmployerForm.bulstatIdNumber.$error.required && !registerEmployerForm.bulstatIdNumber.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
+        </div>
+        
+        <!-- Phone -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.phone.$invalid && !registerEmployerForm.phone.$pristine }">
+            <label>Phone</label>
+            <input type="number" required name="phone" class="form-control" ng-pattern="phonePattern" ng-model="vm.phone">
+            <p ng-show="registerEmployerForm.phone.$error.pattern && !registerEmployerForm.phone.$pristine" class="help-block">{{messageForNotMatchedPhone}}</p>
+            <p ng-show="registerEmployerForm.phone.$error.required && !registerEmployerForm.phone.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
+        </div>
+
+        <!-- Date Of Birth -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.dateOfBirth.$invalid && !registerEmployerForm.dateOfBirth.$pristine }">
+            <md-datepicker name="dateOfBirth" required ng-model="vm.dateOfBirth" md-placeholder="Enter Date of Birth" md-is-open="vm.isOpen"></md-datepicker>
+            <md-button class="md-primary md-raised" ng-click="vm.isOpen = true">Open</md-button>
+            <div class="validation-messages" ng-messages="registerEmployerForm.dateOfBirth.$error">
+                <div ng-message="required">{{messageForMissingRequiredField}}</div>
+            </div>
+        </div>
+        
+        <!-- Username -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.username.$invalid && !registerEmployerForm.username.$pristine }">
+            <label>Username</label>
+            <input type="text" required name="username" class="form-control" ng-pattern="usernamePattern" ng-model="vm.username">
+            <p ng-show="registerEmployerForm.username.$error.pattern && !registerEmployerForm.username.$pristine" class="help-block">{{messageForNotMatchedUsername}}</p>
+            <p ng-show="registerEmployerForm.username.$error.required && !registerEmployerForm.username.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.email.$invalid && !registerEmployerForm.email.$pristine }">
+            <label>Email</label>
+            <input type="email" required name="email" class="form-control" ng-model="vm.email" ng-pattern="emailPattern">
+            <p ng-show="registerEmployerForm.email.$error.pattern" class="help-block">{{messageForNotMatchedEmail}}</p>
+            <p ng-show="registerEmployerForm.email.$error.required && !registerEmployerForm.email.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.password.$invalid && !registerEmployerForm.password.$pristine }">
+            <label>Password</label>
+            <input type="password" required name="password" class="form-control" ng-pattern="passwordPattern" ng-model="vm.password">
+            <p ng-show="(registerEmployerForm.password.$invalid && !registerEmployerForm.password.$pristine
+               && !registerEmployerForm.password.$error.required) || registerEmployerForm.password.$error.pattern" class="help-block">{{messageForNotMatchedPassword}}</p>
+            <p ng-show="registerEmployerForm.password.$error.required && !registerEmployerForm.password.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.confirmPassword.$invalid && !registerEmployerForm.confirmPassword.$pristine }">
+            <label>Confirm Password</label>
+            <input type="password" required name="confirmPassword" class="form-control" ng-match="vm.password" ng-model="vm.confirmPassword">
+            <p ng-show="registerEmployerForm.confirmPassword.$error.match && !registerEmployerForm.confirmPassword.$pristine && !registerEmployerForm.confirmPassword.$error.required" class="help-block">{{messageForConfirmPassword}}</p>
+            <p ng-show="registerEmployerForm.confirmPassword.$error.required && !registerEmployerForm.confirmPassword.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary" ng-disabled="registerEmployerForm.$invalid
+                                                                    || (registerEmployerForm.username.$pristine
+                                                                    || registerEmployerForm.firstName.$pristine
+                                                                    || registerEmployerForm.password.$pristine
+                                                                    || registerEmployerForm.confirmPassword.$pristine)">Register</button>
+    </form>
+</div>

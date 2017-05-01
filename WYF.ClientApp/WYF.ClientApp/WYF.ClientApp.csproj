@@ -72,12 +72,16 @@
     <Content Include="App\Business\Business.js" />
     <Content Include="App\Business\Common\Services\WebApiRequestsService.js" />
     <Content Include="App\Business\Job\JobService.js" />
+    <Content Include="App\Data\Providers\ErrorMessagesProvider.js" />
+    <Content Include="App\Data\Providers\RegexPatternsProvider.js" />
     <Content Include="App\Presentation\Admin\Controller\AdminController.js" />
+    <Content Include="App\Presentation\Common\Controllers\MainController.js" />
     <Content Include="App\Presentation\Home\Controller\HomeController.js" />
     <Content Include="App\Business\Home\HomeService.js" />
     <Content Include="App\Presentation\Job\Controller\JobController.js" />
     <Content Include="App\Presentation\User\Components\RegisterEmployeeComponent.js" />
     <Content Include="App\Presentation\Common\Directives\ngMatchDirective.js" />
+    <Content Include="App\Presentation\User\Components\RegisterEmployerComponent.js" />
     <Content Include="App\Presentation\User\Views\RegisterEmployee.html" />
     <Content Include="App\Presentation\User\Controller\UserController.js" />
     <Content Include="App\Business\User\UserService.js" />
@@ -94,6 +98,7 @@
     <Content Include="App\Presentation\User\Views\Login.html" />
     <Content Include="App\Presentation\User\Views\Profile.html" />
     <Content Include="App\Presentation\User\Views\Register.html" />
+    <Content Include="App\Presentation\User\Views\RegisterEmployer.html" />
     <Content Include="package.json" />
     <Content Include="ThemeResources\css\my-custom.css" />
     <Content Include="ThemeResources\fonts\fontawesome-webfont.eot" />

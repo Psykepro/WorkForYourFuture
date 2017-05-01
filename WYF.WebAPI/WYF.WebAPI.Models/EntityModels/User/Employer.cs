@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using WYF.WebAPI.Models.EntityModels.Job;
+using WYF.WebAPI.Models.Utilities;
 
 namespace WYF.WebAPI.Models.EntityModels.User
 {
@@ -12,20 +13,18 @@ namespace WYF.WebAPI.Models.EntityModels.User
             this.JobPostings = new HashSet<JobPosting>();
         }
 
-        [Required]
-        [MinLength(length: 2, ErrorMessage = "The allowed minimum length of BusinessName is 2 characters.")]
-        [MaxLength(length: 20, ErrorMessage = "The allowed maximum length of BusinessName is 20 characters.")]
+        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
+        [RegularExpression(pattern: Constants.BUSINESS_NAME_REGEX_PATTERN, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_BUSINESS_NAME)]
         public string BusinessName { get; set; }
 
-        [Required]
-        [MinLength(length: 13, ErrorMessage = "The allowed minimum length of BulstatIdNumber is 13 characters.")]
-        [MaxLength(length: 15, ErrorMessage = "The allowed maximum length of BulstatIdNumber is 15 characters.")]
-        [RegularExpression(pattern: "^[0-9]+$", ErrorMessage = "The BulstatIdNumber can contains only digits.")]
+        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
+        [RegularExpression(pattern: Constants.BULSTAT_ID_NUMBER_REGEX_PATTERN, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_BULSTAT_ID_NUMBER)]
         public string BulstatIdNumber { get; set; }
 
         public string BusinessWebsiteUrl { get; set; }
 
-        [RegularExpression(pattern: "^[0-9]{9}$", ErrorMessage = "The phone number is invalid.")]
+        [RegularExpression(pattern: Constants.PHONE_REGEX_PATTERN, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_PHONE)]
+        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
         public string PhoneNumber { get; set; }
 
         public virtual IEnumerable<JobApplication> JobApplicants { get; set; }

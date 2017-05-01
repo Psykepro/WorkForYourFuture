@@ -51,7 +51,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#!/">Home</a></li>
                     <li><a href="#!/Home/About">About Us</a></li>
-                    <li ng-if="!mc.isAuthenticated()"><a href="#!/User/Login">Login</a></li>
+                    <li ng-if="!mc.isAuthenticated()"><a href="#!/User/login">login</a></li>
                     <li ng-if="!mc.isAuthenticated()"><a href="#!/User/Register">Register</a></li>
                     <li ng-if="mc.isAuthenticated()"><a href="#!/User/Profile">{{userName}}</a></li>
                     <li class="dropdown">
@@ -149,6 +149,7 @@
     <script type="text/javascript" src="App/Data/Data.js"></script>
     <script type="text/javascript" src="App/Data/Providers/WebApiRoutesProvider.js"></script>
     <script type="text/javascript" src="App/Data/Providers/RegexPatternsProvider.js"></script>
+    <script type="text/javascript" src="App/Data/Providers/ErrorMessagesProvider.js"></script>
 
     <!-- Business -->
     <script type="text/javascript" src="App/Business/Business.js"></script>
@@ -163,6 +164,7 @@
     <script type="text/javascript" src="App/Presentation/Common/Directives/ngMatchDirective.js"></script>
     <script type="text/javascript" src="App/Presentation/User/Controller/UserController.js"></script>
     <script type="text/javascript" src="App/Presentation/User/Components/RegisterEmployeeComponent.js"></script>
+    <script type="text/javascript" src="App/Presentation/User/Components/RegisterEmployerComponent.js"></script>
     <script type="text/javascript" src="App/Presentation/Home/Controller/HomeController.js"></script>
     <script type="text/javascript" src="App/Presentation/Admin/Controller/AdminController.js"></script>
     <script type="text/javascript" src="App/Presentation/Job/Controller/JobController.js"></script>

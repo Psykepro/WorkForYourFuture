@@ -1,19 +1,20 @@
-﻿<div>
+﻿<div ng-cloak>
     <div class="container">
         <div class="col-md-offset-3 row">
-            <div class="col-md-4 register-choose-type-wrapper blockquote">
+            <div id="employee-choose-section" class="col-md-4 register-choose-type-wrapper blockquote">
                 <h3>Register as Employee</h3>
                 <p>By registering, you will gain access to all WYF's services for employee. One of them is job search. WYF's services for employees are free.</p>
-                <button class="btn btn-success">Choose</button>
+                <button class="btn btn-success" ng-click="vm.chooseRegisterOption('Employee')">Choose</button>
             </div>
-            <div class="col-md-4 register-choose-type-wrapper">
+            <div id="employer-choose-section" class="col-md-4 register-choose-type-wrapper">
                 <h3>Register as Employer</h3>
                 <p>By registering, you will gain access to all WYF's services for Employer. One of them is creating job postings. Most of WYF's services for employers are free.</p>
-                <button class="btn btn-success">Choose</button>
+                <button class="btn btn-success" ng-click="vm.chooseRegisterOption('Employer')">Choose</button>
             </div>
         </div>
         <div class="row register-form-row">
-            <register-employee ng-if="vm.isEmployeeRegistering"></register-employee>
+            <register-employee ng-if="vm.isEmployeeRegistering !== null && vm.isEmployeeRegistering"></register-employee>
+            <register-employer ng-if="vm.isEmployeeRegistering !== null && !vm.isEmployeeRegistering"></register-employer>
         </div>
     </div>
 </div>

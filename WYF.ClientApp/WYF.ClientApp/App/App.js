@@ -63,10 +63,10 @@
                 templateUrl: 'App/Presentation/User/Views/Register.html',
                 controllerAs: 'vm'
             })
-            .when("/User/Login",
+            .when("/User/login",
             {
                 controller: 'userController',
-                templateUrl: 'App/Presentation/User/Views/Login.html',
+                templateUrl: 'App/Presentation/User/Views/login.html',
                 controllerAs: 'vm'
             })
             .when("/User/Profile/:id",

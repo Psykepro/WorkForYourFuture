@@ -1,36 +1,21 @@
-﻿
-
-<div id="form-wrapper" class="col-sm-6">
+﻿<!-- Register Employee Form -->
+<div id="form-wrapper" class="col-sm-6" ng-cloak>
     <form name="registerEmployeeForm" ng-submit="vm.submitEmployeeRegisterForm()" novalidate>
         
-        <!-- Username -->
-        <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.username.$invalid && !registerEmployeeForm.username.$pristine }">
-            <label>Username</label>
-            <input type="text" required name="username" class="form-control" ng-minlength="2" ng-maxlength="20" ng-pattern="usernamePattern" ng-model="vm.username">
-            <p ng-show="registerEmployeeForm.username.$error.maxlength || registerEmployeeForm.username.$error.minlength" class="help-block">The username must be between 2 and 20 characters.</p>
-            <p ng-show="registerEmployeeForm.username.$error.pattern && !registerEmployeeForm.username.$pristine
-               && !(registerEmployeeForm.username.$error.maxlength || registerEmployeeForm.username.$error.minlength)" class="help-block">The Username must contain only letters and digits symbols.</p>
-            <p ng-show="registerEmployeeForm.username.$error.required && !registerEmployeeForm.username.$pristine" class="help-block">This field is required</p>
-        </div>
-
         <!-- First Name -->
         <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.firstName.$invalid && !registerEmployeeForm.firstName.$pristine }">
             <label>First Name</label>
-            <input type="text" required name="firstName" class="form-control" ng-minlength="2" ng-maxlength="15" ng-pattern="namePattern" ng-model="vm.firstName">
-            <p ng-show="registerEmployeeForm.firstName.$error.maxlength || registerEmployeeForm.firstName.$error.minlength" class="help-block">The First Name must be between 2 and 15 alphabet characters.</p>
-            <p ng-show="registerEmployeeForm.firstName.$error.pattern && !registerEmployeeForm.firstName.$pristine
-               && !(registerEmployeeForm.firstName.$error.maxlength || registerEmployeeForm.firstName.$error.minlength)" class="help-block">The First Name must contain only alphabet characters.</p>
-            <p ng-show="registerEmployeeForm.firstName.$error.required && !registerEmployeeForm.firstName.$pristine" class="help-block">This field is required</p>
+            <input type="text" required name="firstName" class="form-control" ng-pattern="namePattern" ng-model="vm.firstName">
+            <p ng-show="registerEmployeeForm.firstName.$error.pattern && !registerEmployeeForm.firstName.$pristine" class="help-block">{{messageForNotMatchedName}}</p>
+            <p ng-show="registerEmployeeForm.firstName.$error.required && !registerEmployeeForm.firstName.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
         </div>
 
         <!-- Last Name -->
         <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.lastName.$invalid && !registerEmployeeForm.lastName.$pristine }">
             <label>Last Name</label>
             <input type="text" required name="lastName" class="form-control" ng-minlength="2" ng-maxlength="15" ng-pattern="namePattern" ng-model="vm.lastName">
-            <p ng-show="registerEmployeeForm.lastName.$error.maxlength || registerEmployeeForm.lastName.$error.minlength" class="help-block">The Last Name must be between 2 and 15 alphabet characters.</p>
-            <p ng-show="registerEmployeeForm.lastName.$error.pattern && !registerEmployeeForm.lastName.$pristine
-               && !(registerEmployeeForm.lastName.$error.maxlength || registerEmployeeForm.lastName.$error.minlength)" class="help-block">The Last Name must contain only alphabet characters.</p>
-            <p ng-show="registerEmployeeForm.lastName.$error.required && !registerEmployeeForm.lastName.$pristine" class="help-block">This field is required</p>
+            <p ng-show="registerEmployeeForm.lastName.$error.pattern && !registerEmployeeForm.lastName.$pristine" class="help-block">{{messageForNotMatchedName}}</p>
+            <p ng-show="registerEmployeeForm.lastName.$error.required && !registerEmployeeForm.lastName.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
         </div>
 
         <!-- Date Of Birth -->
@@ -38,33 +23,41 @@
             <md-datepicker name="dateOfBirth" required ng-model="vm.dateOfBirth" md-placeholder="Enter Date of Birth" md-is-open="vm.isOpen"></md-datepicker>
             <md-button class="md-primary md-raised" ng-click="vm.isOpen = true">Open</md-button>
             <div class="validation-messages" ng-messages="registerEmployeeForm.dateOfBirth.$error">
-                <div ng-message="required">This date is required!</div>
+                <div ng-message="required">{{messageForMissingRequiredField}}</div>
             </div>
+        </div>
+        
+        <!-- Username -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.username.$invalid && !registerEmployeeForm.username.$pristine }">
+            <label>Username</label>
+            <input type="text" required name="username" class="form-control" ng-pattern="usernamePattern" ng-model="vm.username">
+            <p ng-show="registerEmployeeForm.username.$error.pattern && !registerEmployeeForm.username.$pristine" class="help-block">{{messageForNotMatchedUsername}}</p>
+            <p ng-show="registerEmployeeForm.username.$error.required && !registerEmployeeForm.username.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
         </div>
 
         <!-- Email -->
         <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.email.$invalid && !registerEmployeeForm.email.$pristine }">
             <label>Email</label>
             <input type="email" required name="email" class="form-control" ng-model="vm.email" ng-pattern="emailPattern">
-            <p ng-show="registerEmployeeForm.email.$error.pattern" class="help-block">Enter valid email.</p>
-            <p ng-show="registerEmployeeForm.email.$error.required && !registerEmployeeForm.email.$pristine" class="help-block">This field is required</p>
+            <p ng-show="registerEmployeeForm.email.$error.pattern" class="help-block">{{messageForNotMatchedEmail}}</p>
+            <p ng-show="registerEmployeeForm.email.$error.required && !registerEmployeeForm.email.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
         </div>
 
         <!-- Password -->
         <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.password.$invalid && !registerEmployeeForm.password.$pristine }">
             <label>Password</label>
-            <input type="password" required name="password" class="form-control" ng-minlength="6" ng-pattern="passwordPattern" ng-model="vm.password">
+            <input type="password" required name="password" class="form-control" ng-pattern="passwordPattern" ng-model="vm.password">
             <p ng-show="(registerEmployeeForm.password.$invalid && !registerEmployeeForm.password.$pristine
-               && !registerEmployeeForm.password.$error.required) || registerEmployeeForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 characters and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
-            <p ng-show="registerEmployeeForm.password.$error.required && !registerEmployeeForm.password.$pristine" class="help-block">This field is required</p>
+               && !registerEmployeeForm.password.$error.required) || registerEmployeeForm.password.$error.pattern" class="help-block">{{messageForNotMatchedPassword}}</p>
+            <p ng-show="registerEmployeeForm.password.$error.required && !registerEmployeeForm.password.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
         </div>
 
         <!-- Confirm Password -->
         <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.confirmPassword.$invalid && !registerEmployeeForm.confirmPassword.$pristine }">
             <label>Confirm Password</label>
-            <input type="password" required name="confirmPassword" class="form-control" ng-minlength="6" ng-match="vm.password" ng-model="vm.confirmPassword">
-            <p ng-show="registerEmployeeForm.confirmPassword.$error.match && !registerEmployeeForm.confirmPassword.$pristine && !registerEmployeeForm.confirmPassword.$error.required" class="help-block">Passwords doesn't match</p>
-            <p ng-show="registerEmployeeForm.confirmPassword.$error.required && !registerEmployeeForm.confirmPassword.$pristine" class="help-block">This field is required</p>
+            <input type="password" required name="confirmPassword" class="form-control" ng-match="vm.password" ng-model="vm.confirmPassword">
+            <p ng-show="registerEmployeeForm.confirmPassword.$error.match && !registerEmployeeForm.confirmPassword.$pristine && !registerEmployeeForm.confirmPassword.$error.required" class="help-block">{{messageForConfirmPassword}}</p>
+            <p ng-show="registerEmployeeForm.confirmPassword.$error.required && !registerEmployeeForm.confirmPassword.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
         </div>
 
         <button type="submit" class="btn btn-primary" ng-disabled="registerEmployeeForm.$invalid

@@ -7,8 +7,6 @@
 
     function MainController($scope) {
 
-        
-
         var instance = {
             isAuthenticated : isAuthenticated
         };
