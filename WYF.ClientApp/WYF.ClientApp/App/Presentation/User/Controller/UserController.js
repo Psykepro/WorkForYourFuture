@@ -17,12 +17,14 @@
             isEmployeeRegistering: true,
             submitEmployeeRegisterForm: submitEmployeeRegisterForm,
             myDate: new Date(),
-            isOpen: false
+            isOpen: false,
+            usernameOrPasswordError: ''
         };
 
         function submitLoginForm() {
 
             var isFormValid = $scope.loginForm.$valid;
+
             var dto = {
                 username: this.username,
                 password: this.password
@@ -34,10 +36,9 @@
                 userService
                     .Login(dto)
                     .then(function success(result) {
-                        var accessToken = result.access_token;
-                        var userName = result.userName;
-                        localStorage.setItem("accessToken", accessToken);
-                        localStorage.setItem("username", userName);
+                        if (instance.usernameOrPasswordError !== '') {
+                            instance.usernameOrPasswordError = '';
+                        }
                         notie.alert({
                             type: 'success',
                             text: "The login was successful!",
@@ -45,6 +46,7 @@
                         });
                     },
                         function failure(error) {
+                            instance.usernameOrPasswordError = error.data.error_description;
                             notie.alert({
                                 type: 'error',
                                 text: "The login wasn't successful!",

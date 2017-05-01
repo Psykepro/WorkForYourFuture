@@ -26,10 +26,16 @@
             }
 
             webApiRequestsService
-                .PostRequest(route, dto, headers, true)
+                .PostRequest(route, dto, headers)
                 .then(function success(result) {
+                    var accessToken = result.access_token;
+                    var userName = result.userName;
+                    var expires = result['.expires'];
+
+                    localStorage.setItem("accessToken", accessToken);
+                    localStorage.setItem("username", userName);
+                    localStorage.setItem("expires", expires);
                     defered.resolve(result);
-                    console.log(result);
                 },
                     function failure(error) {
                         defered.reject(error);

@@ -17,6 +17,10 @@ div.footer {
     background-color: #00283a;
     box-shadow: rgba(174, 198, 44, 0.8) 1px 4px 8px;
 }
+
+.help-block {
+    color: red;
+}
 /* COMMON CSS {END} */
 
 /* /USER/LOGIN CSS {START} */
