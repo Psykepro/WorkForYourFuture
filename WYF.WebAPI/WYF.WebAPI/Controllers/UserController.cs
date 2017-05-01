@@ -29,7 +29,7 @@ namespace WYF.WebAPI.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
-        private WyfDbContext context = new WyfDbContext();
+        private WyfDbContext _context = WyfDbContext.Create();
 
         public UserController()
         {
@@ -374,7 +374,7 @@ namespace WYF.WebAPI.Controllers
             }
             else
             {
-                user = this.context.Users.Find(user.Id);
+                user = this._context.Users.Find(user.Id);
 
                 try
                 {
@@ -386,8 +386,8 @@ namespace WYF.WebAPI.Controllers
                         UserId = user.Id,
                         User = user
                     };
-                    context.Employees.Add(newEmployee);
-                    context.SaveChanges();
+                    _context.Employees.Add(newEmployee);
+                    _context.SaveChanges();
                 }
                 catch (Exception e)
                 {
