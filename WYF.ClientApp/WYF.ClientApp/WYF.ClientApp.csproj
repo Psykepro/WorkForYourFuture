@@ -70,7 +70,8 @@
   <ItemGroup>
     <Content Include="App\Business\Admin\AdminService.js" />
     <Content Include="App\Business\Business.js" />
-    <Content Include="App\Business\Common\Services\WebApiRequestsService.js" />
+    <Content Include="App\Business\Common\CommonService.js" />
+    <Content Include="App\Business\Common\WebApiRequestsService.js" />
     <Content Include="App\Business\Job\JobService.js" />
     <Content Include="App\Data\Providers\ErrorMessagesProvider.js" />
     <Content Include="App\Data\Providers\RegexPatternsProvider.js" />

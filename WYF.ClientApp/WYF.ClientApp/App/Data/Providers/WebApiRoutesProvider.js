@@ -7,10 +7,9 @@
 
         var apiPrefix = "/api/";
 
-        var homeRoutes = {
-
-        };
-
+        //////////
+        // USER //
+        //////////
         var userApiPrefix = apiPrefix + 'User/';
         var userRoutes = {
             "RegisterEmployee": userApiPrefix + "RegisterEmployee",
@@ -21,20 +20,35 @@
                 "ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2F"
         };
 
+        /////////
+        // JOB //
+        /////////
+        var jobApiPrefix = apiPrefix + 'Job/';
         var jobRoutes = {
-         
         };
 
+        ////////////
+        // COMMON //
+        ////////////
+        var commonApiPrefix = apiPrefix + 'Common/';
+        var commonRoutes = {
+            "Cities": commonApiPrefix + 'Cities'
+        };
+
+        ///////////
+        // ADMIN //
+        ///////////
+        var adminApiPrefix = apiPrefix + 'Admin/';
         var adminRoutes = {
 
         };
 
         var instance = {
             Routes: {
-                "Home": homeRoutes,
                 "User": userRoutes,
                 "Job": jobRoutes,
-                "Admin": adminRoutes
+                "Admin": adminRoutes,
+                "Common": commonRoutes
             }
         };
 

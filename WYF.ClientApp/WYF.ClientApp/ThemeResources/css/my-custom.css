@@ -21,6 +21,10 @@ div.footer {
 .help-block {
     color: red;
 }
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
 /* COMMON CSS {END} */
 
 /* /USER/LOGIN CSS {START} */
@@ -61,8 +65,9 @@ div#form-wrapper {
         font-weight: lighter;
         margin: 0 30px 40px;
         text-align: center;
-        text-shadow: #2A8D7B -2px 2px;
+        text-shadow: #00283a -2px 2px;
     }
+
 
 .register-form-row {
     margin-top: 5px;

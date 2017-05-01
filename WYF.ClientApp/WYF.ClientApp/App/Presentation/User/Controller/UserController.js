@@ -3,9 +3,14 @@
 
     angular.module('presentation').controller('userController', UserController);
 
-    UserController.$inject = ['$scope', 'userService', 'regexPatternsProvider', 'errorMessagesProvider'];
+    UserController.$inject = ['$scope',
+                                'userService',
+                                'commonService',
+                                'regexPatternsProvider',
+                                'errorMessagesProvider',
+                                '$location'];
 
-    function UserController($scope, userService, regexPatternsProvider, errorMessagesProvider) {
+    function UserController($scope, userService, commonService, regexPatternsProvider, errorMessagesProvider, $location) {
 
         //////////////////////////////////////
         // SETTING REGEX PATTERNS TO $scope //
@@ -40,19 +45,35 @@
             isEmployeeRegistering: null,
             myDate: new Date(),
             isOpen: false,
-            usernameOrPasswordError: ''
+            usernameOrPasswordError: '',
+            allCities: null
         };
 
         function chooseRegisterOption(typeOfRegister) {
+            commonService
+                .getAllCities()
+                .then(function success(result) {
 
-            if (typeOfRegister.toLowerCase() === "employee") {
-                instance.isEmployeeRegistering = true;
-                userService.setActiveEmployeeRegisterSection();
-            } else if (typeOfRegister.toLowerCase() === "employer") {
-                instance.isEmployeeRegistering = false;
-                userService.setActiveEmployerRegisterSection();
-            }
+                    instance.allCities = result;
+                    if (typeOfRegister.toLowerCase() === "employee") {
+                        instance.isEmployeeRegistering = true;
+                        userService.setActiveEmployeeRegisterSection();
+                    } else if (typeOfRegister.toLowerCase() === "employer") {
+                        instance.isEmployeeRegistering = false;
+                        userService.setActiveEmployerRegisterSection();
+                    }
 
+                    },
+                    function failure(error) {
+                        
+                        notie.alert({
+                            type: 'error',
+                            text: error,
+                            position: 'bottom'
+                        });
+
+                        $location.path('/');
+                    });
         }
 
         function submitLoginForm() {

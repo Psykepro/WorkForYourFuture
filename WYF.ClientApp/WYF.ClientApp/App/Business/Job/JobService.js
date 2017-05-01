@@ -3,13 +3,13 @@
 
     angular.module('business').service('jobService', JobService);
 
-    JobService.$inject = [];
+    JobService.$inject = ['$q', 'webApiRoutesProvider', 'webApiRequestsService'];
 
-    function JobService() {
+    function JobService($q, webApiRoutesProvider, webApiRequestsService) {
 
         var instance = {
         };
-
+       
         return instance;
     }
 })();

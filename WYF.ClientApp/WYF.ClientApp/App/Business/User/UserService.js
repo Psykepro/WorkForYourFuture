@@ -12,7 +12,6 @@
             registerEmployee: registerEmployee,
             setActiveEmployeeRegisterSection: setActiveEmployeeRegisterSection,
             setActiveEmployerRegisterSection: setActiveEmployerRegisterSection,
-           
         };
 
         return instance;
@@ -56,6 +55,7 @@
 
             return defered.promise;
         }
+
 
 
         function registerEmployee(dto) {

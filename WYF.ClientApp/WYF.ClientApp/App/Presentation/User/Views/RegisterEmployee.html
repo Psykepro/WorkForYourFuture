@@ -17,6 +17,14 @@
             <p ng-show="registerEmployeeForm.lastName.$error.pattern && !registerEmployeeForm.lastName.$pristine" class="help-block">{{messageForNotMatchedName}}</p>
             <p ng-show="registerEmployeeForm.lastName.$error.required && !registerEmployeeForm.lastName.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
         </div>
+        
+        <!-- Living Location -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.lastName.$invalid && !registerEmployeeForm.lastName.$pristine }">
+            <label>Last Name</label>
+            <input type="text" required name="lastName" class="form-control" ng-minlength="2" ng-maxlength="15" ng-pattern="namePattern" ng-model="vm.lastName">
+            <p ng-show="registerEmployeeForm.lastName.$error.pattern && !registerEmployeeForm.lastName.$pristine" class="help-block">{{messageForNotMatchedName}}</p>
+            <p ng-show="registerEmployeeForm.lastName.$error.required && !registerEmployeeForm.lastName.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
+        </div>
 
         <!-- Date Of Birth -->
         <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.dateOfBirth.$invalid && !registerEmployeeForm.dateOfBirth.$pristine }">

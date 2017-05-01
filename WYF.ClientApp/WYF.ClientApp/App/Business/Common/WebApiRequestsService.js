@@ -48,7 +48,7 @@
                 deferred.resolve(result.data);
             },
             function (error) {
-                deferred.reject(error);
+                deferred.reject(error.data);
             });
 
             return deferred.promise;
@@ -68,7 +68,7 @@
                 deferred.resolve(result.data);
             },
             function (error) {
-                deferred.reject(error);
+                deferred.reject(error.data);
             });
 
             return deferred.promise;

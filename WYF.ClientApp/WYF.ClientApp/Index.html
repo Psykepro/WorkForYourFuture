@@ -51,7 +51,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#!/">Home</a></li>
                     <li><a href="#!/Home/About">About Us</a></li>
-                    <li ng-if="!mc.isAuthenticated()"><a href="#!/User/login">login</a></li>
+                    <li ng-if="!mc.isAuthenticated()"><a href="#!/User/Login">Login</a></li>
                     <li ng-if="!mc.isAuthenticated()"><a href="#!/User/Register">Register</a></li>
                     <li ng-if="mc.isAuthenticated()"><a href="#!/User/Profile">{{userName}}</a></li>
                     <li class="dropdown">
@@ -153,7 +153,8 @@
 
     <!-- Business -->
     <script type="text/javascript" src="App/Business/Business.js"></script>
-    <script type="text/javascript" src="App/Business/Common/Services/WebApiRequestsService.js"></script>
+    <script type="text/javascript" src="App/Business/Common/WebApiRequestsService.js"></script>
+    <script type="text/javascript" src="App/Business/Common/CommonService.js"></script>
     <script type="text/javascript" src="App/Business/User/UserService.js"></script>
     <script type="text/javascript" src="App/Business/Home/HomeService.js"></script>
     <script type="text/javascript" src="App/Business/Job/JobService.js"></script>
