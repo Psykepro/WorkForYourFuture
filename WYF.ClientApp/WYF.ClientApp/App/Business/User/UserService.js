@@ -9,18 +9,14 @@
 
         var instance = {
             Login: Login,
-            Register: Register
+            RegisterEmployee: RegisterEmployee
         };
 
         return instance;
 
-        function Login(username, password) {
+        function Login(dto) {
 
-            var dto = {
-                username: username,
-                password: password,
-                grant_type: 'password'
-            };
+            dto.grant_type = 'password';
 
             var route = webApiRoutesProvider.Routes["User"]["Login"];
             var defered = $q.defer();
@@ -33,8 +29,8 @@
                 .PostRequest(route, dto, headers, true)
                 .then(function success(result) {
                     defered.resolve(result);
-                        console.log(result);
-                    },
+                    console.log(result);
+                },
                     function failure(error) {
                         defered.reject(error);
                     });
@@ -43,15 +39,9 @@
         }
 
 
-        function Register(email, password, confirmPassword) {
+        function RegisterEmployee(dto) {
 
-            var dto = {
-                email: email,
-                password: password,
-                confirmPassword: confirmPassword
-            };
-
-            var route = webApiRoutesProvider.Routes["User"]["Register"];
+            var route = webApiRoutesProvider.Routes["User"]["RegisterEmployee"];
             var defered = $q.defer();
 
             webApiRequestsService
@@ -66,7 +56,7 @@
             return defered.promise;
         }
 
-        
+
     }
 
 })();

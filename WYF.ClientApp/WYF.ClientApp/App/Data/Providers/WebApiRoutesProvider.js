@@ -3,8 +3,6 @@
 
     angular.module('data').service('webApiRoutesProvider', WebApiRoutesProvider);
 
-    WebApiRoutesProvider.$inject = [];
-
     function WebApiRoutesProvider() {
 
         var apiPrefix = "/api/";
@@ -12,9 +10,10 @@
         var homeRoutes = {
 
         };
+
         var userApiPrefix = apiPrefix + 'User/';
         var userRoutes = {
-            "Register": userApiPrefix + "Register",
+            "RegisterEmployee": userApiPrefix + "RegisterEmployee",
             "Login": "/Token",
             "FacebookLogin": userApiPrefix +
                 "ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2",

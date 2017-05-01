@@ -32,6 +32,7 @@ div#form-wrapper {
     position: relative;
     text-align: center;
     border: #aec62c solid 5px;
+    border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.8) 1px 4px 8px;
     background: #00283a;
     margin: 0 2px 0 0;

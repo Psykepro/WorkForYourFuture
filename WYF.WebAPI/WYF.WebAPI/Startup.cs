@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
@@ -18,7 +20,6 @@ namespace WYF.WebAPI
 
         public void Configuration(IAppBuilder app)
         {
-
             try
             {
                 // Enable Cross Origin Resource Sharing

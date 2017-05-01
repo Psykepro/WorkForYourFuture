@@ -64,7 +64,8 @@
   <ItemGroup>
     <Compile Include="BindingModels\User\AddExternalLoginBindingModel.cs" />
     <Compile Include="BindingModels\User\ChangePasswordBindingModel.cs" />
-    <Compile Include="BindingModels\User\RegisterBindingModel.cs" />
+    <Compile Include="BindingModels\User\RegisterEmployeeBindingModel.cs" />
+    <Compile Include="BindingModels\User\RegisterUserBindingModel.cs" />
     <Compile Include="BindingModels\User\RegisterExternalBindingModel.cs" />
     <Compile Include="BindingModels\User\RemoveLoginBindingModel.cs" />
     <Compile Include="BindingModels\User\SetPasswordBindingModel.cs" />
@@ -83,6 +84,8 @@
     <Compile Include="Enums\Job\WorkTime.cs" />
     <Compile Include="Enums\User\Gender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\ErrorMessages.cs" />
     <Compile Include="ViewModels\User\ExternalLoginViewModel.cs" />
     <Compile Include="ViewModels\User\ManageInfoViewModel.cs" />
     <Compile Include="ViewModels\User\UserInfoViewModel.cs" />

@@ -14,8 +14,13 @@
 
         return instance;
 
-        function PostRequest(route, dto, headers, isLoginRequest) {
-            isLoginRequest = isLoginRequest || false;
+        function PostRequest(route, dto, headers) {
+
+            isLoginRequest = false;
+
+            if (route.includes("Token")) {
+                isLoginRequest = true;
+            } 
 
             if (isLoginRequest === true) {
                 var tempArr = [];

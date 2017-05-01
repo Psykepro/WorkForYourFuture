@@ -18,6 +18,7 @@ using WYF.WebAPI.Models.ViewModels.User;
 using WYF.WebAPI.Providers;
 using WYF.WebAPI.Results;
 using System.Web.Http.Cors;
+using WYF.WebAPI.Data;
 
 namespace WYF.WebAPI.Controllers
 {
@@ -28,6 +29,7 @@ namespace WYF.WebAPI.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private WyfDbContext context = new WyfDbContext();
 
         public UserController()
         {
@@ -221,6 +223,10 @@ namespace WYF.WebAPI.Controllers
             {
                 return GetErrorResult(result);
             }
+            else
+            {
+                
+            }
 
             return Ok();
         }
@@ -282,7 +288,7 @@ namespace WYF.WebAPI.Controllers
             return Ok();
         }
 
-        // GET api/User/ExternalLogins?returnUrl=%2F&generateState=true
+        // GET api/User/ExternalLogins?returnUrl=%2F&generateState=false
         [AllowAnonymous]
         [Route("ExternalLogins")]
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
@@ -326,14 +332,14 @@ namespace WYF.WebAPI.Controllers
         // POST api/User/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public async Task<IHttpActionResult> Register(RegisterUserBindingModel model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var user = new User() { UserName = model.Email, Email = model.Email };
+            var user = new User() { UserName = model.Username, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -345,16 +351,65 @@ namespace WYF.WebAPI.Controllers
             return Ok();
         }
 
+
+        // POST api/User/RegisterEmployee
+        [AllowAnonymous]
+        [Route("RegisterEmployee")]
+        public async Task<IHttpActionResult> RegisterEmployee(RegisterEmployeeBindingModel model)
+        {
+            model.DateOfBirth = model.DateOfBirth.AddDays(1);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new User() { UserName = model.Username, Email = model.Email };
+
+            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+            else
+            {
+                user = this.context.Users.Find(user.Id);
+
+                try
+                {
+                    Employee newEmployee = new Employee()
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        DateOfBirth = model.DateOfBirth,
+                        UserId = user.Id,
+                        User = user
+                    };
+                    context.Employees.Add(newEmployee);
+                    context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+                
+            }
+
+            return Ok();
+        }
+
         // POST api/User/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]
-        public async Task<IHttpActionResult> RegisterExternal(/*RegisterExternalBindingModel model*/)
+        public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             var info = await Authentication.GetExternalLoginInfoAsync();
             if (info == null)
@@ -362,7 +417,7 @@ namespace WYF.WebAPI.Controllers
                 return InternalServerError();
             }
 
-            var user = new User() { UserName = info.Email, Email = info.Email };
+            var user = new User() { UserName = model.Username, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user);
             if (!result.Succeeded)
