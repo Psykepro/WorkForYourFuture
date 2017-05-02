@@ -4,18 +4,22 @@
     angular.module('presentation').controller('mainController', MainController);
 
     MainController.$inject = ['$scope',
+                                '$location',
+                                'userService',
                                 'USERNAME_KEY_IN_LOCAL_STORAGE',
                                 'ACCESSTOKEN_KEY_IN_LOCAL_STORAGE',
                                 'USER_ID_IN_LOCAL_STORAGE'];
 
     function MainController($scope,
+                            $location,
+                            userService,
                             USERNAME_KEY_IN_LOCAL_STORAGE,
                             ACCESSTOKEN_KEY_IN_LOCAL_STORAGE,
                             USER_ID_IN_LOCAL_STORAGE) {
 
         var instance = {
             isAuthenticated: isAuthenticated,
-            username: ''
+            logout: logout
         };
 
         function isAuthenticated() {
@@ -28,9 +32,19 @@
                 this.userId = currentUserId;
 
                 return true;
+            } else {
+                this.username = '';
+                this.userId = '';
             }
 
             return false;
+        }
+
+
+        function logout() {
+            userService.logout();
+            isAuthenticated();
+            $location.path('/');
         }
 
         $scope.$on('user-logged-in', function (event, args) {

@@ -21,7 +21,8 @@
         .constant('USERNAME_KEY_IN_LOCAL_STORAGE', 'username')
         .constant('ACCESSTOKEN_KEY_IN_LOCAL_STORAGE', 'accessToken')
         .constant('USER_ID_IN_LOCAL_STORAGE', 'userId')
-        .config(configureRoutes); // config;
+        .constant('EXPIRES_IN_LOCAL_STORAGE', 'expires')
+        .config(configureRoutes); 
 
     // Configuration of the routes
     configureRoutes.$inject = ['$routeProvider'];
@@ -72,7 +73,7 @@
                 templateUrl: 'App/Presentation/User/Views/Login.html',
                 controllerAs: 'vm'
             })
-            .when("/User/Profile/:id",
+            .when("/User/Profile",
             {
                 controller: 'userController',
                 templateUrl: 'App/Presentation/User/Views/Profile.html',

@@ -7,6 +7,7 @@
                             'USERNAME_KEY_IN_LOCAL_STORAGE',
                             'ACCESSTOKEN_KEY_IN_LOCAL_STORAGE',
                             'USER_ID_IN_LOCAL_STORAGE',
+                            'EXPIRES_IN_LOCAL_STORAGE',
                             'webApiRoutesProvider',
                             'webApiRequestsService'];
 
@@ -14,11 +15,13 @@
                          USERNAME_KEY_IN_LOCAL_STORAGE,
                          ACCESSTOKEN_KEY_IN_LOCAL_STORAGE,
                          USER_ID_IN_LOCAL_STORAGE,
+                         EXPIRES_IN_LOCAL_STORAGE,
                          webApiRoutesProvider,
                          webApiRequestsService) {
 
         var instance = {
             login: login,
+            logout: logout,
             registerEmployee: registerEmployee,
             registerEmployer: registerEmployer,
             setActiveEmployeeRegisterSection: setActiveEmployeeRegisterSection,
@@ -66,7 +69,7 @@
                                     localStorage.setItem(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE, accessToken);
                                     localStorage.setItem(USERNAME_KEY_IN_LOCAL_STORAGE, userName);
                                     localStorage.setItem(USER_ID_IN_LOCAL_STORAGE, result.Id);
-                                    localStorage.setItem("expires", expires);
+                                    localStorage.setItem(EXPIRES_IN_LOCAL_STORAGE, expires);
 
                                     defered.resolve(result);
                                 },
@@ -81,7 +84,12 @@
             return defered.promise;
         }
 
-        
+        function logout() {
+            localStorage.removeItem(USERNAME_KEY_IN_LOCAL_STORAGE);
+            localStorage.removeItem(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE);
+            localStorage.removeItem(EXPIRES_IN_LOCAL_STORAGE);
+            localStorage.removeItem(USER_ID_IN_LOCAL_STORAGE); 
+        }
 
         function registerEmployee(dto) {
 
