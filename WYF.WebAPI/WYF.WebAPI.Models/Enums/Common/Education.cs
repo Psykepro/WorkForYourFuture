@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WYF.WebAPI.Models.Enums.Job
+namespace WYF.WebAPI.Models.Enums.Common
 {
     [Flags]
     public enum Education : byte

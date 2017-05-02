@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using WYF.WebAPI.Models.EntityModels.User;
+using WYF.WebAPI.Models.Utilities;
 
 namespace WYF.WebAPI.Models.EntityModels.Job
 {
@@ -19,15 +20,15 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         [Index("IX_JobPosting_Title_Unique", IsUnique = true)]
-        [MinLength(length: 6, ErrorMessage = "The allowed minimum length of the Title is 6 characters.")]
-        [MaxLength(length: 20, ErrorMessage = "The allowed maximum length of the Title is 20 characters.")]
-        [DataType("VARCHAR(20)")]
+        [RegularExpression(pattern: RegexPatterns.JOB_TITLE, ErrorMessage = ErrorMessages.JOB_POSTING_TITLE)]
+        [DataType("VARCHAR(35)")]
         public string Title { get; set; }
 
-        [Required]
-        [MinLength(length: 2, ErrorMessage = "The allowed minimum length of the Business Name is 2 characters.")]
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
+        [RegularExpression(pattern: RegexPatterns.BUSINESS_NAME, ErrorMessage = ErrorMessages.NOT_MATCHED_BUSINESS_NAME)]
+        [DataType("VARCHAR(30)")]
         public string BusinessName { get; set; }
          
         public decimal Salary { get; set; }
@@ -39,8 +40,8 @@ namespace WYF.WebAPI.Models.EntityModels.Job
 
         public WorkTime WorkTime { get; set; }
 
-        [Required]
-        [StringLength(maximumLength: 5)]
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
+        [StringLength(maximumLength: Constants.DESCRIPTION_MAX_LENGTH, ErrorMessage = ErrorMessages.JOB_DESCRIPTION)]
         public string Description { get; set; }
 
         public int PostingCreatorId { get; set; }
@@ -54,7 +55,9 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         public DateTime CreationDate { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime ExpirationDate { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [DefaultValue("getutcdate()")]
+        public DateTime? ExpirationDate { get; set; }
 
         public int LocationId { get; set; }
 

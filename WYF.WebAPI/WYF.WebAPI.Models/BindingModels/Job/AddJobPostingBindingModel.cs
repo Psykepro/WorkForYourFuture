@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using WYF.WebAPI.Models.Utilities;
 
-namespace WYF.WebAPI.Models.BindingModels.User
+namespace WYF.WebAPI.Models.BindingModels.Job
 {
-    public class RegisterEmployeeBindingModel
+    class AddJobPostingBindingModel
     {
         [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
         [Display(Name = "Username")]
@@ -32,20 +32,5 @@ namespace WYF.WebAPI.Models.BindingModels.User
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = ErrorMessages.MESSAGE_FOR_CONFIRM_PASSWORD)]
         public string ConfirmPassword { get; set; }
-
-        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
-        [Display(Name = "First Name")]
-        [RegularExpression(pattern: RegexPatterns.NAME, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_NAME)]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
-        [Display(Name = "Last Name")]
-        [RegularExpression(pattern: RegexPatterns.NAME, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_NAME)]
-        public string LastName { get; set; }
-
-        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
-        [Display(Name = "Date Of Birth")]
-        [DataType(DataType.Date)]
-        public DateTime DateOfBirth { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WYF.WebAPI.Models.EntityModels.Job;
+using WYF.WebAPI.Models.Utilities;
 
 namespace WYF.WebAPI.Models.EntityModels.User
 {
@@ -13,8 +14,12 @@ namespace WYF.WebAPI.Models.EntityModels.User
             this.JobCandidatures = new HashSet<JobApplication>();
         }
 
+        [StringLength(maximumLength: Constants.EMPLOYEE_EXPERIANCE_MAX_LENGTH, ErrorMessage = ErrorMessages.EMPLOYEE_EXPERIENCE)]
+        [DataType("VARCHAR(500)")]
         public string Experience { get; set; }
 
+        [StringLength(maximumLength: Constants.MOTIVATIONAL_LETTER_MAX_LENGTH, ErrorMessage = ErrorMessages.MOTIVATIONAL_LETTER)]
+        [DataType("VARCHAR(500)")]
         public string MotivationalLetter { get; set; }
 
         public virtual IEnumerable<JobApplication> JobCandidatures { get; set; }

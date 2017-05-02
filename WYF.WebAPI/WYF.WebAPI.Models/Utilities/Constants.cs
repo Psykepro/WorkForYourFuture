@@ -15,16 +15,16 @@ namespace WYF.WebAPI.Models.Utilities
         public const string WYF_CLIENT_APP_ORIGIN_URL = "http://localhost:3000";
 
         ////////////////////
-        // REGEX PATTERNS //
+        // USER CONSTANTS //
         ////////////////////
-        
-        public const string EMAIL_REGEX_PATTERN = "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-        public const string PASSWORD_REGEX_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$";
-        public const string NAME_REGEX_PATTERN = "^[A-Za-z]{2,15}$";
-        public const string BUSINESS_NAME_REGEX_PATTERN = "^[A-Za-z&\\s0-9]{2,30}$";
-        public const string USERNAME_REGEX_PATTERN = "^[a-zA-Z0-9]{2,15}$";
-        public const string PHONE_REGEX_PATTERN = "^[0-9]{10}$";
-        public const string BULSTAT_ID_NUMBER_REGEX_PATTERN = "^[0-9]{13,15}$";
 
+        public const int EMPLOYEE_EXPERIANCE_MAX_LENGTH = 500;
+        public const int MOTIVATIONAL_LETTER_MAX_LENGTH = 500;
+
+        ///////////////////
+        // JOB CONSTANTS //
+        ///////////////////
+
+        public const int DESCRIPTION_MAX_LENGTH = 1000;
     }
 }

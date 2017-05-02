@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WYF.WebAPI.Models.EntityModels.Job;
@@ -15,16 +16,20 @@ namespace WYF.WebAPI.Models.EntityModels.User
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
-        [RegularExpression(pattern: Constants.NAME_REGEX_PATTERN, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_NAME)]
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
+        [RegularExpression(pattern: RegexPatterns.NAME, ErrorMessage = ErrorMessages.NOT_MATCHED_NAME)]
+        [DataType("VARCHAR(15)")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
-        [RegularExpression(pattern: Constants.NAME_REGEX_PATTERN, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_NAME)]
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
+        [RegularExpression(pattern: RegexPatterns.NAME, ErrorMessage = ErrorMessages.NOT_MATCHED_NAME)]
+        [DataType("VARCHAR(15)")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         [DataType(DataType.Date)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [DefaultValue("getutcdate()")]
         public DateTime DateOfBirth { get; set; }
 
         public Gender Gender { get; set; }
@@ -34,7 +39,7 @@ namespace WYF.WebAPI.Models.EntityModels.User
         [ForeignKey(name: "UserId")]
         public virtual User User { get; set; }
 
-        //[Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
+        //[Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         //public City LivingLocation { get; set; }
     }
 }

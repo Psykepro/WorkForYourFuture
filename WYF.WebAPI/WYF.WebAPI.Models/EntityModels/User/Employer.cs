@@ -13,18 +13,21 @@ namespace WYF.WebAPI.Models.EntityModels.User
             this.JobPostings = new HashSet<JobPosting>();
         }
 
-        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
-        [RegularExpression(pattern: Constants.BUSINESS_NAME_REGEX_PATTERN, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_BUSINESS_NAME)]
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
+        [RegularExpression(pattern: RegexPatterns.BUSINESS, ErrorMessage = ErrorMessages.NOT_MATCHED_BUSINESS_NAME)]
+        [DataType("VARCHAR(30)")]
         public string BusinessName { get; set; }
 
-        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
-        [RegularExpression(pattern: Constants.BULSTAT_ID_NUMBER_REGEX_PATTERN, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_BULSTAT_ID_NUMBER)]
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
+        [RegularExpression(pattern: RegexPatterns.BULSTAT_ID_NUMBER, ErrorMessage = ErrorMessages.NOT_MATCHED_BULSTAT_ID_NUMBER)]
+        [DataType("VARCHAR(15)")]
         public string BulstatIdNumber { get; set; }
 
         public string BusinessWebsiteUrl { get; set; }
 
-        [RegularExpression(pattern: Constants.PHONE_REGEX_PATTERN, ErrorMessage = ErrorMessages.MESSAGE_FOR_NOT_MATCHED_PHONE)]
-        [Required(ErrorMessage = ErrorMessages.MESSAGE_FOR_MISSING_REQUIRED_FIELD)]
+        [RegularExpression(pattern: RegexPatterns.PHONE, ErrorMessage = ErrorMessages.NOT_MATCHED_PHONE)]
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
+        [DataType("VARCHAR(10)")]
         public string PhoneNumber { get; set; }
 
         public virtual IEnumerable<JobApplication> JobApplicants { get; set; }

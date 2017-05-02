@@ -14,6 +14,23 @@ namespace WYF.WebAPI.Controllers
     {
         private WyfDbContext _context = WyfDbContext.Create();
 
-        
+        [Route("Add")]
+        [HttpPost]
+        public IEnumerable<string> AddJobPosting()
+        {
+            string[] allCities = _context.Cities.Select(c => c.Name).ToArray();
+
+            if (allCities == null || allCities.Length == 0)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent("There are no Cities in the database."),
+                    ReasonPhrase = "Missing Resource Exception"
+                });
+            }
+
+            return allCities;
+
+        }
     }
 }
