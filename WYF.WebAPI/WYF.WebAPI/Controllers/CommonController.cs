@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WYF.WebAPI.Data;
+using WYF.WebAPI.Models.EntityModels.Common;
 using WYF.WebAPI.Models.Enums.Common;
 using WYF.WebAPI.Models.Utilities;
 
@@ -24,11 +25,15 @@ namespace WYF.WebAPI.Controllers
 
             if (allCities == null || allCities.Length == 0)
             {
-                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
-                {
-                    Content = new StringContent("There are no Cities in the database."),
-                    ReasonPhrase = "Missing Resource Exception"
-                });
+                City newCity = new City() {Name = "Sofia"};
+                _context.Cities.Add(newCity);
+                _context.SaveChanges();
+                allCities = new string[1] { newCity.Name };
+                //throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
+                //{
+                //    Content = new StringContent("There are no Cities in the database."),
+                //    ReasonPhrase = "Missing Resource Exception"
+                //});
             }
 
             return allCities;

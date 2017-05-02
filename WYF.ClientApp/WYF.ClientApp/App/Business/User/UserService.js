@@ -3,9 +3,19 @@
 
     angular.module('business').service('userService', UserService);
 
-    UserService.$inject = ['$q', 'webApiRoutesProvider', 'webApiRequestsService'];
+    UserService.$inject = ['$q',
+                            'USERNAME_KEY_IN_LOCAL_STORAGE',
+                            'ACCESSTOKEN_KEY_IN_LOCAL_STORAGE',
+                            'USER_ID_IN_LOCAL_STORAGE',
+                            'webApiRoutesProvider',
+                            'webApiRequestsService'];
 
-    function UserService($q, webApiRoutesProvider, webApiRequestsService) {
+    function UserService($q,
+                         USERNAME_KEY_IN_LOCAL_STORAGE,
+                         ACCESSTOKEN_KEY_IN_LOCAL_STORAGE,
+                         USER_ID_IN_LOCAL_STORAGE,
+                         webApiRoutesProvider,
+                         webApiRequestsService) {
 
         var instance = {
             login: login,
@@ -38,17 +48,31 @@
             }
 
             webApiRequestsService
-                .PostRequest(route, dto, headers)
+                .postRequest(route, dto, headers)
                 .then(function success(result) {
                     var accessToken = result.access_token;
                     var userName = result.userName;
                     var expires = result['.expires'];
 
-                    localStorage.setItem("accessToken", accessToken);
-                    localStorage.setItem("username", userName);
-                    localStorage.setItem("expires", expires);
-                    defered.resolve(result);
-                },
+                    // Setting the authorization token to the headers
+                    // and sending post request to api/User/UserInfo to get userId
+                    headers['Authorization'] = "Bearer " + accessToken;
+                    route = webApiRoutesProvider.Routes["User"]["UserInfo"];
+                        webApiRequestsService
+                            .getRequest(route, headers)
+                            .then(function success(result) {
+
+                                    localStorage.setItem(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE, accessToken);
+                                    localStorage.setItem(USERNAME_KEY_IN_LOCAL_STORAGE, userName);
+                                    localStorage.setItem(USER_ID_IN_LOCAL_STORAGE, result.Id);
+                                    localStorage.setItem("expires", expires);
+
+                                    defered.resolve(result);
+                                },
+                                function failure(error) {
+                                    defered.reject(error);
+                                });
+                    },
                     function failure(error) {
                         defered.reject(error);
                     });
@@ -56,7 +80,7 @@
             return defered.promise;
         }
 
-
+        
 
         function registerEmployee(dto) {
 
@@ -64,7 +88,7 @@
             var defered = $q.defer();
 
             webApiRequestsService
-                .PostRequest(route, dto)
+                .postRequest(route, dto)
                 .then(function success(result) {
                     defered.resolve(result);
                 },

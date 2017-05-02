@@ -8,9 +8,16 @@
                                 'commonService',
                                 'regexPatternsProvider',
                                 'errorMessagesProvider',
-                                '$location'];
+                                '$location',
+                                '$rootScope'];
 
-    function UserController($scope, userService, commonService, regexPatternsProvider, errorMessagesProvider, $location) {
+    function UserController($scope,
+                            userService,
+                            commonService,
+                            regexPatternsProvider,
+                            errorMessagesProvider,
+                            $location,
+                            $rootScope) {
 
         //////////////////////////////////////
         // SETTING REGEX PATTERNS TO $scope //
@@ -95,6 +102,8 @@
                             instance.usernameOrPasswordError = '';
                         }
 
+                        $rootScope.$broadcast('user-logged-in');
+
                         notie.alert({
                             type: 'success',
                             text: "The login was successful!",
@@ -118,18 +127,16 @@
 
             if (isFormValid) {
 
-                var dto = {
-                    username: this.username,
-                    email: this.email,
-                    password: this.password,
-                    confirmPassword: this.confirmPassword,
-                    firstName: this.firstName,
-                    lastName: this.lastName,
-                    dateOfBirth: this.dateOfBirth
-                };
+                var employeeRegisterBM = new RegisterEmployeeBM(this.username,
+                                                                this.email,
+                                                                this.password,
+                                                                this.confirmPassword,
+                                                                this.firstName,
+                                                                this.lastName,
+                                                                this.dateOfBirth);
 
                 userService
-                    .registerEmployee(dto)
+                    .registerEmployee(employeeRegisterBM)
                     .then(function success(result) {
                         notie.alert({
                             type: 'success',

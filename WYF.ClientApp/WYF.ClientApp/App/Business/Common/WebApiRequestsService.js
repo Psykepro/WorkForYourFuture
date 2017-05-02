@@ -3,24 +3,29 @@
 
     angular.module('business').service('webApiRequestsService', WebApiRequestsService);
 
-    WebApiRequestsService.$inject = ['$http', '$q', 'URL_WITH_PORT'];
+    WebApiRequestsService.$inject = ['$http',
+                                    '$q',
+                                    'URL_WITH_PORT',
+                                    'ACCESSTOKEN_KEY_IN_LOCAL_STORAGE'];
 
-    function WebApiRequestsService($http, $q, URL_WITH_PORT) {
+    function WebApiRequestsService($http, $q, URL_WITH_PORT, ACCESSTOKEN_KEY_IN_LOCAL_STORAGE) {
 
         var instance = {
-            PostRequest: PostRequest,
-            GetRequest: GetRequest
+            postRequest: postRequest,
+            getRequest: getRequest
         };
 
         return instance;
 
-        function PostRequest(route, dto, headers) {
+        function postRequest(route, dto, headers) {
 
             isLoginRequest = false;
 
             if (route.includes("Token")) {
                 isLoginRequest = true;
-            } 
+            }
+
+            
 
             if (isLoginRequest === true) {
                 var tempArr = [];
@@ -34,6 +39,7 @@
             
             headers = headers || $http.defaults.headers.post;
             headers["Access-Control-Allow-Origin"] = '*';
+            headers = _setAuthorizationHeaderIfExistsAuthToken(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE, headers);
 
             var deferred = $q.defer();
 
@@ -54,8 +60,9 @@
             return deferred.promise;
         }
 
-        function GetRequest(route, headers) {
+        function getRequest(route, headers) {
             headers = headers || $http.defaults.headers.get;
+            headers = _setAuthorizationHeaderIfExistsAuthToken(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE, headers);
 
             var deferred = $q.defer();
             $http({
@@ -74,5 +81,14 @@
             return deferred.promise;
         }
 
+
+        function _setAuthorizationHeaderIfExistsAuthToken(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE, headers) {
+            var accessToken = localStorage.getItem(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE);
+            if (accessToken !== null && accessToken !== '') {
+                headers["Authorization"] = "Bearer " + ACCESSTOKEN_KEY_IN_LOCAL_STORAGE;
+            }
+
+            return headers;
+        }
     }
 })();

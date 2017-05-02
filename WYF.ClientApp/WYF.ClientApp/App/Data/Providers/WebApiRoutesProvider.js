@@ -14,6 +14,7 @@
         var userRoutes = {
             "RegisterEmployee": userApiPrefix + "RegisterEmployee",
             "Login": "/Token",
+            "UserInfo": userApiPrefix + "UserInfo",
             "FacebookLogin": userApiPrefix +
                 "ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A64219%2",
             "GoogleLogin": userApiPrefix +

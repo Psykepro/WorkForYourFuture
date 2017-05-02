@@ -17,7 +17,7 @@
             var defered = $q.defer();
 
             webApiRequestsService
-                .GetRequest(route)
+                .getRequest(route)
                 .then(function success(result) {
                     defered.resolve(result);
                 },
@@ -33,7 +33,7 @@
             var defered = $q.defer();
 
             webApiRequestsService
-                .GetRequest(route)
+                .getRequest(route)
                 .then(function success(result) {
                     defered.resolve(result);
                 },

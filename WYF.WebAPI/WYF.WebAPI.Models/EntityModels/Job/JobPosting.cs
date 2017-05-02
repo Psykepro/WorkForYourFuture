@@ -23,9 +23,8 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         public int Id { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
-        [Index("IX_JobPosting_Title_Unique", IsUnique = true)]
         [RegularExpression(pattern: RegexPatterns.JOB_TITLE, ErrorMessage = ErrorMessages.JOB_POSTING_TITLE)]
-        [DataType("VARCHAR(35)")]
+        [DataType("VARCHAR(30)")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]

@@ -3,7 +3,7 @@
         <div class="row">
 
             <div id="form-wrapper" class="col-sm-6">
-                <form name="loginForm" ng-submit="vm.submitloginForm()" novalidate>
+                <form name="loginForm" ng-submit="vm.submitLoginForm()" novalidate>
                     
                     <!-- Username -->
                     <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
@@ -19,9 +19,8 @@
                         <p ng-show="(loginForm.password.$invalid && !loginForm.password.$pristine && !loginForm.password.$error.required) || loginForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 characters and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
                         <p ng-show="loginForm.password.$error.required && !loginForm.password.$pristine" class="help-block">This field is required</p>
                     </div>
-
                     <p ng-show="vm.usernameOrPasswordError" class="help-block">{{vm.usernameOrPasswordError}}</p>
-                    <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid || (loginForm.username.$pristine || loginForm.password.$pristine)">login</button>
+                    <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid || (loginForm.username.$pristine || loginForm.password.$pristine)">Login</button>
                 </form>
             </div>
 

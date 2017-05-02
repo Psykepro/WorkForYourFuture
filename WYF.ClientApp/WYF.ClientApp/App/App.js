@@ -18,6 +18,9 @@
         .constant('URL', url)
         .constant('PORT', port)
         .constant('URL_WITH_PORT', url_with_port)
+        .constant('USERNAME_KEY_IN_LOCAL_STORAGE', 'username')
+        .constant('ACCESSTOKEN_KEY_IN_LOCAL_STORAGE', 'accessToken')
+        .constant('USER_ID_IN_LOCAL_STORAGE', 'userId')
         .config(configureRoutes); // config;
 
     // Configuration of the routes
@@ -63,10 +66,10 @@
                 templateUrl: 'App/Presentation/User/Views/Register.html',
                 controllerAs: 'vm'
             })
-            .when("/User/login",
+            .when("/User/Login",
             {
                 controller: 'userController',
-                templateUrl: 'App/Presentation/User/Views/login.html',
+                templateUrl: 'App/Presentation/User/Views/Login.html',
                 controllerAs: 'vm'
             })
             .when("/User/Profile/:id",
