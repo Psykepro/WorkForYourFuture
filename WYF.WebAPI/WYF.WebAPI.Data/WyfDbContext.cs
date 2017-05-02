@@ -2,6 +2,7 @@
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using WYF.WebAPI.Data.Conventions;
+using WYF.WebAPI.Models.EntityModels.Common;
 using WYF.WebAPI.Models.EntityModels.User;
 
 namespace WYF.WebAPI.Data

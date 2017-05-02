@@ -27,11 +27,11 @@ namespace WYF.WebAPI.Models.EntityModels.User
         [DataType("VARBINARY(MAX)")]
         public byte[] Cv { get; set; }
 
-        [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         /* Setting DefaultValue to 0 because the type of that property in the SQL is 'bit' */
         [DefaultValue(0)]
         [Column(name: "IsLicensedDriver")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         public bool IsLicensedDriver { get; set; }
     }
 }

@@ -25,6 +25,6 @@ namespace WYF.WebAPI.Models.Utilities
         // JOB CONSTANTS //
         ///////////////////
 
-        public const int DESCRIPTION_MAX_LENGTH = 1000;
+        public const int JOB_DESCRIPTION_MAX_LENGTH = 1000;
     }
 }

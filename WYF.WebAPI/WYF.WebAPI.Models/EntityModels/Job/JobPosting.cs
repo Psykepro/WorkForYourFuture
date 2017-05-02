@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+using WYF.WebAPI.Models.EntityModels.Common;
 using WYF.WebAPI.Models.EntityModels.User;
+using WYF.WebAPI.Models.Enums.Common;
 using WYF.WebAPI.Models.Utilities;
 
 namespace WYF.WebAPI.Models.EntityModels.Job
@@ -41,7 +43,7 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         public WorkTime WorkTime { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
-        [StringLength(maximumLength: Constants.DESCRIPTION_MAX_LENGTH, ErrorMessage = ErrorMessages.JOB_DESCRIPTION)]
+        [StringLength(maximumLength: Constants.JOB_DESCRIPTION_MAX_LENGTH, ErrorMessage = ErrorMessages.JOB_DESCRIPTION)]
         public string Description { get; set; }
 
         public int PostingCreatorId { get; set; }
@@ -64,10 +66,14 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         [ForeignKey(name: "LocationId")]
         public City Location { get; set; }
 
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         public HierarchyLevel HierarchyLevel { get; set; }
 
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
+        [DefaultValue(0)]
         public bool IsDrivingLicenseRequired { get; set; }
 
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         public IEnumerable<Language> Languages { get; set; }
 
         public LanguageLevel LanguageLevel { get; set; }

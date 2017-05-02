@@ -14,7 +14,7 @@ namespace WYF.WebAPI.Models.EntityModels.User
         }
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
-        [RegularExpression(pattern: RegexPatterns.BUSINESS, ErrorMessage = ErrorMessages.NOT_MATCHED_BUSINESS_NAME)]
+        [RegularExpression(pattern: RegexPatterns.BUSINESS_NAME, ErrorMessage = ErrorMessages.NOT_MATCHED_BUSINESS_NAME)]
         [DataType("VARCHAR(30)")]
         public string BusinessName { get; set; }
 

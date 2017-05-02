@@ -31,5 +31,26 @@ namespace WYF.WebAPI.Controllers
 
             return allCities;
         }
+
+
+        [Route("Languages")]
+        [HttpPost]
+        public IEnumerable<string> GetLanguages()
+        {
+            Dictionary<string, int> allLanguages = _context.Select(c => c.Name).ToArray();
+            
+            
+            if (allCities == null || allCities.Length == 0)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent("There are no Cities in the database."),
+                    ReasonPhrase = "Missing Resource Exception"
+                });
+            }
+
+            return allCities;
+
+        }
     }
 }
