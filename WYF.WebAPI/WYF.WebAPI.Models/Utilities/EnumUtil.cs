@@ -14,15 +14,15 @@ namespace WYF.WebAPI.Models.Utilities
             return Enum.GetValues(typeof(T)).Cast<T>();
         }
 
-        public static Dictionary<int, string> GetValuesAsNumbersWithNames<T>()
+        public static Dictionary<byte, string> GetValuesAsNumbersWithNames<T>()
         {
             var values = GetValues<T>();
-            Dictionary<int, string> valuesAsNumbersWithNames = new Dictionary<int, string>();
+            Dictionary<byte, string> valuesAsNumbersWithNames = new Dictionary<byte, string>();
 
             foreach (var value in values)
             {
                 object valueAsObject = (object)value;
-                int valueAsNumber = (int)valueAsObject;
+                byte valueAsNumber = (byte)valueAsObject;
                 string nameOfValue = valueAsObject.ToString();
 
                 valuesAsNumbersWithNames[valueAsNumber] = nameOfValue;

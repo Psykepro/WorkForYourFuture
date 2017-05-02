@@ -8,11 +8,28 @@
     function CommonService($q, webApiRoutesProvider, webApiRequestsService) {
 
         var instance = {
-            getAllCities: getAllCities
+            getAllCities: getAllCities,
+            getAllLanguages: getAllLanguages
         };
 
         function getAllCities() {
             var route = webApiRoutesProvider.Routes["Common"]["Cities"];
+            var defered = $q.defer();
+
+            webApiRequestsService
+                .GetRequest(route)
+                .then(function success(result) {
+                    defered.resolve(result);
+                },
+                    function failure(error) {
+                        defered.reject(error);
+                    });
+
+            return defered.promise;
+        }
+
+        function getAllLanguages() {
+            var route = webApiRoutesProvider.Routes["Common"]["Languages"];
             var defered = $q.defer();
 
             webApiRequestsService

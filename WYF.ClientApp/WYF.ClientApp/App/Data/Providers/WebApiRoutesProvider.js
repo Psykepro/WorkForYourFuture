@@ -32,7 +32,8 @@
         ////////////
         var commonApiPrefix = apiPrefix + 'Common/';
         var commonRoutes = {
-            "Cities": commonApiPrefix + 'Cities'
+            "Cities": commonApiPrefix + 'Cities',
+            "Languages": commonApiPrefix + 'Languages',
         };
 
         ///////////

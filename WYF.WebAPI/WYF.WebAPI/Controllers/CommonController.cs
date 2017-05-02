@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WYF.WebAPI.Data;
+using WYF.WebAPI.Models.Enums.Common;
+using WYF.WebAPI.Models.Utilities;
 
 namespace WYF.WebAPI.Controllers
 {
@@ -32,25 +34,24 @@ namespace WYF.WebAPI.Controllers
             return allCities;
         }
 
-
         [Route("Languages")]
-        [HttpPost]
-        public IEnumerable<string> GetLanguages()
+        [HttpGet]
+        public IOrderedEnumerable<KeyValuePair<byte, string>> GetLanguages()
         {
-            Dictionary<string, int> allLanguages = _context.Select(c => c.Name).ToArray();
-            
-            
-            if (allCities == null || allCities.Length == 0)
+            Dictionary<byte, string> allLanguages = EnumUtil.GetValuesAsNumbersWithNames<Language>();
+
+            if (allLanguages == null || allLanguages.Count == 0)
             {
                 throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
                 {
-                    Content = new StringContent("There are no Cities in the database."),
+                    Content = new StringContent("There are no Languages in the database."),
                     ReasonPhrase = "Missing Resource Exception"
                 });
             }
 
-            return allCities;
+            var allLanguagesSorted = from entry in allLanguages orderby entry.Value ascending select entry;
 
+            return allLanguagesSorted;
         }
     }
 }
