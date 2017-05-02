@@ -23,7 +23,6 @@ namespace WYF.WebAPI.Data.Migrations
         protected override void Seed(WYF.WebAPI.Data.WyfDbContext context)
         {   // Seed Roles
             AddRoles(context);
-            
         }
 
 

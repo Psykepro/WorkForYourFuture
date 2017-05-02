@@ -426,14 +426,10 @@ namespace WYF.WebAPI.Controllers
 
                 try
                 {
-                    Employee newEmployee = new Employee()
-                    {
-                        FirstName = model.FirstName,
-                        LastName = model.LastName,
-                        DateOfBirth = model.DateOfBirth,
-                        UserId = user.Id,
-                        User = user
-                    };
+                    Employee newEmployee = AutoMapper.Mapper.Map<RegisterEmployeeBindingModel, Employee>(model);
+                    newEmployee.User = user;
+                    newEmployee.UserId = user.Id;
+   
                     _context.Employees.Add(newEmployee);
                     _context.SaveChanges();
                 }
@@ -483,17 +479,11 @@ namespace WYF.WebAPI.Controllers
 
                 try
                 {
-                    Employer newEmployer = new Employer()
-                    {
-                        BulstatIdNumber = model.BulstatIdNumber,
-                        BusinessName = model.BusinessName,
-                        PhoneNumber = model.PhoneNumber,
-                        FirstName = model.FirstName,
-                        LastName = model.LastName,
-                        DateOfBirth = model.DateOfBirth,
-                        UserId = user.Id,
-                        User = user
-                    };
+
+                    Employer newEmployer = AutoMapper.Mapper.Map<RegisterEmployerBindingModel, Employer>(model);
+                    newEmployer.User = user;
+                    newEmployer.UserId = user.Id;
+
                     _context.Employers.Add(newEmployer);
                     _context.SaveChanges();
                 }

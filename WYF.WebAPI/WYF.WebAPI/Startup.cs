@@ -5,6 +5,8 @@ using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using WYF.WebAPI;
+using WYF.WebAPI.Models.BindingModels.User;
+using WYF.WebAPI.Models.EntityModels.User;
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -22,7 +24,7 @@ namespace WYF.WebAPI
             {
                 // Enable Cross Origin Resource Sharing
                 app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-
+                ConfigureAutoMapper();
                 ConfigureAuth(app);
             }
             catch (Exception e)
@@ -31,6 +33,15 @@ namespace WYF.WebAPI
                 throw;
             }
             
+        }
+
+        private void ConfigureAutoMapper()
+        {
+            AutoMapper.Mapper.Initialize(cfg => {
+                cfg.CreateMap<RegisterEmployeeBindingModel, Employee>();
+                cfg.CreateMap<RegisterEmployerBindingModel, Employer>();
+            });
+
         }
     }
 }
