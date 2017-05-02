@@ -20,6 +20,7 @@
         var instance = {
             login: login,
             registerEmployee: registerEmployee,
+            registerEmployer: registerEmployer,
             setActiveEmployeeRegisterSection: setActiveEmployeeRegisterSection,
             setActiveEmployerRegisterSection: setActiveEmployerRegisterSection,
         };
@@ -85,6 +86,23 @@
         function registerEmployee(dto) {
 
             var route = webApiRoutesProvider.Routes["User"]["RegisterEmployee"];
+            var defered = $q.defer();
+
+            webApiRequestsService
+                .postRequest(route, dto)
+                .then(function success(result) {
+                    defered.resolve(result);
+                },
+                    function failure(error) {
+                        defered.reject(error);
+                    });
+
+            return defered.promise;
+        }
+
+        function registerEmployer(dto) {
+
+            var route = webApiRoutesProvider.Routes["User"]["RegisterEmployer"];
             var defered = $q.defer();
 
             webApiRequestsService

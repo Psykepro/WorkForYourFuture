@@ -73,6 +73,8 @@
     <Content Include="App\Business\Common\CommonService.js" />
     <Content Include="App\Business\Common\WebApiRequestsService.js" />
     <Content Include="App\Business\Job\JobService.js" />
+    <Content Include="App\Data\Models\User\RegisterEmployeeBM.js" />
+    <Content Include="App\Data\Models\User\RegisterEmployerBM.js" />
     <Content Include="App\Data\Providers\ErrorMessagesProvider.js" />
     <Content Include="App\Data\Providers\RegexPatternsProvider.js" />
     <Content Include="App\Presentation\Admin\Controller\AdminController.js" />

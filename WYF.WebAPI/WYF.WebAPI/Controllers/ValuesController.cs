@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
-using System.Web.Http.Cors;
-using System.Web.Mvc;
 
 namespace WYF.WebAPI.Controllers
 {

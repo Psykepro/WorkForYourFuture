@@ -4,6 +4,10 @@ div#wrapper {
     position: relative;
 }
 
+html {
+    background-color: #FFFFFF;
+}
+
 .section {
     padding: 5% 0;
 }
@@ -71,6 +75,7 @@ div#form-wrapper {
 
 .register-form-row {
     margin-top: 5px;
+    background-color: #ffffff;
 }
 
 .active-register-section {

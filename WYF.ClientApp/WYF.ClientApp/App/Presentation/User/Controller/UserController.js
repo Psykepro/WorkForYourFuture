@@ -48,6 +48,7 @@
         var instance = {
             submitLoginForm: submitLoginForm,
             submitEmployeeRegisterForm: submitEmployeeRegisterForm,
+            submitEmployerRegisterForm: submitEmployerRegisterForm,
             chooseRegisterOption: chooseRegisterOption,
             isEmployeeRegistering: null,
             myDate: new Date(),
@@ -57,30 +58,13 @@
         };
 
         function chooseRegisterOption(typeOfRegister) {
-            commonService
-                .getAllCities()
-                .then(function success(result) {
-
-                    instance.allCities = result;
-                    if (typeOfRegister.toLowerCase() === "employee") {
-                        instance.isEmployeeRegistering = true;
-                        userService.setActiveEmployeeRegisterSection();
-                    } else if (typeOfRegister.toLowerCase() === "employer") {
-                        instance.isEmployeeRegistering = false;
-                        userService.setActiveEmployerRegisterSection();
-                    }
-
-                    },
-                    function failure(error) {
-                        
-                        notie.alert({
-                            type: 'error',
-                            text: error,
-                            position: 'bottom'
-                        });
-
-                        $location.path('/');
-                    });
+            if (typeOfRegister.toLowerCase() === "employee") {
+                instance.isEmployeeRegistering = true;
+                userService.setActiveEmployeeRegisterSection();
+            } else if (typeOfRegister.toLowerCase() === "employer") {
+                instance.isEmployeeRegistering = false;
+                userService.setActiveEmployerRegisterSection();
+            }
         }
 
         function submitLoginForm() {
@@ -125,8 +109,7 @@
 
             var isFormValid = $scope.registerEmployeeForm.$valid;
 
-            if (isFormValid) {
-
+            if (isFormValid) { 
                 var employeeRegisterBM = new RegisterEmployeeBM(this.username,
                                                                 this.email,
                                                                 this.password,
@@ -137,6 +120,43 @@
 
                 userService
                     .registerEmployee(employeeRegisterBM)
+                    .then(function success(result) {
+                        notie.alert({
+                            type: 'success',
+                            text: "The register was successful!",
+                            position: 'bottom'
+                        });
+                    },
+                        function failure(error) {
+                            notie.alert({
+                                type: 'error',
+                                text: "The register wasn't successful!",
+                                position: 'bottom'
+                            });
+                        });
+            }
+
+        }
+
+        function submitEmployerRegisterForm() {
+
+            var isFormValid = $scope.registerEmployerForm.$valid;
+
+            if (isFormValid) {
+
+                var employerRegisterBM = new RegisterEmployerBM(this.username,
+                                                                this.email,
+                                                                this.password,
+                                                                this.confirmPassword,
+                                                                this.firstName,
+                                                                this.lastName,
+                                                                this.dateOfBirth,
+                                                                this.businessName,
+                                                                this.bulstatIdNumber,
+                                                                this.phoneNumber);
+
+                userService
+                    .registerEmployer(employerRegisterBM)
                     .then(function success(result) {
                         notie.alert({
                             type: 'success',

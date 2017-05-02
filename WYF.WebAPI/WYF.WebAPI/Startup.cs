@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Globalization;
-using System.Threading;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;

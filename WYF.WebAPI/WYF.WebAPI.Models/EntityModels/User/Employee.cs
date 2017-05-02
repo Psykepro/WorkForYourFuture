@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WYF.WebAPI.Models.EntityModels.Common;
 using WYF.WebAPI.Models.EntityModels.Job;
 using WYF.WebAPI.Models.Utilities;
 
@@ -33,5 +34,7 @@ namespace WYF.WebAPI.Models.EntityModels.User
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         public bool IsLicensedDriver { get; set; }
+
+        public City LivingLocation { get; set; }
     }
 }

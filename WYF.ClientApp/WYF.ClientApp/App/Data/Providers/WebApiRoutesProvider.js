@@ -13,6 +13,7 @@
         var userApiPrefix = apiPrefix + 'User/';
         var userRoutes = {
             "RegisterEmployee": userApiPrefix + "RegisterEmployee",
+            "RegisterEmployer": userApiPrefix + "RegisterEmployer",
             "Login": "/Token",
             "UserInfo": userApiPrefix + "UserInfo",
             "FacebookLogin": userApiPrefix +

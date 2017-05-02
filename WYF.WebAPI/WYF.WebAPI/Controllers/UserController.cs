@@ -345,6 +345,14 @@ namespace WYF.WebAPI.Controllers
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
+            var rolesForEmployee = new[] { "User" };
+
+            var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForEmployee, user.Id);
+            if (resultOfAddingToRoles == false)
+            {
+                return InternalServerError(new Exception("Adding user to role failed."));
+            }
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -354,8 +362,38 @@ namespace WYF.WebAPI.Controllers
         }
 
 
+        private async Task<bool> SafelyAddUserToRole(string[] rolesForEmployee, string userId)
+        {
+            var roleStore = new RoleStore<IdentityRole>(this._context);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+            bool successOfAddingToRole = true;
+
+            foreach (var role in rolesForEmployee)
+            {
+                bool isCurrentRoleExists = await roleManager.RoleExistsAsync(role);
+                if (!isCurrentRoleExists)
+                {
+                    var resultNewRoleAdded = await roleManager.CreateAsync(new IdentityRole(role));
+                    if (!resultNewRoleAdded.Succeeded)
+                    {
+                        successOfAddingToRole = false;
+                    }
+                }
+
+                IdentityResult result = await UserManager.AddToRoleAsync(userId, role);
+
+                if (!result.Succeeded)
+                {
+                    successOfAddingToRole = false;
+                }
+            }
+
+            return successOfAddingToRole;
+        }
+
         // POST api/User/RegisterEmployee
         [AllowAnonymous]
+        [HttpPost]
         [Route("RegisterEmployee")]
         public async Task<IHttpActionResult> RegisterEmployee(RegisterEmployeeBindingModel model)
         {
@@ -369,6 +407,14 @@ namespace WYF.WebAPI.Controllers
             var user = new User() { UserName = model.Username, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            
+            var rolesForEmployee = new[] {"User", "Employee"};
+
+            var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForEmployee, user.Id);
+            if (resultOfAddingToRoles == false)
+            {
+                return InternalServerError(new Exception("Adding user to role failed."));
+            }
 
             if (!result.Succeeded)
             {
@@ -397,6 +443,66 @@ namespace WYF.WebAPI.Controllers
                     throw;
                 }
                 
+            }
+
+            return Ok();
+        }
+
+        // POST api/User/RegisterEmployer
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("RegisterEmployer")]
+        public async Task<IHttpActionResult> RegisterEmployer(RegisterEmployerBindingModel model)
+        {
+            model.DateOfBirth = model.DateOfBirth.AddDays(1);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new User() { UserName = model.Username, Email = model.Email };
+
+            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            var rolesForEmployee = new[] { "User", "Employer" };
+
+            var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForEmployee, user.Id);
+            if (resultOfAddingToRoles == false)
+            {
+                return InternalServerError(new Exception("Adding user to role failed."));
+            }
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+            else
+            {
+                user = this._context.Users.Find(user.Id);
+
+                try
+                {
+                    Employer newEmployer = new Employer()
+                    {
+                        BulstatIdNumber = model.BulstatIdNumber,
+                        BusinessName = model.BusinessName,
+                        PhoneNumber = model.PhoneNumber,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        DateOfBirth = model.DateOfBirth,
+                        UserId = user.Id,
+                        User = user
+                    };
+                    _context.Employers.Add(newEmployer);
+                    _context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+
             }
 
             return Ok();

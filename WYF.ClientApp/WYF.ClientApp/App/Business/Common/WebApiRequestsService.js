@@ -25,8 +25,6 @@
                 isLoginRequest = true;
             }
 
-            
-
             if (isLoginRequest === true) {
                 var tempArr = [];
 
@@ -37,7 +35,7 @@
                 dto = tempArr.join('&');
             }
             
-            headers = headers || $http.defaults.headers.post;
+            headers = headers || $http.defaults.headers.post || [];
             headers["Access-Control-Allow-Origin"] = '*';
             headers = _setAuthorizationHeaderIfExistsAuthToken(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE, headers);
 
@@ -61,7 +59,7 @@
         }
 
         function getRequest(route, headers) {
-            headers = headers || $http.defaults.headers.get;
+            headers = headers || [];
             headers = _setAuthorizationHeaderIfExistsAuthToken(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE, headers);
 
             var deferred = $q.defer();

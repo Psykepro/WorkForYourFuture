@@ -1,3 +1,8 @@
+using System;
+using System.Data.Entity.Migrations.Model;
+using System.IO;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using WYF.WebAPI.Data.Generators;
 
 namespace WYF.WebAPI.Data.Migrations
@@ -16,20 +21,23 @@ namespace WYF.WebAPI.Data.Migrations
         }
 
         protected override void Seed(WYF.WebAPI.Data.WyfDbContext context)
-        {
+        {   // Seed Roles
+            AddRoles(context);
             
-            //  This method will be called after migrating to the latest version.
+        }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+
+        private void AddRoles(WyfDbContext context)
+        {
+            var roleStore = new RoleStore<IdentityRole>(context);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+            var allRoles = new string[] {"User", "Admin", "Employer", "Employee"};
+            foreach (var role in allRoles)
+            {
+                roleManager.Create(new IdentityRole(role));
+            }
+
+            context.SaveChanges();
         }
     }
 }

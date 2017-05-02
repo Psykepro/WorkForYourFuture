@@ -34,12 +34,12 @@
             <p ng-show="registerEmployerForm.bulstatIdNumber.$error.required && !registerEmployerForm.bulstatIdNumber.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
         </div>
         
-        <!-- Phone -->
-        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.phone.$invalid && !registerEmployerForm.phone.$pristine }">
-            <label>Phone</label>
-            <input type="number" required name="phone" class="form-control" ng-pattern="phonePattern" ng-model="vm.phone">
-            <p ng-show="registerEmployerForm.phone.$error.pattern && !registerEmployerForm.phone.$pristine" class="help-block">{{messageForNotMatchedPhone}}</p>
-            <p ng-show="registerEmployerForm.phone.$error.required && !registerEmployerForm.phone.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
+        <!-- Phone Number -->
+        <div class="form-group" ng-class="{ 'has-error' : registerEmployerForm.phoneNumber.$invalid && !registerEmployerForm.phoneNumber.$pristine }">
+            <label>Phone Number</label>
+            <input type="number" required name="phoneNumber" class="form-control" ng-pattern="phonePattern" ng-model="vm.phoneNumber">
+            <p ng-show="registerEmployerForm.phoneNumber.$error.pattern && !registerEmployerForm.phoneNumber.$pristine" class="help-block">{{messageForNotMatchedPhone}}</p>
+            <p ng-show="registerEmployerForm.phoneNumber.$error.required && !registerEmployerForm.phoneNumber.$pristine" class="help-block">{{messageForMissingRequiredField}}</p>
         </div>
 
         <!-- Date Of Birth -->

@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WYF.WebAPI.Models.EntityModels.Job;
 using WYF.WebAPI.Models.Enums.User;
 using WYF.WebAPI.Models.Utilities;
 
@@ -32,14 +31,11 @@ namespace WYF.WebAPI.Models.EntityModels.User
         [DefaultValue("getutcdate()")]
         public DateTime DateOfBirth { get; set; }
 
-        public Gender Gender { get; set; }
+        public Gender? Gender { get; set; }
 
         public string UserId { get; set; }
 
         [ForeignKey(name: "UserId")]
         public virtual User User { get; set; }
-
-        //[Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
-        //public City LivingLocation { get; set; }
     }
 }

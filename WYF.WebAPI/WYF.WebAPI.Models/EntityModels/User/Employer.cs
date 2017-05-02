@@ -25,7 +25,7 @@ namespace WYF.WebAPI.Models.EntityModels.User
 
         public string BusinessWebsiteUrl { get; set; }
 
-        [RegularExpression(pattern: RegexPatterns.PHONE, ErrorMessage = ErrorMessages.NOT_MATCHED_PHONE)]
+        [RegularExpression(pattern: RegexPatterns.PHONE_NUMBER, ErrorMessage = ErrorMessages.NOT_MATCHED_PHONE)]
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         [DataType("VARCHAR(10)")]
         public string PhoneNumber { get; set; }
