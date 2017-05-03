@@ -93,6 +93,8 @@
                             text: "The login was successful!",
                             position: 'bottom'
                         });
+
+                        $location.path("/");
                     },
                         function failure(error) {
                             instance.usernameOrPasswordError = error.data.error_description;
@@ -109,7 +111,7 @@
 
             var isFormValid = $scope.registerEmployeeForm.$valid;
 
-            if (isFormValid) { 
+            if (isFormValid) {
                 var employeeRegisterBM = new RegisterEmployeeBM(this.username,
                                                                 this.email,
                                                                 this.password,
@@ -126,6 +128,8 @@
                             text: "The register was successful!",
                             position: 'bottom'
                         });
+
+                        $location.path("/");
                     },
                         function failure(error) {
                             notie.alert({
@@ -163,6 +167,8 @@
                             text: "The register was successful!",
                             position: 'bottom'
                         });
+
+                        $location.path("/");
                     },
                         function failure(error) {
                             notie.alert({

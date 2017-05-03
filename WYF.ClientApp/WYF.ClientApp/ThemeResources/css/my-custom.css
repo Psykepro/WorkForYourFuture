@@ -1,20 +1,36 @@
-﻿/* COMMON CSS {START} */
-div#wrapper {
-    top: 90px;
-    position: relative;
+﻿@font-face {
+
+font-family: Agency FB;
+
+src: url(http://uncutbeatz.com/clear/fonts/AGENCYR.TTF.ttf);
+
+font-style:normal;
+
 }
 
-html {
-    background-color: #FFFFFF;
+/* COMMON CSS {START} */
+div#wrapper {
+    position: relative;
+    margin-top: 2.5%;
+}
+
+#main-slider {
+    position: relative;
+    margin-top:0px;
+}
+
+html, body, div.footer {
+    background-color: #00283a;
 }
 
 .section {
-    padding: 5% 0;
+    padding: 2% 0;
 }
 
 div.footer {
-    margin-top: 20%;
-    background-color: #00283a;
+    margin-top: 4%;
+    box-shadow: rgba(174, 198, 44, 0.8) 1px -4px 8px;
+    border: none;
 }
 
 .navbar {
@@ -70,6 +86,7 @@ div#form-wrapper {
         margin: 0 30px 40px;
         text-align: center;
         text-shadow: #00283a -2px 2px;
+        font-family: Agency FB;
     }
 
 
@@ -87,7 +104,13 @@ div#form-wrapper {
 
 
 @media (min-width: 768px) {
-  .register-choose-type-wrapper {
-      margin-top: 5px;
-  }
+
+
+}
+
+@media (min-height: 1600px) {
+
+    div#wrapper {
+        margin-top: 2.0%;
+    }
 }
