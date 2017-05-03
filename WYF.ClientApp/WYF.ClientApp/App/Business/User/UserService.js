@@ -85,10 +85,22 @@
         }
 
         function logout() {
+            var route = webApiRoutesProvider.Routes["User"]["Logout"];
+            var defered = $q.defer();
+
+            webApiRequestsService.postRequest(route)
+                .then(function success(result) {
+                    defered.resolve(result);
+                }, function failure(error) {
+                    defered.reject(error);
+                });
+
             localStorage.removeItem(USERNAME_KEY_IN_LOCAL_STORAGE);
             localStorage.removeItem(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE);
             localStorage.removeItem(EXPIRES_IN_LOCAL_STORAGE);
-            localStorage.removeItem(USER_ID_IN_LOCAL_STORAGE); 
+            localStorage.removeItem(USER_ID_IN_LOCAL_STORAGE);
+
+            return defered.promise;
         }
 
         function registerEmployee(dto) {

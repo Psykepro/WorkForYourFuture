@@ -83,7 +83,7 @@
         function _setAuthorizationHeaderIfExistsAuthToken(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE, headers) {
             var accessToken = localStorage.getItem(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE);
             if (accessToken !== null && accessToken !== '') {
-                headers["Authorization"] = "Bearer " + ACCESSTOKEN_KEY_IN_LOCAL_STORAGE;
+                headers["Authorization"] = "Bearer " + accessToken;
             }
 
             return headers;

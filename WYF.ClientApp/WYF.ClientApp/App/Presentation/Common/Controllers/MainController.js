@@ -42,9 +42,24 @@
 
 
         function logout() {
-            userService.logout();
-            isAuthenticated();
-            $location.path("/");
+            userService.logout()
+                .then(function success(result) {
+                    notie.alert({
+                        type: 'success',
+                        text: "You successfully logout!",
+                        position: 'bottom'
+                    });
+                    isAuthenticated();
+                    $location.path("/");
+                }, function failure(error) {
+                    notie.alert({
+                        type: 'error',
+                        text: "Some error ocurred during the logout!",
+                        position: 'bottom'
+                    });
+                    $location.path("/");
+                });
+
         }
 
         $scope.$on('user-logged-in', function (event, args) {
