@@ -90,6 +90,7 @@
     <Compile Include="Utilities\EnumUtil.cs" />
     <Compile Include="Utilities\ErrorMessages.cs" />
     <Compile Include="Utilities\RegexPatterns.cs" />
+    <Compile Include="ViewModels\Job\JobPostingViewModel.cs" />
     <Compile Include="ViewModels\User\ExternalLoginViewModel.cs" />
     <Compile Include="ViewModels\User\ManageInfoViewModel.cs" />
     <Compile Include="ViewModels\User\UserInfoViewModel.cs" />

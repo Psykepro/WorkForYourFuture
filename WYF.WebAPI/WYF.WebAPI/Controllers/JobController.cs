@@ -8,6 +8,10 @@ using WYF.WebAPI.Data;
 using WYF.WebAPI.Models.BindingModels.Job;
 using WYF.WebAPI.Models.EntityModels.Job;
 using WYF.WebAPI.Models.EntityModels.User;
+using WYF.WebAPI.Models.Enums.Common;
+using WYF.WebAPI.Models.Enums.Job;
+using WYF.WebAPI.Models.Utilities;
+using WYF.WebAPI.Models.ViewModels.Job;
 
 namespace WYF.WebAPI.Controllers
 {
@@ -18,9 +22,11 @@ namespace WYF.WebAPI.Controllers
 
         [Route("All")]
         [HttpGet]
-        public IEnumerable<JobPosting> AllJobPostings()
+        [AllowAnonymous]
+        public IEnumerable<JobPostingViewModel> AllJobPostings()
         {
-            JobPosting[] allJobPostings = _context.JobPostings.ToArray();
+            JobPostingViewModel[] allJobPostings =
+                AutoMapper.Mapper.Map<JobPostingViewModel[]>(_context.JobPostings.ToArray());
 
             if (allJobPostings == null || allJobPostings.Length == 0)
             {
@@ -38,6 +44,7 @@ namespace WYF.WebAPI.Controllers
 
         [Route("Add")]
         [HttpPost]
+        [Authorize(Roles = "Employer")]
         public async Task<IHttpActionResult> AddJobPosting(AddJobPostingBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -55,7 +62,27 @@ namespace WYF.WebAPI.Controllers
             return Ok();
         }
 
+        
+        [HttpGet]
+        [Route("HierarchyLevels")]
+        [AllowAnonymous]
+        public IOrderedEnumerable<KeyValuePair<byte, string>> GetHierarchyLevels()
+        {
+            Dictionary<byte, string> allHierarchyLevels = EnumUtil.GetValuesAsNumbersWithNames<HierarchyLevel>();
 
+            if (allHierarchyLevels == null || allHierarchyLevels.Count == 0)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent("There are no HierarchyLevels in the database."),
+                    ReasonPhrase = "Missing Resource Exception"
+                });
+            }
+
+            var allHierarchyLevelsSorted = from entry in allHierarchyLevels orderby entry.Value ascending select entry;
+
+            return allHierarchyLevelsSorted;
+        }
 
 
     }

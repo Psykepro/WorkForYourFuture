@@ -11,8 +11,11 @@
     <meta name="author" content="">
     <title>BASICA! A Free Bootstrap3 HTML5 CSS3 Template by Vactual Art</title>
 
-    <!-- Angular Material style sheet -->
+    <!-- Angular Material -->
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+
+    <!-- Simple-Pagination -->
+    <link rel="stylesheet" href="ThemeResources/css/simplePagination.css">
 
     <!-- Izitoast notifier CSS -->
     <link rel="stylesheet" href="node_modules/izitoast/dist/css/iziToast.min.css">
@@ -49,26 +52,13 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#!/">Home</a></li>
-                    <li><a href="#!/Home/About">About Us</a></li>
-                    <li ng-if="!mc.checkAccess()"><a href="#!/User/Login">Login</a></li>
-                    <li ng-if="!mc.checkAccess()"><a href="#!/User/Register">Register</a></li>
-                    <li ng-if="mc.checkAccess()"><a href="#!/User/Profile">{{mc.username}}</a></li>
-                    <li><a href="#!/Job/All">Search Jobs</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Dropdown Menu 1</a></li>
-                            <li><a href="#">Dropdown Menu 2</a></li>
-                            <li><a href="#">Dropdown Menu 3</a></li>
-                            <li><a href="#">Dropdown Menu 4</a></li>
-                            <li><a href="#">Dropdown Menu 5</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Use</a></li>
-                        </ul>
-                    </li>
-                    <li ng-if="mc.checkAccess()"><a ng-click="mc.logout()">Logout</a></li>
+                    <li ng-click="mc.setActiveButtonFromNavBar($event)" class="active"><a href="#!/">Home</a></li>
+                    <li ng-click="mc.setActiveButtonFromNavBar($event)"><a href="#!/Home/About">About Us</a></li>
+                    <li ng-click="mc.setActiveButtonFromNavBar($event)" ng-if="!mc.checkAccess()"><a href="#!/User/Login">Login</a></li>
+                    <li ng-click="mc.setActiveButtonFromNavBar($event)" ng-if="!mc.checkAccess()"><a href="#!/User/Register">Register</a></li>
+                    <li ng-click="mc.setActiveButtonFromNavBar($event)" ng-if="mc.checkAccess()"><a href="#!/User/Profile/{{mc.personId}}">{{mc.username}}</a></li>
+                    <li ng-click="mc.setActiveButtonFromNavBar($event)"><a href="#!/Job/All">Search Jobs</a></li>
+                    <li ng-click="mc.setActiveButtonFromNavBar($event)" ng-if="mc.checkAccess()"><a ng-click="mc.logout()">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -115,13 +105,16 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- AngularJS -->
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
 
     <!-- Javascripts -->
     <script src="ThemeResources/js/jquery-1.9.1.min.js"></script>
     <script src="ThemeResources/js/bootstrap.min.js"></script>
+
+    <!-- Simple-Pagination -->
+    <script type="text/javascript" src="ThemeResources/js/jquery.simplePagination.js"></script>
 
     <!-- Scrolling Nav JavaScript -->
     <script src="ThemeResources/js/jquery.easing.min.js"></script>

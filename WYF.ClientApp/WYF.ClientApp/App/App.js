@@ -23,7 +23,26 @@
         .constant('PERSON_ID_IN_LOCAL_STORAGE', 'personId')
         .constant('EXPIRES_IN_LOCAL_STORAGE', 'expires')
         .constant('ROLE_NAME_IN_LOCAL_STORAGE', 'roleName')
-        .config(configureRoutes); 
+        .config(configureRoutes)
+        .run(runConfiguration);
+   
+    
+    // Configure redirect if not authenticated
+    runConfiguration.$inject = ['$rootScope', '$location', 'ACCESSTOKEN_KEY_IN_LOCAL_STORAGE'];
+    function runConfiguration($rootScope, $location, ACCESSTOKEN_KEY_IN_LOCAL_STORAGE) {
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+            var accessToken = localStorage.getItem(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE);
+
+            // Here I'll add all routes for which is necessary Authentication or Authorization
+            var authNecessaryRoutes = ['/Job/Add', '/Admin'];
+
+            if (accessToken === undefined || accessToken === null) {
+                if (authNecessaryRoutes.includes(next.$$route.originalPath)) {
+                    $location.path("/User/Login");
+                }
+            }
+        });
+    }
 
     // Configuration of the routes
     configureRoutes.$inject = ['$routeProvider'];

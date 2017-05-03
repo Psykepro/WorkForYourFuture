@@ -17,6 +17,7 @@ namespace WYF.WebAPI.Controllers
 
         //[Authorize]
         [Route("Cities")]
+        [AllowAnonymous]
         [HttpGet]
         public IEnumerable<string> Cities()
         {
@@ -39,6 +40,7 @@ namespace WYF.WebAPI.Controllers
         }
 
         [Route("Languages")]
+        [AllowAnonymous]
         [HttpGet]
         public IOrderedEnumerable<KeyValuePair<byte, string>> GetLanguages()
         {

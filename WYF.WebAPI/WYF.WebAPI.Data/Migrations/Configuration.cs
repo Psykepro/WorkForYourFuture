@@ -1,6 +1,3 @@
-using System;
-using System.Data.Entity.Migrations.Model;
-using System.IO;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using WYF.WebAPI.Data.Generators;

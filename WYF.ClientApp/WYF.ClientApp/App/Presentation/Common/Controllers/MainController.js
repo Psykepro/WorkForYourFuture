@@ -21,6 +21,7 @@
 
         var instance = {
             checkAccess: checkAccess,
+            setActiveButtonFromNavBar: setActiveButtonFromNavBar,
             logout: logout
         };
 
@@ -34,10 +35,12 @@
                 _setUsername(currentUsername);
                 _setPersonId(currentPersonId);
 
-                if (currentRoleName.toLocaleLowerCase() === "employer") {
-                    _setIsEmployer(true);
-                } else {
-                    _setIsEmployer(false);
+                if (currentRoleName !== null && currentRoleName !== undefined) {
+                    if (currentRoleName.toLocaleLowerCase() === "employer") {
+                        _setIsEmployer(true);
+                    } else {
+                        _setIsEmployer(false);
+                    }
                 }
 
                 return true;
@@ -49,6 +52,16 @@
             }
 
             return false;
+        }
+
+        function setActiveButtonFromNavBar($event) {
+            var activeClass = "active";
+            var element = $($event.currentTarget);
+            if (!element.hasClass(activeClass)) {
+                $(".navbar li").removeClass(activeClass);
+                element.addClass(activeClass);
+            }
+            
         }
 
         function _setUsername(value) {

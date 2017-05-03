@@ -1,24 +1,33 @@
-﻿function RegisterEmployerBM(username, email, password, confirmPassword, firstName, lastName, dateOfBirth, businessName, bulstatIdNumber, phoneNumber) {
-    'use-strict';
+﻿(function () {
+    angular.module('data').factory('RegisterEmployerBm',
+        function() {
 
-    // Check if the function is not used as constructor \\
-    if (!this instanceof arguments.callee) {
-        return new arguments.callee(username, email, password, confirmPassword, firstName, lastName, dateOfBirth, businessName, bulstatIdNumber, phoneNumber);
-    }
+           
+            function RegisterEmployerBm() {
 
-    var self = this;
+                if (!this instanceof arguments.callee) {
+                    return new arguments.callee();
+                }
 
-    // TODO : Create Getters and Setters !
-    self.username = username;
-    self.email = email;
-    self.password = password;
-    self.confirmPassword = confirmPassword;
-    self.firstName = firstName;
-    self.lastName = lastName;
-    self.dateOfBirth = dateOfBirth;
-    self.businessName = businessName;
-    self.bulstatIdNumber = bulstatIdNumber;
-    self.phoneNumber = phoneNumber;
+                // TODO : Create Getters and Setters !
+                this.username = "";
+                this.email = "";
+                this.password = "";
+                this.confirmPassword = "";
+                this.firstName = "";
+                this.lastName = "";
+                this.dateOfBirth = new Date();
+                this.businessName = "";
+                this.bulstatIdNumber = "";
+                this.phoneNumber = "";
 
-    return self;
-}
+                return this;
+            }
+
+
+            return RegisterEmployerBm;
+        });
+
+
+})();
+

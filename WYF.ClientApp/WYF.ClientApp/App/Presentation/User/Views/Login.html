@@ -1,26 +1,41 @@
-﻿<div class="content-wrapper">
+﻿<div class="content-wrapper temp-margin-bootom">
     <div class="container">
+        <div class="row">
+            <div class="col-lg-8 header-wrapper">
+                <h3>Login</h3>
+            </div>
+        </div>
         <div class="row">
 
             <div id="form-wrapper" class="col-sm-6">
                 <form name="loginForm" ng-submit="vm.submitLoginForm()" novalidate>
-                    
+
                     <!-- Username -->
                     <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
-                        <label>Username</label>
-                        <input type="text" required name="username" class="form-control" ng-model="vm.username" ng-change="addTextOnChange()">
-                        <p ng-show="loginForm.username.$error.required && !loginForm.username.$pristine" class="help-block">This field is required</p>
+                        <md-input-container>
+                            <label>Username</label>
+                            <input type="text" required name="username" class="form-control" ng-model="vm.username" ng-change="addTextOnChange()">
+                            <div class="validation-messages" ng-messages="loginForm.username.$error">
+                                <div ng-message="required">{{messageForMissingRequiredField}}</div>
+                            </div>
+                        </md-input-container>
                     </div>
+
+
 
                     <!-- Password -->
                     <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
-                        <label>Password</label>
-                        <input type="password" required name="password" class="form-control" ng-minlength="6" ng-pattern="passwordPattern" ng-model="vm.password">
-                        <p ng-show="(loginForm.password.$invalid && !loginForm.password.$pristine && !loginForm.password.$error.required) || loginForm.password.$error.pattern" class="help-block">Invalid password (Minimum 6 characters and at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number)</p>
-                        <p ng-show="loginForm.password.$error.required && !loginForm.password.$pristine" class="help-block">This field is required</p>
+                        <md-input-container>
+                            <label>Password</label>
+                            <input type="password" required name="password" class="form-control" ng-minlength="6" ng-pattern="passwordPattern" ng-model="vm.password">
+                            <div class="validation-messages" ng-messages="loginForm.password.$error">
+                                <div ng-message="required">{{messageForMissingRequiredField}}</div>
+                            </div>
+                            <p ng-show="vm.usernameOrPasswordError" class="help-block">{{vm.usernameOrPasswordError}}</p>
+                        </md-input-container>
                     </div>
-                    <p ng-show="vm.usernameOrPasswordError" class="help-block">{{vm.usernameOrPasswordError}}</p>
-                    <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid || (loginForm.username.$pristine || loginForm.password.$pristine)">Login</button>
+
+                    <button type="submit" class="btn form-button" ng-disabled="loginForm.$invalid || (loginForm.username.$pristine || loginForm.password.$pristine)">Login</button>
                 </form>
             </div>
 

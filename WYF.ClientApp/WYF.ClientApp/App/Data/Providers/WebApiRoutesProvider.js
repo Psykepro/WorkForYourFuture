@@ -29,6 +29,9 @@
         /////////
         var jobApiPrefix = apiPrefix + 'Job/';
         var jobRoutes = {
+            "All": jobApiPrefix + 'All/',
+            "Add": jobApiPrefix + 'Add/',
+            "HierarchyLevels": jobApiPrefix + "HierarchyLevels"
         };
 
         ////////////

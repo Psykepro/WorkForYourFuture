@@ -21,6 +21,8 @@
                          webApiRoutesProvider,
                          webApiRequestsService) {
 
+        var currentService = "User";
+
         var instance = {
             login: login,
             logout: logout,
@@ -46,8 +48,8 @@
         function login(dto) {
 
             dto.grant_type = 'password';
-
-            var route = webApiRoutesProvider.Routes["User"]["Login"];
+            var currentAction = "Login";
+            var route = webApiRoutesProvider.Routes[currentService][currentAction];
             var defered = $q.defer();
 
             var headers = {
@@ -65,20 +67,21 @@
                     localStorage.setItem(USERNAME_KEY_IN_LOCAL_STORAGE, userName);
                     localStorage.setItem(EXPIRES_IN_LOCAL_STORAGE, expires);
 
-                    route = webApiRoutesProvider.Routes["User"]["PersonId"];
+                    currentAction = "PersonId";
+                    route = webApiRoutesProvider.Routes[currentService][currentAction];
 
-                        webApiRequestsService
-                            .getRequest(route, headers)
-                            .then(function success(result) {
-                                    localStorage.setItem(PERSON_ID_IN_LOCAL_STORAGE, result.Value);
-                                    localStorage.setItem(ROLE_NAME_IN_LOCAL_STORAGE, result.Key);
+                    webApiRequestsService
+                        .getRequest(route, headers)
+                        .then(function success(result) {
+                            localStorage.setItem(PERSON_ID_IN_LOCAL_STORAGE, result.Value);
+                            localStorage.setItem(ROLE_NAME_IN_LOCAL_STORAGE, result.Key);
 
-                                    defered.resolve(result);
-                                },
-                                function failure(error) {
-                                    defered.reject(error);
-                                });
-                    },
+                            defered.resolve(result);
+                        },
+                            function failure(error) {
+                                defered.reject(error);
+                            });
+                },
                     function failure(error) {
                         defered.reject(error);
                     });
@@ -87,7 +90,8 @@
         }
 
         function logout() {
-            var route = webApiRoutesProvider.Routes["User"]["Logout"];
+            var currentAction = "Logout";
+            var route = webApiRoutesProvider.Routes[currentService][currentAction];
             var defered = $q.defer();
 
             webApiRequestsService.postRequest(route)
@@ -111,8 +115,8 @@
         }
 
         function registerEmployee(dto) {
-
-            var route = webApiRoutesProvider.Routes["User"]["RegisterEmployee"];
+            var currentAction = "RegisterEmployee";
+            var route = webApiRoutesProvider.Routes[currentService][currentAction];
             var defered = $q.defer();
 
             webApiRequestsService
@@ -128,8 +132,8 @@
         }
 
         function registerEmployer(dto) {
-
-            var route = webApiRoutesProvider.Routes["User"]["RegisterEmployer"];
+            var currentAction = "RegisterEmployer";
+            var route = webApiRoutesProvider.Routes[currentService][currentAction];
             var defered = $q.defer();
 
             webApiRequestsService
@@ -143,8 +147,6 @@
 
             return defered.promise;
         }
-
-
     }
 
 })();

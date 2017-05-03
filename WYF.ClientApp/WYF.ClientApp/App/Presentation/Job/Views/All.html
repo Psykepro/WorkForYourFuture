@@ -1,4 +1,29 @@
-﻿<div>
-    // Search
+﻿<div class="content-wrapper">
+    <div class="col-lg-5 col-md-offset-2" id="job-search-wrapper">
+        <md-content layout-gt-sm="row">
+            <div>
+                <md-input-container>
+                    <label>Title</label>
+                    <input ng-model="vm.jobFilter.Title">
+                </md-input-container>
 
+                <md-input-container>
+                    <label>Hierarchy Level</label>
+                    <md-select ng-model="vm.jobFilter.HierarchyLevel">
+                        <md-option ng-repeat="level in vm.allHierarchyLevels" value="{{level.Key}}">{{level.Value}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </md-content>
+    </div>
+
+
+    <div class="row" ng-repeat="job in vm.allJobs | filter: vm.jobFilter">
+        <div class="col-lg-5 col-md-offset-2">
+            <h3>Title:</h3>
+            <span>{{job.Title}}</span>
+            <h3>Description:</h3>
+            <p>{{job.Description}}</p>
+        </div>
+    </div>
 </div>

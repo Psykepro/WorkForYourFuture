@@ -9,6 +9,7 @@ using WYF.WebAPI.Models.BindingModels.Job;
 using WYF.WebAPI.Models.BindingModels.User;
 using WYF.WebAPI.Models.EntityModels.Job;
 using WYF.WebAPI.Models.EntityModels.User;
+using WYF.WebAPI.Models.ViewModels.Job;
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -44,6 +45,7 @@ namespace WYF.WebAPI
                 cfg.CreateMap<RegisterEmployeeBindingModel, Employee>();
                 cfg.CreateMap<RegisterEmployerBindingModel, Employer>();
                 cfg.CreateMap<AddJobPostingBindingModel, JobPosting>();
+                cfg.CreateMap<JobPosting, JobPostingViewModel>();
             });
 
         }

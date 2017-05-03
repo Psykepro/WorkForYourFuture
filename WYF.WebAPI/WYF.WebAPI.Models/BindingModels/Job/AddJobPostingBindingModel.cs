@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using WYF.WebAPI.Models.EntityModels.Common;
-using WYF.WebAPI.Models.EntityModels.Job;
-using WYF.WebAPI.Models.EntityModels.User;
 using WYF.WebAPI.Models.Enums.Common;
 using WYF.WebAPI.Models.Enums.Job;
 using WYF.WebAPI.Models.Utilities;

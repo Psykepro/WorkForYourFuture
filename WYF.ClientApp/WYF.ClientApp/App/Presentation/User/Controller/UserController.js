@@ -3,21 +3,19 @@
 
     angular.module('presentation').controller('userController', UserController);
 
-    UserController.$inject = ['$scope',
-                                'userService',
-                                'commonService',
-                                'regexPatternsProvider',
-                                'errorMessagesProvider',
-                                '$location',
-                                '$rootScope'];
+    UserController.$inject = [
+        '$scope',
+        'RegisterEmployerBm',
+        'RegisterEmployeeBM',
+        'userService',
+        'commonService',
+        'regexPatternsProvider',
+        'errorMessagesProvider',
+        '$location',
+        '$rootScope'
+    ];
 
-    function UserController($scope,
-                            userService,
-                            commonService,
-                            regexPatternsProvider,
-                            errorMessagesProvider,
-                            $location,
-                            $rootScope) {
+    function UserController($scope, RegisterEmployerBm, RegisterEmployeeBM, userService, commonService, regexPatternsProvider, errorMessagesProvider, $location, $rootScope) {
 
         //////////////////////////////////////
         // SETTING REGEX PATTERNS TO $scope //
@@ -53,15 +51,17 @@
             isEmployeeRegistering: null,
             myDate: new Date(),
             isOpen: false,
-            usernameOrPasswordError: '',
+            usernameOrPasswordError: "",
             allCities: null
         };
 
         function chooseRegisterOption(typeOfRegister) {
             if (typeOfRegister.toLowerCase() === "employee") {
+                instance.registerEmlpoyeeBm = new RegisterEmployeeBM();
                 instance.isEmployeeRegistering = true;
                 userService.setActiveEmployeeRegisterSection();
             } else if (typeOfRegister.toLowerCase() === "employer") {
+                instance.registerEmlpoyerBm = new RegisterEmployerBm();
                 instance.isEmployeeRegistering = false;
                 userService.setActiveEmployerRegisterSection();
             }
@@ -112,16 +112,9 @@
             var isFormValid = $scope.registerEmployeeForm.$valid;
 
             if (isFormValid) {
-                var employeeRegisterBM = new RegisterEmployeeBM(this.username,
-                                                                this.email,
-                                                                this.password,
-                                                                this.confirmPassword,
-                                                                this.firstName,
-                                                                this.lastName,
-                                                                this.dateOfBirth);
 
                 userService
-                    .registerEmployee(employeeRegisterBM)
+                    .registerEmployee(instance.registerEmployeeBM)
                     .then(function success(result) {
                         notie.alert({
                             type: 'success',
@@ -148,19 +141,8 @@
 
             if (isFormValid) {
 
-                var employerRegisterBM = new RegisterEmployerBM(this.username,
-                                                                this.email,
-                                                                this.password,
-                                                                this.confirmPassword,
-                                                                this.firstName,
-                                                                this.lastName,
-                                                                this.dateOfBirth,
-                                                                this.businessName,
-                                                                this.bulstatIdNumber,
-                                                                this.phoneNumber);
-
                 userService
-                    .registerEmployer(employerRegisterBM)
+                    .registerEmployer(instance.registerEmlpoyerBm)
                     .then(function success(result) {
                         notie.alert({
                             type: 'success',
