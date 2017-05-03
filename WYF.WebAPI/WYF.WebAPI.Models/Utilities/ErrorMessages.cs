@@ -30,7 +30,7 @@
         // JOB ERROR MESSAGES //
         ////////////////////////
 
-        public const string JOB_POSTING_TITLE = "The Job Title must be between 3 and 35 characters with only letters, digits and '&' .";
+        public const string JOB_POSTING_TITLE = "The Job Title must be between 3 and 60 characters with only letters, digits and ('&', '-', ',', '_').";
         public const string JOB_DESCRIPTION = "Job Description can contain maximum 1000 characters.";
         public const string NOT_MATCHED_INDUSTRY_NAME = "The Industry Name must be between 2 and 60 characters with only letters, spaces and ('&', '-', ',')";
     }

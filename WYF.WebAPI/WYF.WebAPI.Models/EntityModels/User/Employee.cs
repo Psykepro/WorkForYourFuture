@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,7 +24,7 @@ namespace WYF.WebAPI.Models.EntityModels.User
         [DataType("VARCHAR(500)")]
         public string MotivationalLetter { get; set; }
 
-        public virtual IEnumerable<JobApplication> JobCandidatures { get; set; }
+        public virtual ICollection<JobApplication> JobCandidatures { get; set; }
 
         [DataType("VARBINARY(MAX)")]
         public byte[] Cv { get; set; }

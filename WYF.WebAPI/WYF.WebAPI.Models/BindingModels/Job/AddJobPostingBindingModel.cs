@@ -19,52 +19,32 @@ namespace WYF.WebAPI.Models.BindingModels.Job
             Languages = new HashSet<Language>();
         }
 
-        [Key]
-        public int Id { get; set; }
-
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
-        [Index("IX_JobPosting_Title_Unique", IsUnique = true)]
         [RegularExpression(pattern: RegexPatterns.JOB_TITLE, ErrorMessage = ErrorMessages.JOB_POSTING_TITLE)]
-        [DataType("VARCHAR(35)")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         [RegularExpression(pattern: RegexPatterns.BUSINESS_NAME, ErrorMessage = ErrorMessages.NOT_MATCHED_BUSINESS_NAME)]
-        [DataType("VARCHAR(30)")]
         public string BusinessName { get; set; }
-
+        
         public decimal Salary { get; set; }
 
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         public int IndustryId { get; set; }
 
-        [ForeignKey(name: "IndustryId")]
-        public Industry Industry { get; set; }
-
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         public WorkTime WorkTime { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         [StringLength(maximumLength: Constants.JOB_DESCRIPTION_MAX_LENGTH, ErrorMessage = ErrorMessages.JOB_DESCRIPTION)]
         public string Description { get; set; }
 
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         public int PostingCreatorId { get; set; }
 
-        [ForeignKey(name: "PostingCreatorId")]
-        public virtual Employer PostingCreator { get; set; }
-
-        [DataType(DataType.Date)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [DefaultValue("getutcdate()")]
-        public DateTime CreationDate { get; set; }
-
-        [DataType(DataType.Date)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [DefaultValue("getutcdate()")]
         public DateTime? ExpirationDate { get; set; }
 
         public int LocationId { get; set; }
-
-        [ForeignKey(name: "LocationId")]
-        public City Location { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         public HierarchyLevel HierarchyLevel { get; set; }

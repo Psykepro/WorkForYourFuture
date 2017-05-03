@@ -2,9 +2,12 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using WYF.WebAPI.Data;
+using WYF.WebAPI.Models.BindingModels.Job;
 using WYF.WebAPI.Models.EntityModels.Job;
+using WYF.WebAPI.Models.EntityModels.User;
 
 namespace WYF.WebAPI.Controllers
 {
@@ -32,6 +35,28 @@ namespace WYF.WebAPI.Controllers
 
         }
 
-        
+
+        [Route("Add")]
+        [HttpPost]
+        public async Task<IHttpActionResult> AddJobPosting(AddJobPostingBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            JobPosting jobPosting = AutoMapper.Mapper.Map<AddJobPostingBindingModel, JobPosting>(model);
+            Employer postingCreator = await this._context.Employers.FindAsync(model.PostingCreatorId);
+            postingCreator.JobPostings.Add(jobPosting);
+            jobPosting.PostingCreator = postingCreator;
+            this._context.JobPostings.Add(jobPosting);
+            this._context.SaveChanges();
+
+            return Ok();
+        }
+
+
+
+
     }
 }

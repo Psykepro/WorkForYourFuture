@@ -5,7 +5,9 @@ using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using WYF.WebAPI;
+using WYF.WebAPI.Models.BindingModels.Job;
 using WYF.WebAPI.Models.BindingModels.User;
+using WYF.WebAPI.Models.EntityModels.Job;
 using WYF.WebAPI.Models.EntityModels.User;
 
 [assembly: OwinStartup(typeof(Startup))]
@@ -37,9 +39,11 @@ namespace WYF.WebAPI
 
         private void ConfigureAutoMapper()
         {
-            AutoMapper.Mapper.Initialize(cfg => {
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
                 cfg.CreateMap<RegisterEmployeeBindingModel, Employee>();
                 cfg.CreateMap<RegisterEmployerBindingModel, Employer>();
+                cfg.CreateMap<AddJobPostingBindingModel, JobPosting>();
             });
 
         }

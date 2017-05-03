@@ -30,8 +30,8 @@ namespace WYF.WebAPI.Models.EntityModels.User
         [DataType("VARCHAR(10)")]
         public string PhoneNumber { get; set; }
 
-        public virtual IEnumerable<JobApplication> JobApplicants { get; set; }
+        public virtual ICollection<JobApplication> JobApplicants { get; set; }
 
-        public virtual IEnumerable<JobPosting> JobPostings { get; set; }
+        public virtual ICollection<JobPosting> JobPostings { get; set; }
     }
 }

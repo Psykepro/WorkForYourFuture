@@ -24,7 +24,7 @@ namespace WYF.WebAPI.Models.EntityModels.Job
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         [RegularExpression(pattern: RegexPatterns.JOB_TITLE, ErrorMessage = ErrorMessages.JOB_POSTING_TITLE)]
-        [DataType("VARCHAR(30)")]
+        [DataType("VARCHAR(60)")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
@@ -39,6 +39,7 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         [ForeignKey(name: "IndustryId")]
         public Industry Industry { get; set; }
 
+        [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         public WorkTime WorkTime { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
@@ -57,7 +58,6 @@ namespace WYF.WebAPI.Models.EntityModels.Job
 
         [DataType(DataType.Date)]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [DefaultValue("getutcdate()")]
         public DateTime? ExpirationDate { get; set; }
 
         public int LocationId { get; set; }
@@ -73,7 +73,7 @@ namespace WYF.WebAPI.Models.EntityModels.Job
         public bool IsDrivingLicenseRequired { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
-        public IEnumerable<Language> Languages { get; set; }
+        public ICollection<Language> Languages { get; set; }
 
         public LanguageLevel LanguageLevel { get; set; }
 

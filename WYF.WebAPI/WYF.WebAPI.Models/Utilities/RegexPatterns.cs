@@ -2,13 +2,11 @@
 {
     public static class RegexPatterns
     {
-        
         /////////////////////
         // COMMON PATTERNS //
         /////////////////////
 
         public const string CITY_NAME = "^[a-z\\sA-Z]{2,20}$";
-        
 
         ///////////////////
         // USER PATTERNS //
@@ -26,10 +24,7 @@
         // JOB PATTERNS //
         //////////////////
 
-        public const string JOB_TITLE = "^[A-Za-z,&\\s0-9]{3,35}$";
+        public const string JOB_TITLE = "^[A-Za-z,&-_\\s0-9]{3,60}$";
         public const string INDUSTRY_NAME = "^[a-zA-Z,\\-&\\s]{2,60}$";
-
-
-
     }
 }
