@@ -86,7 +86,7 @@
                             instance.usernameOrPasswordError = '';
                         }
 
-                        $rootScope.$broadcast('user-logged-in');
+                        $rootScope.$broadcast('user-logged-in', { roleNameOfCurrentUser: result.Key });
 
                         notie.alert({
                             type: 'success',

@@ -8,38 +8,66 @@
                                 'userService',
                                 'USERNAME_KEY_IN_LOCAL_STORAGE',
                                 'ACCESSTOKEN_KEY_IN_LOCAL_STORAGE',
-                                'USER_ID_IN_LOCAL_STORAGE'];
+                                'PERSON_ID_IN_LOCAL_STORAGE',
+                                'ROLE_NAME_IN_LOCAL_STORAGE'];
 
     function MainController($scope,
                             $location,
                             userService,
                             USERNAME_KEY_IN_LOCAL_STORAGE,
                             ACCESSTOKEN_KEY_IN_LOCAL_STORAGE,
-                            USER_ID_IN_LOCAL_STORAGE) {
+                            PERSON_ID_IN_LOCAL_STORAGE, 
+                            ROLE_NAME_IN_LOCAL_STORAGE) {
 
         var instance = {
-            isAuthenticated: isAuthenticated,
+            checkAccess: checkAccess,
             logout: logout
         };
 
-        function isAuthenticated() {
+        function checkAccess() {
             var accessToken = localStorage.getItem(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE);
 
             if (accessToken !== null && accessToken !== undefined) {
                 var currentUsername = localStorage.getItem(USERNAME_KEY_IN_LOCAL_STORAGE);
-                var currentUserId = localStorage.getItem(USER_ID_IN_LOCAL_STORAGE);
-                this.username = currentUsername;
-                this.userId = currentUserId;
+                var currentPersonId = localStorage.getItem(PERSON_ID_IN_LOCAL_STORAGE);
+                var currentRoleName = localStorage.getItem(ROLE_NAME_IN_LOCAL_STORAGE);
+                _setUsername(currentUsername);
+                _setPersonId(currentPersonId);
+
+                if (currentRoleName.toLocaleLowerCase() === "employer") {
+                    _setIsEmployer(true);
+                } else {
+                    _setIsEmployer(false);
+                }
 
                 return true;
+
             } else {
-                this.username = '';
-                this.userId = '';
+                _setUsername('');
+                _setPersonId('');
+                _setIsEmployer(null);
             }
 
             return false;
         }
 
+        function _setUsername(value) {
+            if (value !== undefined && value !== null) {
+                instance.username = value;
+            }
+        }
+
+        function _setPersonId(value, isAuthenticated) {
+            if (value !== undefined && value !== null) {
+                instance.personId = value;
+            } 
+        }
+
+        function _setIsEmployer(value) {
+            if (value !== undefined) {
+                instance.isEmployer = value;
+            }
+        }
 
         function logout() {
             userService.logout()
@@ -49,7 +77,9 @@
                         text: "You successfully logout!",
                         position: 'bottom'
                     });
-                    isAuthenticated();
+
+                    checkAccess();
+
                     $location.path("/");
                 }, function failure(error) {
                     notie.alert({
@@ -63,7 +93,7 @@
         }
 
         $scope.$on('user-logged-in', function (event, args) {
-            isAuthenticated();
+            checkAccess();
         });
 
 

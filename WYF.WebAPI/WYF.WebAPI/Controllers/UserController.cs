@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -66,13 +69,48 @@ namespace WYF.WebAPI.Controllers
             return new UserInfoViewModel
             {
                 Username = User.Identity.GetUserName(),
-                // Return the id to use it in the ClientApp
-                Id = User.Identity.GetUserId(),
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
         }
 
+        // GET api/User/PersonId
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [Route("PersonId")]
+        public async Task<KeyValuePair<string, int>> GetPersonId()
+        {
+            ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+            WyfDbContext dbContext = new WyfDbContext();
+            var roles = ((ClaimsIdentity)RequestContext.Principal.Identity).Claims
+                .Where(c => c.Type == ClaimTypes.Role)
+                .Select(c => c.Value);
+
+            var identityUserId = RequestContext.Principal.Identity.GetUserId();
+            KeyValuePair<string, int> pair = new KeyValuePair<string, int>();
+            var employerRoleName = "Employer";
+            var employeeRoleName = "Employee";
+
+            if (roles.Contains(employerRoleName) && !roles.Contains(employeeRoleName))
+            {
+                Employer employer = await this._context.Employers.FirstOrDefaultAsync(e => e.UserId == identityUserId);
+                pair = new KeyValuePair<string, int>(employerRoleName, employer.Id);
+            }
+            else if (roles.Contains(employeeRoleName) && !roles.Contains(employerRoleName))
+            {
+                Employee employee = await this._context.Employees.FirstOrDefaultAsync(e => e.UserId == identityUserId);
+                pair = new KeyValuePair<string, int>(employeeRoleName, employee.Id);
+            }
+            else
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent("There are Person with the current user identity found in the database."),
+                    ReasonPhrase = "Missing Resource Exception"
+                });
+            }
+
+            return pair;
+        }
 
         // POST api/User/Logout
         [Route("Logout")]
@@ -82,14 +120,14 @@ namespace WYF.WebAPI.Controllers
             return Ok();
         }
 
-       
+
 
         // GET api/User/ManageInfo?returnUrl=%2F&generateState=true
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
             IdentityUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            
+
             if (user == null)
             {
                 return null;
@@ -135,7 +173,7 @@ namespace WYF.WebAPI.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -228,7 +266,7 @@ namespace WYF.WebAPI.Controllers
             }
             else
             {
-                
+
             }
 
             return Ok();
@@ -272,9 +310,9 @@ namespace WYF.WebAPI.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -408,8 +446,8 @@ namespace WYF.WebAPI.Controllers
             var user = new User() { UserName = model.Username, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-            
-            var rolesForEmployee = new[] {"User", "Employee"};
+
+            var rolesForEmployee = new[] { "User", "Employee" };
 
             var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForEmployee, user.Id);
             if (resultOfAddingToRoles == false)
@@ -430,7 +468,7 @@ namespace WYF.WebAPI.Controllers
                     Employee newEmployee = AutoMapper.Mapper.Map<RegisterEmployeeBindingModel, Employee>(model);
                     newEmployee.User = user;
                     newEmployee.UserId = user.Id;
-   
+
                     _context.Employees.Add(newEmployee);
                     _context.SaveChanges();
                 }
@@ -439,7 +477,7 @@ namespace WYF.WebAPI.Controllers
                     Console.WriteLine(e);
                     throw;
                 }
-                
+
             }
 
             return Ok();
@@ -527,7 +565,7 @@ namespace WYF.WebAPI.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }

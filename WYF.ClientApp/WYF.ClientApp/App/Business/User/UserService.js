@@ -6,16 +6,18 @@
     UserService.$inject = ['$q',
                             'USERNAME_KEY_IN_LOCAL_STORAGE',
                             'ACCESSTOKEN_KEY_IN_LOCAL_STORAGE',
-                            'USER_ID_IN_LOCAL_STORAGE',
+                            'PERSON_ID_IN_LOCAL_STORAGE',
                             'EXPIRES_IN_LOCAL_STORAGE',
+                            'ROLE_NAME_IN_LOCAL_STORAGE',
                             'webApiRoutesProvider',
                             'webApiRequestsService'];
 
     function UserService($q,
                          USERNAME_KEY_IN_LOCAL_STORAGE,
                          ACCESSTOKEN_KEY_IN_LOCAL_STORAGE,
-                         USER_ID_IN_LOCAL_STORAGE,
+                         PERSON_ID_IN_LOCAL_STORAGE,
                          EXPIRES_IN_LOCAL_STORAGE,
+                         ROLE_NAME_IN_LOCAL_STORAGE,
                          webApiRoutesProvider,
                          webApiRequestsService) {
 
@@ -24,8 +26,9 @@
             logout: logout,
             registerEmployee: registerEmployee,
             registerEmployer: registerEmployer,
+            clearLocalStorage: clearLocalStorage,
             setActiveEmployeeRegisterSection: setActiveEmployeeRegisterSection,
-            setActiveEmployerRegisterSection: setActiveEmployerRegisterSection,
+            setActiveEmployerRegisterSection: setActiveEmployerRegisterSection
         };
 
         return instance;
@@ -35,7 +38,7 @@
             $('#employer-choose-section').removeClass('active-register-section');
         }
 
-        function setActiveEmployerRegisterSection(parameters) {
+        function setActiveEmployerRegisterSection() {
             $('#employer-choose-section').addClass('active-register-section');
             $('#employee-choose-section').removeClass('active-register-section');
         }
@@ -58,18 +61,17 @@
                     var userName = result.userName;
                     var expires = result['.expires'];
 
-                    // Setting the authorization token to the headers
-                    // and sending post request to api/User/UserInfo to get userId
-                    headers['Authorization'] = "Bearer " + accessToken;
-                    route = webApiRoutesProvider.Routes["User"]["UserInfo"];
+                    localStorage.setItem(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE, accessToken);
+                    localStorage.setItem(USERNAME_KEY_IN_LOCAL_STORAGE, userName);
+                    localStorage.setItem(EXPIRES_IN_LOCAL_STORAGE, expires);
+
+                    route = webApiRoutesProvider.Routes["User"]["PersonId"];
+
                         webApiRequestsService
                             .getRequest(route, headers)
                             .then(function success(result) {
-
-                                    localStorage.setItem(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE, accessToken);
-                                    localStorage.setItem(USERNAME_KEY_IN_LOCAL_STORAGE, userName);
-                                    localStorage.setItem(USER_ID_IN_LOCAL_STORAGE, result.Id);
-                                    localStorage.setItem(EXPIRES_IN_LOCAL_STORAGE, expires);
+                                    localStorage.setItem(PERSON_ID_IN_LOCAL_STORAGE, result.Value);
+                                    localStorage.setItem(ROLE_NAME_IN_LOCAL_STORAGE, result.Key);
 
                                     defered.resolve(result);
                                 },
@@ -90,17 +92,22 @@
 
             webApiRequestsService.postRequest(route)
                 .then(function success(result) {
+                    clearLocalStorage();
                     defered.resolve(result);
                 }, function failure(error) {
+                    clearLocalStorage();
                     defered.reject(error);
                 });
 
+            return defered.promise;
+        }
+
+        function clearLocalStorage() {
             localStorage.removeItem(USERNAME_KEY_IN_LOCAL_STORAGE);
             localStorage.removeItem(ACCESSTOKEN_KEY_IN_LOCAL_STORAGE);
             localStorage.removeItem(EXPIRES_IN_LOCAL_STORAGE);
-            localStorage.removeItem(USER_ID_IN_LOCAL_STORAGE);
-
-            return defered.promise;
+            localStorage.removeItem(PERSON_ID_IN_LOCAL_STORAGE);
+            localStorage.removeItem(ROLE_NAME_IN_LOCAL_STORAGE);
         }
 
         function registerEmployee(dto) {

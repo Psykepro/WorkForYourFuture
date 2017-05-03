@@ -2,7 +2,6 @@
 {
     public class UserInfoViewModel
     {
-        public string Id { get; set; }
         public string Username { get; set; }
 
         public bool HasRegistered { get; set; }

@@ -20,8 +20,9 @@
         .constant('URL_WITH_PORT', url_with_port)
         .constant('USERNAME_KEY_IN_LOCAL_STORAGE', 'username')
         .constant('ACCESSTOKEN_KEY_IN_LOCAL_STORAGE', 'accessToken')
-        .constant('USER_ID_IN_LOCAL_STORAGE', 'userId')
+        .constant('PERSON_ID_IN_LOCAL_STORAGE', 'personId')
         .constant('EXPIRES_IN_LOCAL_STORAGE', 'expires')
+        .constant('ROLE_NAME_IN_LOCAL_STORAGE', 'roleName')
         .config(configureRoutes); 
 
     // Configuration of the routes
