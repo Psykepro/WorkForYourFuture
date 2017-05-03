@@ -10,7 +10,7 @@ namespace WYF.WebAPI.Models.EntityModels.Job
 
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         [RegularExpression(pattern: RegexPatterns.INDUSTRY_NAME, ErrorMessage = ErrorMessages.NOT_MATCHED_INDUSTRY_NAME)]
-        [DataType("VARCHAR(30)")]
+        [DataType("VARCHAR(60)")]
         public string Name { get; set; }
     }
 }

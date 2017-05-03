@@ -44,7 +44,7 @@
         function logout() {
             userService.logout();
             isAuthenticated();
-            $location.path('/');
+            $location.path("/");
         }
 
         $scope.$on('user-logged-in', function (event, args) {

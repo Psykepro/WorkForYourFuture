@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WYF.WebAPI.Data;
+using WYF.WebAPI.Models.EntityModels.Job;
 
 namespace WYF.WebAPI.Controllers
 {
@@ -12,22 +13,22 @@ namespace WYF.WebAPI.Controllers
     {
         private WyfDbContext _context = WyfDbContext.Create();
 
-        [Route("Add")]
-        [HttpPost]
-        public IEnumerable<string> AddJobPosting()
+        [Route("All")]
+        [HttpGet]
+        public IEnumerable<JobPosting> AllJobPostings()
         {
-            string[] allCities = _context.Cities.Select(c => c.Name).ToArray();
+            JobPosting[] allJobPostings = _context.JobPostings.ToArray();
 
-            if (allCities == null || allCities.Length == 0)
+            if (allJobPostings == null || allJobPostings.Length == 0)
             {
                 throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
                 {
-                    Content = new StringContent("There are no Cities in the database."),
+                    Content = new StringContent("There are no JobPostings in the database."),
                     ReasonPhrase = "Missing Resource Exception"
                 });
             }
 
-            return allCities;
+            return allJobPostings;
 
         }
 

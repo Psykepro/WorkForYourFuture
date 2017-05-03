@@ -97,7 +97,7 @@
                         $location.path("/");
                     },
                         function failure(error) {
-                            instance.usernameOrPasswordError = error.data.error_description;
+                            instance.usernameOrPasswordError = error.error_description;
                             notie.alert({
                                 type: 'error',
                                 text: "The login wasn't successful!",
