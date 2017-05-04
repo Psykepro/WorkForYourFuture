@@ -402,7 +402,7 @@ namespace WYF.WebAPI.Controllers
                 return InternalServerError(new Exception("Adding user to role failed."));
             }
 
-            return Ok(user);
+            return Ok(user.Id);
         }
 
 
@@ -412,7 +412,7 @@ namespace WYF.WebAPI.Controllers
             var roleManager = new RoleManager<IdentityRole>(roleStore);
             bool successOfAddingToRole = true;
             User user = _context.Users.Find(userId);
-            
+
             foreach (var role in rolesToAdd)
             {
                 bool isCurrentRoleExists = await roleManager.RoleExistsAsync(role);
@@ -449,16 +449,18 @@ namespace WYF.WebAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-            RegisterUserBindingModel employeeToUserBM = AutoMapper.Mapper.Map<RegisterUserBindingModel>(model);
 
+            RegisterUserBindingModel employeeToUserBM = AutoMapper.Mapper.Map<RegisterUserBindingModel>(model);
             IHttpActionResult resultOfUserRegistering = await this.Register(employeeToUserBM);
-            if(typeof(OkNegotiatedContentResult<User>) != resultOfUserRegistering.GetType())
+
+            if(typeof(OkNegotiatedContentResult<string>) != resultOfUserRegistering.GetType())
             {
                 return resultOfUserRegistering;
             }
 
-            User user = (resultOfUserRegistering as OkNegotiatedContentResult<User>).Content;
-            
+            var userId = (resultOfUserRegistering as OkNegotiatedContentResult<string>).Content;
+            User user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
             var rolesForEmployee = new[] { "Employee" };
             var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForEmployee, user.Id);
 
@@ -499,11 +501,18 @@ namespace WYF.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new User() { UserName = model.Username, Email = model.Email };
+            RegisterUserBindingModel employerToUserBM = AutoMapper.Mapper.Map<RegisterUserBindingModel>(model);
+            IHttpActionResult resultOfUserRegistering = await this.Register(employerToUserBM);
 
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-            
-            var rolesForEmployer = new[] { "User", "Employer" };
+            if (typeof(OkNegotiatedContentResult<string>) != resultOfUserRegistering.GetType())
+            {
+                return resultOfUserRegistering;
+            }
+
+            var userId = (resultOfUserRegistering as OkNegotiatedContentResult<string>).Content;
+            User user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+            var rolesForEmployer = new[] { "Employer" };
 
             var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForEmployer, user.Id);
             if (resultOfAddingToRoles == false)
@@ -511,30 +520,20 @@ namespace WYF.WebAPI.Controllers
                 return InternalServerError(new Exception("Adding user to role failed."));
             }
 
-            if (!result.Succeeded)
+            try
             {
-                return GetErrorResult(result);
+
+                Employer newEmployer = AutoMapper.Mapper.Map<RegisterEmployerBindingModel, Employer>(model);
+                newEmployer.User = user;
+                newEmployer.UserId = user.Id;
+
+                _context.Employers.Add(newEmployer);
+                _context.SaveChanges();
             }
-            else
+            catch (Exception e)
             {
-                user = this._context.Users.Find(user.Id);
-
-                try
-                {
-
-                    Employer newEmployer = AutoMapper.Mapper.Map<RegisterEmployerBindingModel, Employer>(model);
-                    newEmployer.User = user;
-                    newEmployer.UserId = user.Id;
-
-                    _context.Employers.Add(newEmployer);
-                    _context.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-
+                Console.WriteLine(e);
+                throw;
             }
 
             return Ok();

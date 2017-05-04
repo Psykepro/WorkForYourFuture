@@ -31,7 +31,7 @@ namespace WYF.WebAPI.Models.EntityModels.User
         [DefaultValue("getutcdate()")]
         public DateTime DateOfBirth { get; set; }
 
-        public Gender? Gender { get; set; }
+        public Gender Gender { get; set; }
 
         public string UserId { get; set; }
 
