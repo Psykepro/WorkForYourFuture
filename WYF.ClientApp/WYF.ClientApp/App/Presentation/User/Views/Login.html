@@ -27,7 +27,7 @@
                     <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
                         <md-input-container>
                             <label>Password</label>
-                            <input type="password" required name="password" class="form-control" ng-minlength="6" ng-pattern="passwordPattern" ng-model="vm.password">
+                            <input type="password" required name="password" class="form-control" ng-minlength="6" ng-model="vm.password">
                             <div class="validation-messages" ng-messages="loginForm.password.$error">
                                 <div ng-message="required">{{messageForMissingRequiredField}}</div>
                             </div>

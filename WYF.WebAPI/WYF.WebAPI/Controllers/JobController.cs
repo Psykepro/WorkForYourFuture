@@ -23,10 +23,9 @@ namespace WYF.WebAPI.Controllers
         [Route("All")]
         [HttpGet]
         [AllowAnonymous]
-        public IEnumerable<JobPostingViewModel> AllJobPostings()
+        public async Task<IEnumerable<JobPostingViewModel>> AllJobPostings()
         {
-            JobPostingViewModel[] allJobPostings =
-                AutoMapper.Mapper.Map<JobPostingViewModel[]>(_context.JobPostings.ToArray());
+            JobPosting[] allJobPostings = _context.JobPostings.ToArray();
 
             if (allJobPostings == null || allJobPostings.Length == 0)
             {
@@ -37,8 +36,10 @@ namespace WYF.WebAPI.Controllers
                 });
             }
 
-            return allJobPostings;
+            JobPostingViewModel[] allJobPostingAsViewModels =
+                AutoMapper.Mapper.Map<JobPostingViewModel[]>(_context.JobPostings.ToArray());
 
+            return allJobPostingAsViewModels;
         }
 
 
@@ -82,6 +83,27 @@ namespace WYF.WebAPI.Controllers
             var allHierarchyLevelsSorted = from entry in allHierarchyLevels orderby entry.Value ascending select entry;
 
             return allHierarchyLevelsSorted;
+        }
+
+        [HttpGet]
+        [Route("Details/{id:int}")]
+        [AllowAnonymous]
+        public async Task<JobPostingViewModel> GetJobPostingById(int id)
+        {
+            JobPosting jobPosting =  await this._context.JobPostings.FindAsync(id);
+
+            if (jobPosting == null)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent("The requested Job Posting doesn't exist in the database."),
+                    ReasonPhrase = "Missing Resource Exception"
+                });
+            }
+
+            JobPostingViewModel viewModel = AutoMapper.Mapper.Map<JobPostingViewModel>(jobPosting);
+
+            return viewModel;
         }
 
 

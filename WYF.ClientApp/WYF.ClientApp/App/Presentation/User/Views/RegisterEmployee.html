@@ -32,7 +32,6 @@
         <div class="form-group" ng-class="{ 'has-error' : registerEmployeeForm.dateOfBirth.$invalid && !registerEmployeeForm.dateOfBirth.$pristine }">
             <md-input-container>
                 <md-datepicker name="dateOfBirth" required ng-model="vm.registerEmployeeBM.dateOfBirth" md-placeholder="Enter Date of Birth" md-is-open="vm.isOpen"></md-datepicker>
-                <md-button class="md-primary md-raised" ng-click="vm.isOpen = true">Open</md-button>
                 <div class="validation-messages" ng-messages="registerEmployeeForm.dateOfBirth.$error">
                     <div ng-message="required">{{messageForMissingRequiredField}}</div>
                 </div>

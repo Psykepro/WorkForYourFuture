@@ -13,9 +13,8 @@ namespace WYF.WebAPI.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "WYF.WebAPI.Data.WyfDbContext";
-
-
             SetSqlGenerator("System.Data.SqlClient", new DefaultValueSqlServerMigrationSqlGenerator());
         }
 
