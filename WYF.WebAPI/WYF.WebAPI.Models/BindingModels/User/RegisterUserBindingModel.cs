@@ -16,7 +16,6 @@ namespace WYF.WebAPI.Models.BindingModels.User
         [RegularExpression(pattern: RegexPatterns.EMAIL, ErrorMessage = ErrorMessages.NOT_MATCHED_EMAIL)]
         public string Email { get; set; }
 
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Required(ErrorMessage = ErrorMessages.MISSING_REQUIRED_FIELD)]
         [Display(Name = "Password")]

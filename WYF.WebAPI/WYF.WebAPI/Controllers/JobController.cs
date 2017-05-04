@@ -106,6 +106,27 @@ namespace WYF.WebAPI.Controllers
             return viewModel;
         }
 
+        [HttpPost]
+        [Route("Edit/{id:int}")]
+
+        [Authorize(Roles = "Employer")]
+        public async Task<JobPostingViewModel> EditJobPostingById(int id, JobPostingViewModel editedModel)
+        {
+            JobPosting jobPosting = await this._context.JobPostings.FindAsync(id);
+
+            if (jobPosting == null)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent("The Job Posting which you want to edit doesn't exist in the database."),
+                    ReasonPhrase = "Missing Resource Exception"
+                });
+            }
+
+            JobPostingViewModel viewModel = AutoMapper.Mapper.Map<JobPostingViewModel>(jobPosting);
+            return viewModel;
+        }
+
 
     }
 }

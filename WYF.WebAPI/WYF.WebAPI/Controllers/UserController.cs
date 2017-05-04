@@ -22,6 +22,7 @@ using WYF.WebAPI.Providers;
 using WYF.WebAPI.Results;
 using System.Web.Http.Cors;
 using WYF.WebAPI.Data;
+using WYF.WebAPI.Models.Utilities;
 
 namespace WYF.WebAPI.Controllers
 {
@@ -81,9 +82,12 @@ namespace WYF.WebAPI.Controllers
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
             WyfDbContext dbContext = new WyfDbContext();
-            var roles = ((ClaimsIdentity)RequestContext.Principal.Identity).Claims
-                .Where(c => c.Type == ClaimTypes.Role)
-                .Select(c => c.Value);
+
+            //var roles = ((ClaimsIdentity)RequestContext.Principal.Identity).Claims
+            //    .Where(c => c.Type == ClaimTypes.Role)
+            //    .Select(c => c.Value);
+
+            var roles = IdentityUtils.GetRolesFromIdentity(RequestContext.Principal);
 
             var identityUserId = RequestContext.Principal.Identity.GetUserId();
             KeyValuePair<string, int> pair = new KeyValuePair<string, int>();
@@ -384,30 +388,31 @@ namespace WYF.WebAPI.Controllers
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
-            var rolesForEmployee = new[] { "User" };
-
-            var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForEmployee, user.Id);
-            if (resultOfAddingToRoles == false)
-            {
-                return InternalServerError(new Exception("Adding user to role failed."));
-            }
-
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
+            }
+
+            var rolesForUser = new[] { "User" };
+
+            var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForUser, user.Id);
+            if (resultOfAddingToRoles == false)
+            {
+                return InternalServerError(new Exception("Adding user to role failed."));
             }
 
             return Ok();
         }
 
 
-        private async Task<bool> SafelyAddUserToRole(string[] rolesForEmployee, string userId)
+        private async Task<bool> SafelyAddUserToRole(string[] rolesToAdd, string userId)
         {
             var roleStore = new RoleStore<IdentityRole>(this._context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);
             bool successOfAddingToRole = true;
-
-            foreach (var role in rolesForEmployee)
+            User user = _context.Users.Find(userId);
+            
+            foreach (var role in rolesToAdd)
             {
                 bool isCurrentRoleExists = await roleManager.RoleExistsAsync(role);
                 if (!isCurrentRoleExists)
@@ -436,20 +441,28 @@ namespace WYF.WebAPI.Controllers
         [Route("RegisterEmployee")]
         public async Task<IHttpActionResult> RegisterEmployee(RegisterEmployeeBindingModel model)
         {
+            // Adding one day because of the bug with the Daylight Saving Time
             model.DateOfBirth = model.DateOfBirth.AddDays(1);
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            RegisterUserBindingModel employeeToUserBM = AutoMapper.Mapper.Map<RegisterUserBindingModel>(model);
+            var resultOfUserRegistering = await this.Register(employeeToUserBM);
 
+            
             var user = new User() { UserName = model.Username, Email = model.Email };
-
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+            
             var rolesForEmployee = new[] { "User", "Employee" };
-
             var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForEmployee, user.Id);
+
             if (resultOfAddingToRoles == false)
             {
                 return InternalServerError(new Exception("Adding user to role failed."));
@@ -489,6 +502,7 @@ namespace WYF.WebAPI.Controllers
         [Route("RegisterEmployer")]
         public async Task<IHttpActionResult> RegisterEmployer(RegisterEmployerBindingModel model)
         {
+            // Adding one day because of the bug with the Daylight Saving Time
             model.DateOfBirth = model.DateOfBirth.AddDays(1);
 
             if (!ModelState.IsValid)
@@ -499,10 +513,10 @@ namespace WYF.WebAPI.Controllers
             var user = new User() { UserName = model.Username, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            
+            var rolesForEmployer = new[] { "User", "Employer" };
 
-            var rolesForEmployee = new[] { "User", "Employer" };
-
-            var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForEmployee, user.Id);
+            var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForEmployer, user.Id);
             if (resultOfAddingToRoles == false)
             {
                 return InternalServerError(new Exception("Adding user to role failed."));
@@ -587,6 +601,7 @@ namespace WYF.WebAPI.Controllers
         {
             get { return Request.GetOwinContext().Authentication; }
         }
+
 
         private IHttpActionResult GetErrorResult(IdentityResult result)
         {

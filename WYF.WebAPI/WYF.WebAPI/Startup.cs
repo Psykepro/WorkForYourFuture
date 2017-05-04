@@ -45,6 +45,8 @@ namespace WYF.WebAPI
                 cfg.CreateMap<RegisterEmployeeBindingModel, Employee>();
                 cfg.CreateMap<RegisterEmployerBindingModel, Employer>();
                 cfg.CreateMap<AddJobPostingBindingModel, JobPosting>();
+                cfg.CreateMap<RegisterEmployeeBindingModel, RegisterUserBindingModel>();
+                cfg.CreateMap<RegisterEmployerBindingModel, RegisterUserBindingModel>();
                 cfg.CreateMap<JobPosting, JobPostingViewModel>();
             });
 

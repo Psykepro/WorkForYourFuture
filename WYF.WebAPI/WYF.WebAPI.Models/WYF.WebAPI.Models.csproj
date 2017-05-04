@@ -89,6 +89,7 @@
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\EnumUtil.cs" />
     <Compile Include="Utilities\ErrorMessages.cs" />
+    <Compile Include="Utilities\IdentityUtils.cs" />
     <Compile Include="Utilities\RegexPatterns.cs" />
     <Compile Include="ViewModels\Job\JobPostingViewModel.cs" />
     <Compile Include="ViewModels\User\ExternalLoginViewModel.cs" />
