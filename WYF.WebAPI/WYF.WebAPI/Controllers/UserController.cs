@@ -23,6 +23,7 @@ using WYF.WebAPI.Results;
 using System.Web.Http.Cors;
 using WYF.WebAPI.Data;
 using WYF.WebAPI.Models.Utilities;
+using System.Web.Http.Results;
 
 namespace WYF.WebAPI.Controllers
 {
@@ -401,7 +402,7 @@ namespace WYF.WebAPI.Controllers
                 return InternalServerError(new Exception("Adding user to role failed."));
             }
 
-            return Ok();
+            return Ok(user);
         }
 
 
@@ -449,18 +450,16 @@ namespace WYF.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
             RegisterUserBindingModel employeeToUserBM = AutoMapper.Mapper.Map<RegisterUserBindingModel>(model);
-            var resultOfUserRegistering = await this.Register(employeeToUserBM);
 
-            
-            var user = new User() { UserName = model.Username, Email = model.Email };
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
+            IHttpActionResult resultOfUserRegistering = await this.Register(employeeToUserBM);
+            if(typeof(OkNegotiatedContentResult<User>) != resultOfUserRegistering.GetType())
             {
-                return GetErrorResult(result);
+                return resultOfUserRegistering;
             }
+
+            User user = (resultOfUserRegistering as OkNegotiatedContentResult<User>).Content;
             
-            var rolesForEmployee = new[] { "User", "Employee" };
+            var rolesForEmployee = new[] { "Employee" };
             var resultOfAddingToRoles = await SafelyAddUserToRole(rolesForEmployee, user.Id);
 
             if (resultOfAddingToRoles == false)
@@ -468,29 +467,19 @@ namespace WYF.WebAPI.Controllers
                 return InternalServerError(new Exception("Adding user to role failed."));
             }
 
-            if (!result.Succeeded)
+            try
             {
-                return GetErrorResult(result);
+                Employee newEmployee = AutoMapper.Mapper.Map<RegisterEmployeeBindingModel, Employee>(model);
+                newEmployee.User = user;
+                newEmployee.UserId = user.Id;
+
+                _context.Employees.Add(newEmployee);
+                _context.SaveChanges();
             }
-            else
+            catch (Exception e)
             {
-                user = this._context.Users.Find(user.Id);
-
-                try
-                {
-                    Employee newEmployee = AutoMapper.Mapper.Map<RegisterEmployeeBindingModel, Employee>(model);
-                    newEmployee.User = user;
-                    newEmployee.UserId = user.Id;
-
-                    _context.Employees.Add(newEmployee);
-                    _context.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-
+                InternalServerError(e);
+                throw;
             }
 
             return Ok();
