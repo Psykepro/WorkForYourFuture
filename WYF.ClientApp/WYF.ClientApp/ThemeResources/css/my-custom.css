@@ -168,9 +168,20 @@ div#form-wrapper {
 
 /* /JOB/ALL CSS {START} */
 #job-search-wrapper {
-    background-color: #ffffff;
+    background-color: #00283a;
     box-shadow: #aec62c 0px 0px 35px;
 }
+    #job-search-wrapper md-content {
+        background-color: #00283a;
+        color: #ffffff
+    }
+        #job-search-wrapper md-content label {
+            color: #aec62c
+        }
+
+        #job-search-wrapper md-content input {
+            background: #ffffff
+        }
 /* /JOB/ALL CSS {END} */
 
 

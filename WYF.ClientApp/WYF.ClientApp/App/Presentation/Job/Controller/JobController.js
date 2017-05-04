@@ -10,7 +10,7 @@
         var instance = {
             
         };
-
+        
         
         (function () {
 

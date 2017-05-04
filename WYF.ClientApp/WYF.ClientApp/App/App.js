@@ -45,8 +45,11 @@
     }
 
     // Configuration of the routes
-    configureRoutes.$inject = ['$routeProvider'];
+    configureRoutes.$inject = ['$routeProvider', ];
     function configureRoutes($routeProvider) {
+        
+
+
         $routeProvider
             .otherwise({
                 redirectTo: '/'

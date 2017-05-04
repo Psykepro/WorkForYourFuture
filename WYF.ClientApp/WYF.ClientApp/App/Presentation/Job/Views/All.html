@@ -1,29 +1,36 @@
 ﻿<div class="content-wrapper">
-    <div class="col-lg-5 col-md-offset-2" id="job-search-wrapper">
-        <md-content layout-gt-sm="row">
-            <div>
-                <md-input-container>
-                    <label>Title</label>
-                    <input ng-model="vm.jobFilter.Title">
-                </md-input-container>
+    <div class="container" ng-cloak="">
 
-                <md-input-container>
-                    <label>Hierarchy Level</label>
-                    <md-select ng-model="vm.jobFilter.HierarchyLevel">
+        <div class="row">
+            <div class="col-lg-8 header-wrapper">
+                <h3>All Job Postings</h3>
+            </div>
+        </div>
+        
+        <div class="row">
+            <md-content md-theme="input" layout="column" layout-padding>
+                <md-input-container style="padding-bottom: 0; margin-bottom: 0">
+                    <md-icon class="material-icons">&#xE8B6;</md-icon>
+                    <input ng-model="vm.jobFilter.Title" placeholder="Search by keywords">
+                </md-input-container>
+                <md-input-container md-theme="input" layout="column" layout-padding>
+                    
+                    <md-select ng-model="vm.jobFilter.HierarchyLevel" placeholder="Hierarchy Level">
                         <md-option ng-repeat="level in vm.allHierarchyLevels" value="{{level.Key}}">{{level.Value}}</md-option>
                     </md-select>
                 </md-input-container>
+            </md-content>
+        </div>
+        
+
+
+        <div class="row" ng-repeat="job in vm.allJobs | filter: vm.jobFilter">
+            <div class="col-lg-5 col-md-offset-2">
+                <h3>Title:</h3>
+                <span>{{job.Title}}</span>
+                <h3>Description:</h3>
+                <p>{{job.Description}}</p>
             </div>
-        </md-content>
-    </div>
-
-
-    <div class="row" ng-repeat="job in vm.allJobs | filter: vm.jobFilter">
-        <div class="col-lg-5 col-md-offset-2">
-            <h3>Title:</h3>
-            <span>{{job.Title}}</span>
-            <h3>Description:</h3>
-            <p>{{job.Description}}</p>
         </div>
     </div>
 </div>
