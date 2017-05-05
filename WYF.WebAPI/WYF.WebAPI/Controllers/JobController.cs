@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
@@ -57,10 +59,23 @@ namespace WYF.WebAPI.Controllers
 
             JobPosting jobPosting = AutoMapper.Mapper.Map<AddJobPostingBindingModel, JobPosting>(model);
             Employer postingCreator = await this._context.Employers.FindAsync(model.PostingCreatorId);
+
+            if (postingCreator == null)
+            {
+                return BadRequest("You are not authorized for this action. Only Employers can add postings.");
+            }
+
             postingCreator.JobPostings.Add(jobPosting);
             jobPosting.PostingCreator = postingCreator;
-            this._context.JobPostings.Add(jobPosting);
-            this._context.SaveChanges();
+            try
+            {
+                this._context.JobPostings.Add(jobPosting);
+                this._context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
 
             return Ok();
         }
@@ -108,11 +123,34 @@ namespace WYF.WebAPI.Controllers
             return viewModel;
         }
 
+        [HttpGet]
+        [Route("Edit/{id:int}")]
+        [Authorize(Roles = "Employer")]
+        public async Task<IHttpActionResult> GetEditJobPostingById(int id)
+        {
+            JobPosting jobPosting = await this._context.JobPostings.FindAsync(id);
+            
+
+            if (jobPosting == null)
+            {
+                return BadRequest("This posting doesn't exist in the database.");
+            }
+
+            var postingCreator = jobPosting.PostingCreator;
+            if (postingCreator.UserId != RequestContext.Principal.Identity.GetUserId())
+            {
+                return BadRequest("You are not authorized to edit this Job Posting.");
+            }
+
+            JobPostingEditViewModel viewModel = AutoMapper.Mapper.Map<JobPostingEditViewModel>(jobPosting);
+
+            return Ok(viewModel);
+        }
+
         [HttpPost]
         [Route("Edit")]
-
         [Authorize(Roles = "Employer")]
-        public async Task<IHttpActionResult> EditJobPostingById(JobPostingViewModel editedModel)
+        public async Task<IHttpActionResult> EditJobPosting(JobPostingEditViewModel editedModel)
         {
             JobPosting jobPosting = await this._context.JobPostings.FindAsync(editedModel.Id);
 
@@ -136,8 +174,45 @@ namespace WYF.WebAPI.Controllers
             {
                 return InternalServerError(e);
             }
-            
 
+
+            return Ok();
+        }
+
+
+        [HttpPost]
+        [Route("JobPostingApply/{jobPostingId:int}")]
+        [Authorize(Roles = "Employee")]
+        public async Task<IHttpActionResult> ApplyForJobPosting(int jobPostingId)
+        {
+            JobPosting jobPosting = await this._context.JobPostings.FindAsync(jobPostingId);
+            if (jobPosting == null)
+            {
+                return BadRequest("The posting you want to apply doesn't exist in the database.");
+            }
+
+            Employee jobApplicant = await this._context.Employees.FirstOrDefaultAsync(e => e.UserId == RequestContext.Principal.Identity.GetUserId());
+            if (jobApplicant == null)
+            {
+                return BadRequest("You are not authorized to this action. Only employees can apply for job.");
+            }
+            
+            try
+            {
+                JobApplication newJobPostingApplication = new JobApplication()
+                {
+                    JobPosting = jobPosting,
+                    JobApplicant = jobApplicant,
+                    JobPostingCreatorId = jobPosting.PostingCreatorId,
+                    JobPostingCreator = jobPosting.PostingCreator
+                };
+                this._context.JobApplications.Add(newJobPostingApplication);
+                this._context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
 
             return Ok();
         }

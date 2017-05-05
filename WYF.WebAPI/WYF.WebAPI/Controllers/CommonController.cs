@@ -25,15 +25,11 @@ namespace WYF.WebAPI.Controllers
 
             if (allCities == null || allCities.Length == 0)
             {
-                City newCity = new City() {Name = "Sofia"};
-                _context.Cities.Add(newCity);
-                _context.SaveChanges();
-                allCities = new string[1] { newCity.Name };
-                //throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
-                //{
-                //    Content = new StringContent("There are no Cities in the database."),
-                //    ReasonPhrase = "Missing Resource Exception"
-                //});
+               throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
+               {
+                   Content = new StringContent("There are no Cities in the database."),
+                   ReasonPhrase = "Missing Resource Exception"
+               });
             }
 
             return allCities;
@@ -58,6 +54,29 @@ namespace WYF.WebAPI.Controllers
             var allLanguagesSorted = from entry in allLanguages orderby entry.Value ascending select entry;
 
             return allLanguagesSorted;
+        }
+
+
+
+        [Route("Education")]
+        [AllowAnonymous]
+        [HttpGet]
+        public IOrderedEnumerable<KeyValuePair<byte, string>> GetEducationTypes()
+        {
+            Dictionary<byte, string> allEducationTypes = EnumUtil.GetValuesAsNumbersWithNames<Education>();
+
+            if (allEducationTypes == null || allEducationTypes.Count == 0)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent("There are no Education types in the database."),
+                    ReasonPhrase = "Missing Resource Exception"
+                });
+            }
+
+            var allEducationTypesSorted = from entry in allEducationTypes orderby entry.Value ascending select entry;
+
+            return allEducationTypesSorted;
         }
     }
 }
