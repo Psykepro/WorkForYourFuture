@@ -76,19 +76,15 @@ namespace WYF.WebAPI.Controllers
             };
         }
 
-        // GET api/User/PersonId
+        // GET api/User/PersonInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [Route("PersonId")]
-        public async Task<KeyValuePair<string, int>> GetPersonId()
+        [Route("PersonInfo")]
+        public async Task<KeyValuePair<string, int>> GetPersonInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
             WyfDbContext dbContext = new WyfDbContext();
 
-            //var roles = ((ClaimsIdentity)RequestContext.Principal.Identity).Claims
-            //    .Where(c => c.Type == ClaimTypes.Role)
-            //    .Select(c => c.Value);
-
-            var roles = IdentityUtils.GetRolesFromIdentity(RequestContext.Principal);
+            var roles = IdentityUtils.GetRolesFromIdentity(RequestContext.Principal.Identity);
 
             var identityUserId = RequestContext.Principal.Identity.GetUserId();
             KeyValuePair<string, int> pair = new KeyValuePair<string, int>();

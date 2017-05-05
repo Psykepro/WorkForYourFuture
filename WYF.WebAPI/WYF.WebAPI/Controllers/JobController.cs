@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
 using WYF.WebAPI.Data;
 using WYF.WebAPI.Models.BindingModels.Job;
 using WYF.WebAPI.Models.EntityModels.Job;
@@ -107,24 +109,37 @@ namespace WYF.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("Edit/{id:int}")]
+        [Route("Edit")]
 
         [Authorize(Roles = "Employer")]
-        public async Task<JobPostingViewModel> EditJobPostingById(int id, JobPostingViewModel editedModel)
+        public async Task<IHttpActionResult> EditJobPostingById(JobPostingViewModel editedModel)
         {
-            JobPosting jobPosting = await this._context.JobPostings.FindAsync(id);
+            JobPosting jobPosting = await this._context.JobPostings.FindAsync(editedModel.Id);
 
             if (jobPosting == null)
             {
-                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound)
-                {
-                    Content = new StringContent("The Job Posting which you want to edit doesn't exist in the database."),
-                    ReasonPhrase = "Missing Resource Exception"
-                });
+                return BadRequest("This posting doesn't exist in the database.");
             }
 
-            JobPostingViewModel viewModel = AutoMapper.Mapper.Map<JobPostingViewModel>(jobPosting);
-            return viewModel;
+            var postingCreator = jobPosting.PostingCreator;
+            if (postingCreator.UserId != RequestContext.Principal.Identity.GetUserId())
+            {
+                return BadRequest("You are not authorized to edit this Job Posting.");
+            }
+
+            try
+            {
+                jobPosting = AutoMapper.Mapper.Map<JobPosting>(editedModel);
+                this._context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+            
+
+
+            return Ok();
         }
 
 
