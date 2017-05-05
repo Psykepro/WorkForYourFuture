@@ -9,6 +9,16 @@ div#wrapper {
     position: relative;
     margin-top: 2.5%;
 }
+#wyf-brand {
+    color: #aec62c;
+    font-family: Agency FB;
+    margin: 0;
+}
+
+.navbar-brand {
+    position: relative;
+    top: -16px;
+}
 
 #main-slider {
     position: relative;

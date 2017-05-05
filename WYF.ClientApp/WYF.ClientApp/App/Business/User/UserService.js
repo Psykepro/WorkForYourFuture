@@ -67,7 +67,7 @@
                     localStorage.setItem(USERNAME_KEY_IN_LOCAL_STORAGE, userName);
                     localStorage.setItem(EXPIRES_IN_LOCAL_STORAGE, expires);
 
-                    currentAction = "PersonId";
+                    currentAction = "PersonInfo";
                     route = webApiRoutesProvider.Routes[currentService][currentAction];
 
                     webApiRequestsService

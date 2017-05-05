@@ -98,8 +98,17 @@ namespace WYF.WebAPI.Controllers
             }
             else if (roles.Contains(employeeRoleName) && !roles.Contains(employerRoleName))
             {
-                Employee employee = await this._context.Employees.FirstOrDefaultAsync(e => e.UserId == identityUserId);
-                pair = new KeyValuePair<string, int>(employeeRoleName, employee.Id);
+                try
+                {
+                    Employee employee =
+                        await this._context.Employees.FirstOrDefaultAsync(e => e.UserId == identityUserId);
+                    pair = new KeyValuePair<string, int>(employeeRoleName, employee.Id);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+                
             }
             else
             {
