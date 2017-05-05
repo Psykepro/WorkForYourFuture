@@ -24,11 +24,12 @@ using System.Web.Http.Cors;
 using WYF.WebAPI.Data;
 using WYF.WebAPI.Models.Utilities;
 using System.Web.Http.Results;
+using System.Web.Mvc;
 
 namespace WYF.WebAPI.Controllers
 {
-    [Authorize]
-    [RoutePrefix("api/User")]
+    [System.Web.Http.Authorize]
+    [System.Web.Http.RoutePrefix("api/User")]
     [EnableCors("*", "*", "*")]
     public class UserController : ApiController
     {
@@ -63,7 +64,8 @@ namespace WYF.WebAPI.Controllers
 
         // GET api/User/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [Route("UserInfo")]
+        [System.Web.Http.Route("UserInfo")]
+        [ValidateAntiForgeryToken()]
         public UserInfoViewModel GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
@@ -78,7 +80,8 @@ namespace WYF.WebAPI.Controllers
 
         // GET api/User/PersonInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [Route("PersonInfo")]
+        [System.Web.Http.Route("PersonInfo")]
+        [ValidateAntiForgeryToken()]
         public async Task<KeyValuePair<string, int>> GetPersonInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
@@ -123,7 +126,7 @@ namespace WYF.WebAPI.Controllers
         }
 
         // POST api/User/Logout
-        [Route("Logout")]
+        [System.Web.Http.Route("Logout")]
         public IHttpActionResult Logout()
         {
             Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
@@ -133,7 +136,7 @@ namespace WYF.WebAPI.Controllers
 
 
         // GET api/User/ManageInfo?returnUrl=%2F&generateState=true
-        [Route("ManageInfo")]
+        [System.Web.Http.Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
             IdentityUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
@@ -173,7 +176,7 @@ namespace WYF.WebAPI.Controllers
         }
 
         // POST api/User/ChangePassword
-        [Route("ChangePassword")]
+        [System.Web.Http.Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -193,7 +196,7 @@ namespace WYF.WebAPI.Controllers
         }
 
         // POST api/User/SetPassword
-        [Route("SetPassword")]
+        [System.Web.Http.Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -212,7 +215,7 @@ namespace WYF.WebAPI.Controllers
         }
 
         // POST api/User/AddExternalLogin
-        [Route("AddExternalLogin")]
+        [System.Web.Http.Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -250,7 +253,7 @@ namespace WYF.WebAPI.Controllers
         }
 
         // POST api/User/RemoveLogin
-        [Route("RemoveLogin")]
+        [System.Web.Http.Route("RemoveLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -283,10 +286,10 @@ namespace WYF.WebAPI.Controllers
         }
 
         // GET api/User/ExternalLogin
-        [OverrideAuthentication]
+        [System.Web.Http.OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
-        [AllowAnonymous]
-        [Route("ExternalLogin", Name = "ExternalLogin")]
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.Route("ExternalLogin", Name = "ExternalLogin")]
         public async Task<IHttpActionResult> GetExternalLogin(string provider, string error = null)
         {
             if (error != null)
@@ -340,8 +343,8 @@ namespace WYF.WebAPI.Controllers
         }
 
         // GET api/User/ExternalLogins?returnUrl=%2F&generateState=false
-        [AllowAnonymous]
-        [Route("ExternalLogins")]
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.Route("ExternalLogins")]
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
         {
             IEnumerable<AuthenticationDescription> descriptions = Authentication.GetExternalAuthenticationTypes();
@@ -381,8 +384,8 @@ namespace WYF.WebAPI.Controllers
         }
 
         // POST api/User/Register
-        [AllowAnonymous]
-        [Route("Register")]
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterUserBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -442,9 +445,10 @@ namespace WYF.WebAPI.Controllers
         }
 
         // POST api/User/RegisterEmployee
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("RegisterEmployee")]
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.HttpPost]
+        [ValidateAntiForgeryToken()]
+        [System.Web.Http.Route("RegisterEmployee")]
         public async Task<IHttpActionResult> RegisterEmployee(RegisterEmployeeBindingModel model)
         {
             // Adding one day because of the bug with the Daylight Saving Time
@@ -493,9 +497,10 @@ namespace WYF.WebAPI.Controllers
         }
 
         // POST api/User/RegisterEmployer
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("RegisterEmployer")]
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("RegisterEmployer")]
+        [ValidateAntiForgeryToken()]
         public async Task<IHttpActionResult> RegisterEmployer(RegisterEmployerBindingModel model)
         {
             // Adding one day because of the bug with the Daylight Saving Time
@@ -545,9 +550,9 @@ namespace WYF.WebAPI.Controllers
         }
 
         // POST api/User/RegisterExternal
-        [OverrideAuthentication]
+        [System.Web.Http.OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [Route("RegisterExternal")]
+        [System.Web.Http.Route("RegisterExternal")]
         public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)
         {
             if (!ModelState.IsValid)

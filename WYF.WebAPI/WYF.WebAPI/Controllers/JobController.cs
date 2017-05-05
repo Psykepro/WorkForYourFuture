@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using WYF.WebAPI.Data;
 using WYF.WebAPI.Models.BindingModels.Job;
@@ -19,14 +20,14 @@ using WYF.WebAPI.Models.ViewModels.Job;
 
 namespace WYF.WebAPI.Controllers
 {
-    [RoutePrefix("api/Job")]
+    [System.Web.Http.RoutePrefix("api/Job")]
     public class JobController : ApiController
     {
         private WyfDbContext _context = WyfDbContext.Create();
 
-        [Route("All")]
-        [HttpGet]
-        [AllowAnonymous]
+        [System.Web.Http.Route("All")]
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.AllowAnonymous]
         public async Task<IEnumerable<JobPostingViewModel>> AllJobPostings()
         {
             JobPosting[] allJobPostings = _context.JobPostings.ToArray();
@@ -47,9 +48,10 @@ namespace WYF.WebAPI.Controllers
         }
 
 
-        [Route("Add")]
-        [HttpPost]
-        [Authorize(Roles = "Employer")]
+        [System.Web.Http.Route("Add")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Authorize(Roles = "Employer")]
+        [ValidateAntiForgeryToken()]
         public async Task<IHttpActionResult> AddJobPosting(AddJobPostingBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -81,9 +83,9 @@ namespace WYF.WebAPI.Controllers
         }
 
         
-        [HttpGet]
-        [Route("HierarchyLevels")]
-        [AllowAnonymous]
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("HierarchyLevels")]
+        [System.Web.Http.AllowAnonymous]
         public IOrderedEnumerable<KeyValuePair<byte, string>> GetHierarchyLevels()
         {
             Dictionary<byte, string> allHierarchyLevels = EnumUtil.GetValuesAsNumbersWithNames<HierarchyLevel>();
@@ -102,9 +104,9 @@ namespace WYF.WebAPI.Controllers
             return allHierarchyLevelsSorted;
         }
 
-        [HttpGet]
-        [Route("Details/{id:int}")]
-        [AllowAnonymous]
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("Details/{id:int}")]
+        [System.Web.Http.AllowAnonymous]
         public async Task<JobPostingViewModel> GetJobPostingById(int id)
         {
             JobPosting jobPosting =  await this._context.JobPostings.FindAsync(id);
@@ -123,9 +125,10 @@ namespace WYF.WebAPI.Controllers
             return viewModel;
         }
 
-        [HttpGet]
-        [Route("Edit/{id:int}")]
-        [Authorize(Roles = "Employer")]
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("Edit/{id:int}")]
+        [System.Web.Http.Authorize(Roles = "Employer")]
+        [ValidateAntiForgeryToken()]
         public async Task<IHttpActionResult> GetEditJobPostingById(int id)
         {
             JobPosting jobPosting = await this._context.JobPostings.FindAsync(id);
@@ -147,9 +150,10 @@ namespace WYF.WebAPI.Controllers
             return Ok(viewModel);
         }
 
-        [HttpPost]
-        [Route("Edit")]
-        [Authorize(Roles = "Employer")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("Edit")]
+        [System.Web.Http.Authorize(Roles = "Employer")]
+        [ValidateAntiForgeryToken()]
         public async Task<IHttpActionResult> EditJobPosting(JobPostingEditViewModel editedModel)
         {
             JobPosting jobPosting = await this._context.JobPostings.FindAsync(editedModel.Id);
@@ -180,9 +184,10 @@ namespace WYF.WebAPI.Controllers
         }
 
 
-        [HttpPost]
-        [Route("JobPostingApply/{jobPostingId:int}")]
-        [Authorize(Roles = "Employee")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("JobPostingApply/{jobPostingId:int}")]
+        [System.Web.Http.Authorize(Roles = "Employee")]
+        [ValidateAntiForgeryToken()]
         public async Task<IHttpActionResult> ApplyForJobPosting(int jobPostingId)
         {
             JobPosting jobPosting = await this._context.JobPostings.FindAsync(jobPostingId);
