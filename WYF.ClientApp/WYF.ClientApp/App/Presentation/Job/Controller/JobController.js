@@ -3,46 +3,15 @@
 
     angular.module('presentation').controller('jobController', JobController);
 
-    JobController.$inject = ['$scope', 'jobService'];
+    JobController.$inject = ['$scope', 'jobProvider'];
 
-    function JobController($scope, jobService) {
+    function JobController($scope, jobProvider) {
 
         var instance = {
-            
+            allJobPostings: jobProvider.allJobPostings,
+            allHierarchyLevels: jobProvider.allHierarchyLevels
         };
-        
-        
-        (function () {
-
-            // Initialize allJobs
-            jobService
-                .getAllJobPostings()
-                .then(function success(result) {
-                    instance.allJobs = result;
-                },
-                    function failure(error) {
-                        notie.alert({
-                            type: 'error',
-                            text: error,
-                            position: 'bottom'
-                        });
-                    });
-
-            // Initialize allHierarchyLevels
-            jobService
-                .getAllHierarchyLevels()
-                .then(function success(result) {
-                    instance.allHierarchyLevels = result;
-                },
-                    function failure(error) {
-                        notie.alert({
-                            type: 'error',
-                            text: error,
-                            position: 'bottom'
-                        });
-                    });
-
-        })();
+       
 
         return instance;
     }

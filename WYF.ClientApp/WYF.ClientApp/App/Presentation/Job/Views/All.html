@@ -22,9 +22,9 @@
             </md-content>
         </div>
         
+        {{vm.allHierarchyLevels}}
 
-
-        <div class="row" ng-repeat="job in vm.allJobs | filter: vm.jobFilter">
+        <div class="row" ng-repeat="job in vm.allJobPostings">
             <div class="col-lg-5 col-md-offset-2">
                 <h3>Title:</h3>
                 <span>{{job.Title}}</span>
